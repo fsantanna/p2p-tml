@@ -1,9 +1,6 @@
 #include <SDL.h>
 #include <assert.h>
 
-//#include "p2p.h"
-#include "tml.h"
-
 #define MAX_EVT 10000
 #define MAX_MEM 1000
 

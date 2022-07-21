@@ -1,6 +1,6 @@
 #if 0
 #!/bin/sh
-gcc -Wall `sdl2-config --cflags` p2p.c tml.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net
+gcc -Wall `sdl2-config --cflags` p2p.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net
 exit
 #endif
 
@@ -10,7 +10,6 @@ exit
 #include <time.h>
 #include <SDL.h>
 #include "p2p.h"
-#include "tml.h"
 
 enum {
     TML_EVT_KEY = TML_EVT_NEXT
