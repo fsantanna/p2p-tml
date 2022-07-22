@@ -12,7 +12,7 @@ exit
 #include "p2p.h"
 
 enum {
-    TML_EVT_KEY = TML_EVT_NEXT
+    P2P_EVT_KEY = P2P_EVT_NEXT
 };
 
 void cb_sim (p2p_evt);
@@ -40,7 +40,7 @@ int main (int argc, char** argv) {
     assert(SDL_Init(SDL_INIT_VIDEO) == 0);
 
     SDL_Window* win = SDL_CreateWindow (
-        "TML: Time Machine Library",
+        "P2P-TML: Peer-to-Peer Time Machine Library",
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         WIN, WIN,
         SDL_WINDOW_SHOWN
@@ -57,7 +57,7 @@ int main (int argc, char** argv) {
         p2p_link("localhost", 5002, 2);
     }
 
-    tml_loop(50, sizeof(G), &G, cb_sim, cb_eff, cb_rec, NULL);
+    p2p_loop(50, sizeof(G), &G, cb_sim, cb_eff, cb_rec);
     p2p_quit();
 
     SDL_DestroyRenderer(REN);
@@ -67,17 +67,17 @@ int main (int argc, char** argv) {
 
 void cb_sim (p2p_evt evt) {
     switch (evt.id) {
-        case TML_EVT_INIT:
+        case P2P_EVT_INIT:
             G.x  = 0;
             G.y  = 0;
             G.dx = 1;
             G.dy = 0;
             break;
-        case TML_EVT_TICK:
+        case P2P_EVT_TICK:
             G.x += G.dx * VEL;
             G.y += G.dy * VEL;
             break;
-        case TML_EVT_KEY:
+        case P2P_EVT_KEY:
             switch (evt.pay.i1) {
                 case SDLK_UP:    { G.dx= 0; G.dy=-1; break; }
                 case SDLK_DOWN:  { G.dx= 0; G.dy= 1; break; }
@@ -100,12 +100,12 @@ void cb_eff (int trv) {
 int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     switch (sdl->type) {
         case SDL_QUIT:
-            return TML_RET_QUIT;
+            return P2P_RET_QUIT;
         case SDL_KEYDOWN: {
             int key = sdl->key.keysym.sym;
-            *evt = (p2p_evt) { TML_EVT_KEY, 1, {.i1=key} };
-            return TML_RET_REC;
+            *evt = (p2p_evt) { P2P_EVT_KEY, 1, {.i1=key} };
+            return P2P_RET_REC;
         }
     }
-    return TML_RET_NONE;
+    return P2P_RET_NONE;
 }

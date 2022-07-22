@@ -6,9 +6,6 @@
 #include "p2p.h"
 #include "tcp.c"
 
-#define NET_N  32
-#define PAKS_N 65536
-
 typedef struct {
     TCPsocket s;
     uint32_t seq;
@@ -16,12 +13,12 @@ typedef struct {
 
 static uint8_t ME = -1;
 
-static p2p_net NET[NET_N];
+static p2p_net NET[P2P_MAX_NET];
 
 struct {
     int i;
     int n;
-    p2p_pak buf[PAKS_N];
+    p2p_pak buf[P2P_MAX_PAKS];
 } PAKS = { 0,0,{} };
 
 static pthread_mutex_t L;
@@ -29,9 +26,9 @@ static pthread_mutex_t L;
 #define UNLOCK() pthread_mutex_unlock(&L);
 
 void p2p_init (uint8_t me, int port) {
-    assert(me < NET_N);
+    assert(me < P2P_MAX_NET);
     ME = me;
-    for (int i=0; i<NET_N; i++) {
+    for (int i=0; i<P2P_MAX_NET; i++) {
         NET[i] = (p2p_net) { NULL, 0 };
     }
     assert(pthread_mutex_init(&L,NULL) == 0);
@@ -45,7 +42,7 @@ void p2p_init (uint8_t me, int port) {
 
 void p2p_quit (void) {
     LOCK();
-    for (int i=0; i<NET_N; i++) {
+    for (int i=0; i<P2P_MAX_NET; i++) {
         SDLNet_TCP_Close(NET[i].s);
     }
     UNLOCK();
@@ -54,7 +51,7 @@ void p2p_quit (void) {
 }
 
 static void p2p_bcast2 (p2p_pak* pak) {
-    for (int i=0; i<NET_N; i++) {
+    for (int i=0; i<P2P_MAX_NET; i++) {
         if (i == ME) continue;
         TCPsocket s = NET[i].s;
         if (s == NULL) continue;
@@ -77,7 +74,7 @@ static void* f (void* arg) {
     uint8_t oth = tcp_recv_u8(s);
 
     LOCK();
-    assert(oth < NET_N);
+    assert(oth < P2P_MAX_NET);
     assert(NET[oth].s == NULL);
     NET[oth] = (p2p_net) { s, 0 };
     UNLOCK();
@@ -91,7 +88,7 @@ static void* f (void* arg) {
 
     while (1) {
         LOCK();
-        assert(PAKS.n < PAKS_N);
+        assert(PAKS.n < P2P_MAX_PAKS);
         p2p_pak* pak = &PAKS.buf[PAKS.n++];
         pak->status = 0;   // not ready
         UNLOCK();
@@ -123,7 +120,7 @@ static void* f (void* arg) {
     return NULL;
 }
 
-int p2p_step  (p2p_evt* evt) {
+int p2p_recv (p2p_evt* evt) {
     while (1) {
         TCPsocket s = SDLNet_TCP_Accept(NET[ME].s);
         if (s == NULL) {
@@ -159,7 +156,7 @@ int p2p_step  (p2p_evt* evt) {
 void p2p_bcast (uint32_t tick, p2p_evt* evt) {
     LOCK();
     uint32_t seq = ++NET[ME].seq;
-    assert(PAKS.n < PAKS_N);
+    assert(PAKS.n < P2P_MAX_PAKS);
     p2p_pak* pak = &PAKS.buf[PAKS.n++];
     UNLOCK();
     *pak = (p2p_pak) { 1, ME, seq, tick, {} };
