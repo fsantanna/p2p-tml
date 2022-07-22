@@ -40,7 +40,7 @@ int main (int argc, char** argv) {
         "P2P-TML: Peer-to-Peer Time Machine Library",
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         WIN, WIN,
-        SDL_WINDOW_SHOWN
+        SDL_WINDOW_HIDDEN
     );
     assert(win != NULL);
 
@@ -70,6 +70,9 @@ int main (int argc, char** argv) {
         }
     }
     int cb_rec (SDL_Event* sdl, p2p_evt* p2p) {
+        if (sdl->type == SDL_QUIT) {
+            return P2P_RET_QUIT;
+        }
         return P2P_RET_NONE;
     }
 
