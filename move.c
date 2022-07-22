@@ -5,9 +5,8 @@ exit
 #endif
 
 #include <unistd.h>
-#include <assert.h>
 #include <stdlib.h>
-#include <time.h>
+#include <assert.h>
 #include <SDL.h>
 #include "p2p.h"
 
@@ -21,7 +20,6 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 
 #define FPS   50
 #define WIN   400
-
 #define VEL   3
 #define DIM   10
 
@@ -54,7 +52,7 @@ int main (int argc, char** argv) {
     p2p_init (
         me,
         port,
-        50,
+        FPS,
         sizeof(G), &G,
         cb_sim, cb_eff, cb_rec
     );

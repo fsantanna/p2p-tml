@@ -8,6 +8,7 @@
 
 #define LOCK()   pthread_mutex_lock(&G.lock)
 #define UNLOCK() pthread_mutex_unlock(&G.lock);
+#define PAK(i)   G.paks.buf[i]
 
 typedef struct {
     TCPsocket s;
@@ -118,7 +119,10 @@ static void p2p_bcast2 (p2p_pak* pak) {
         tcp_send_u32(s, pak->tick);
         tcp_send_u8 (s, pak->evt.id);
         tcp_send_u8 (s, pak->evt.n);
-        tcp_send_n  (s, pak->evt.n*sizeof(uint32_t), (char*)&pak->evt.pay);
+        tcp_send_u32(s, pak->evt.pay.i4._1);
+        tcp_send_u32(s, pak->evt.pay.i4._2);
+        tcp_send_u32(s, pak->evt.pay.i4._3);
+        tcp_send_u32(s, pak->evt.pay.i4._4);
         UNLOCK();
     }
 }
@@ -137,16 +141,16 @@ static void* f (void* arg) {
     UNLOCK();
 
     for (int i=0; i<G.paks.n; i++) {
-        if (G.paks.buf[i].seq == 0) {
+        if (PAK(i).seq == 0) {
             break;
         }
-        p2p_bcast2(&G.paks.buf[i]);
+        p2p_bcast2(&PAK(i));
     }
 
     while (1) {
         LOCK();
         assert(G.paks.n < P2P_MAX_PAKS);
-        p2p_pak* pak = &G.paks.buf[G.paks.n++];
+        p2p_pak* pak = &PAK(G.paks.n++);
         pak->status = 0;   // not ready
         UNLOCK();
 
@@ -155,8 +159,11 @@ static void* f (void* arg) {
         uint32_t tick = tcp_recv_u32(s);
         uint8_t  id   = tcp_recv_u8(s);
         uint8_t  n    = tcp_recv_u8(s);
-        *pak = (p2p_pak) { 0, src, seq, tick, {id,n,{}} };
-        tcp_recv_n(s, n*sizeof(uint32_t), (char*)&pak->evt.pay);
+        uint32_t i1   = tcp_recv_u32(s);
+        uint32_t i2   = tcp_recv_u32(s);
+        uint32_t i3   = tcp_recv_u32(s);
+        uint32_t i4   = tcp_recv_u32(s);
+        *pak = (p2p_pak) { 0, src, seq, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
 
         LOCK();
         pak->status = -1;
@@ -177,7 +184,7 @@ static void* f (void* arg) {
     return NULL;
 }
 
-static int p2p_recv (p2p_evt* evt) {
+static int p2p_recv (void) {
     while (1) {
         TCPsocket s = SDLNet_TCP_Accept(G.net[G.me].s);
         if (s == NULL) {
@@ -190,39 +197,26 @@ static int p2p_recv (p2p_evt* evt) {
         }
     }
     if (G.paks.i < G.paks.n) {
-        switch (G.paks.buf[G.paks.i].status) {
+        switch (PAK(G.paks.i).status) {
             case 0:         // wait
                 break;
             case -1:        // skip
                 G.paks.i++;
                 break;
             case 1:         // ready
-                evt->id = G.paks.buf[G.paks.i].evt.id;
-                evt->n  = G.paks.buf[G.paks.i].evt.n;
-                evt->pay.i4._1 = be32toh(G.paks.buf[G.paks.i].evt.pay.i4._1);
-                evt->pay.i4._2 = be32toh(G.paks.buf[G.paks.i].evt.pay.i4._2);
-                evt->pay.i4._3 = be32toh(G.paks.buf[G.paks.i].evt.pay.i4._3);
-                evt->pay.i4._4 = be32toh(G.paks.buf[G.paks.i].evt.pay.i4._4);
-                G.paks.i++;
-                return 1;
+                return G.paks.i++;
         }
     }
-    return 0;
+    return -1;
 }
 
 void p2p_bcast (uint32_t tick, p2p_evt* evt) {
     LOCK();
     uint32_t seq = ++G.net[G.me].seq;
     assert(G.paks.n < P2P_MAX_PAKS);
-    p2p_pak* pak = &G.paks.buf[G.paks.n++];
+    p2p_pak* pak = &PAK(G.paks.n++);
     UNLOCK();
-    *pak = (p2p_pak) { 1, G.me, seq, tick, {} };
-    pak->evt.id        = evt->id;
-    pak->evt.n         = evt->n;
-    pak->evt.pay.i4._1 = htobe32(evt->pay.i4._1);
-    pak->evt.pay.i4._2 = htobe32(evt->pay.i4._2);
-    pak->evt.pay.i4._3 = htobe32(evt->pay.i4._3);
-    pak->evt.pay.i4._4 = htobe32(evt->pay.i4._4);
+    *pak = (p2p_pak) { 1, G.me, seq, tick, *evt };
     p2p_bcast2(pak);
 }
 
@@ -249,9 +243,14 @@ void p2p_dump (void) {
 void p2p_loop (void) {
     //printf("REC %d\n", G.time.tick);
     while (1) {
-        p2p_evt evt;
-        if (p2p_recv(&evt)) {
-            G.cbs.sim(evt);
+        int i = p2p_recv();
+        if (i != -1) {
+//printf("%d vs %d\n", G.time.tick, PAK(i).tick);
+            if (G.time.tick > PAK(i).tick) {
+            }
+            //assert(G.time.tick == PAK(i).tick);
+//TODO: testar ordem
+            G.cbs.sim(PAK(i).evt);
             G.cbs.eff(0);
         } else {
             uint32_t now = SDL_GetTicks();
@@ -287,73 +286,27 @@ void p2p_loop (void) {
             }
         }
     }
+}
 
-#if 0
-    G.cbs.eff(1);
+static void p2p_travel (int to) {
+    assert(0<=to && to<=G.time.tick);
+    memcpy(G.mem.app.buf, G.mem.his[to/100], G.mem.app.n);   // load w/o events
 
-    //printf("TRV %d\n", G.time.tick);
-    uint32_t prv = SDL_GetTicks();
-    uint32_t nxt = SDL_GetTicks();
-    int tick = G.time.tick;
-    int tot  = G.paks.n;
-    int new  = -1;
+    int fst = to - to%100;
+    int e = 0;
 
-    while (1) {
-        uint32_t now = SDL_GetTicks();
-        if (now < nxt) {
-            SDL_WaitEventTimeout(NULL, nxt-now);
-            now = SDL_GetTicks();
+    // skip events before fst
+    for (; e<G.paks.n && PAK(e).tick<fst; e++);
+
+    for (int i=fst; i<=to; i++) {
+        if (i > fst) { // first tick already loaded
+            G.cbs.sim((p2p_evt) { P2P_EVT_TICK, 1, {.i1=i} });
         }
-        if (now >= nxt) {
-            nxt += G.time.mpf;
-        }
-
-        if (new != -1) {
-            assert(0<=new && new<=G.time.tick);
-            memcpy(mem, G.mem.his[new/100], n);   // load w/o events
-            int fst = new - new%100;
-            //printf(">>> memcpy %d / fst %d\n", new/100, fst);
-
-            // skip events before fst
-            int e = 0;
-            for (; e<G.paks.n && G.paks.buf[e].tick<fst; e++);
-
-            for (int i=fst; i<=new; i++) {
-                if (i > fst) { // first tick already loaded
-                    G.cbs.sim((p2p_evt) { P2P_EVT_TICK, 1, {.i1=i} });
-                }
-                while (e<G.paks.n && G.paks.buf[e].tick==i) {
-                    G.cbs.sim(G.paks.buf[e].evt);
-                    e++;
-                }
-            }
-            tick = new;
-            tot  = e;
-            //SDL_Delay(G.time.mpf);
-            G.cbs.eff(1);
-        }
-
-        SDL_Event sdl;
-        SDL_Event* ptr = SDL_PollEvent(&sdl) ? &sdl : NULL;
-
-        switch (cb_trv(ptr, G.time.tick, tick, &new)) {
-            case P2P_RET_NONE:
-                new = -1;
-                break;
-            case P2P_RET_QUIT:
-                return;
-            case P2P_RET_REC:
-                G.time.nxt += (SDL_GetTicks() - prv);
-                //printf("OUT %d\n", tick);
-                G.time.tick = tick;
-                G.paks.i = G.paks.n = tot;
-                //G.paks.i = MIN(G.paks.i, G.paks.n);
-                goto _RET_REC_;
-                break;
-            case P2P_RET_TRV: {
-                break;
-            }
+        while (e<G.paks.n && PAK(e).tick==i && PAK(e).status!=-1) {
+            assert(PAK(e).status == 1);
+            G.cbs.sim(PAK(e).evt);
+            e++;
         }
     }
-#endif
+    G.cbs.eff(1);
 }
