@@ -4,9 +4,10 @@
 #define MIN(X,Y) (((X) < (Y)) ? (X) : (Y))
 #define MAX(X,Y) (((X) > (Y)) ? (X) : (Y))
 
-#define P2P_MAX_NET  32
-#define P2P_MAX_PAKS 65536
-#define P2P_MAX_MEM  1000
+#define P2P_MAX_NET   32
+#define P2P_MAX_PAKS  65536
+#define P2P_MAX_MEM   1000
+#define P2P_HIS_TICKS 10000  // 500s (50fps)
 
 enum {
     P2P_EVT_INIT = 0,

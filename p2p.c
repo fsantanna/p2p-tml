@@ -244,9 +244,9 @@ void p2p_dump (void) {
 
 static void p2p_travel (int to) {
     assert(0<=to && to<=G.time.tick);
-    memcpy(G.mem.app.buf, G.mem.his[to/100], G.mem.app.n);   // load w/o events
+    memcpy(G.mem.app.buf, G.mem.his[to/P2P_HIS_TICKS], G.mem.app.n);   // load w/o events
 
-    int fst = to - to%100;
+    int fst = to - to%P2P_HIS_TICKS;
     int e = 0;
 
     // skip events before fst
@@ -304,10 +304,10 @@ UNLOCK();
                 G.time.tick++;
                 G.time.nxt += G.time.mpf;
                 G.cbs.sim((p2p_evt) { P2P_EVT_TICK, 1, {.i1=G.time.tick} });
-                if (G.time.tick % 100 == 0) {
-                    assert(P2P_MAX_MEM > G.time.tick/100);
-                    memcpy(G.mem.his[G.time.tick/100], G.mem.app.buf, G.mem.app.n);    // save w/o events
-                    //printf("<<< memcpy %d\n", G.time.tick);
+                if (G.time.tick % P2P_HIS_TICKS == 0) {
+                    assert(P2P_MAX_MEM > G.time.tick/P2P_HIS_TICKS);
+                    memcpy(G.mem.his[G.time.tick/P2P_HIS_TICKS], G.mem.app.buf, G.mem.app.n);    // save w/o events
+                    printf("<<< memcpy %d\n", G.time.tick);
                 }
                 G.cbs.eff(0);
             } else {
