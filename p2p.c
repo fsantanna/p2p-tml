@@ -189,4 +189,134 @@ void p2p_dump (void) {
     printf("\n");
 }
 
-#include "tml.c"
+void p2p_loop (int fps, int n, void* mem, void(*cb_sim)(p2p_evt), void(*cb_eff)(int), int(*cb_rec)(SDL_Event*,p2p_evt*)) {
+    char MEM[P2P_MAX_MEM][n];
+    int mpf = 1000 / fps;
+    assert(1000%fps == 0);
+
+    struct {
+        uint32_t nxt;
+        int      mpf;
+        int      tick;
+    } S = { SDL_GetTicks()+mpf, mpf, 0 };
+
+    cb_sim((p2p_evt) { P2P_EVT_INIT, 0, {} });
+    memcpy(MEM[0], mem, n);
+    //printf("<<< memcpy %d\n", 0);
+
+_RET_REC_: {
+
+    //printf("REC %d\n", S.tick);
+    while (1) {
+        p2p_evt evt;
+        if (p2p_recv(&evt)) {
+            cb_sim(evt);
+            cb_eff(0);
+        } else {
+            uint32_t now = SDL_GetTicks();
+            if (now < S.nxt) {
+                SDL_WaitEventTimeout(NULL, S.nxt-now);
+                now = SDL_GetTicks();
+            }
+            if (now >= S.nxt) {
+                S.tick++;
+                S.nxt += S.mpf;
+                cb_sim((p2p_evt) { P2P_EVT_TICK, 1, {.i1=S.tick} });
+                if (S.tick % 100 == 0) {
+                    assert(P2P_MAX_MEM > S.tick/100);
+                    memcpy(MEM[S.tick/100], mem, n);    // save w/o events
+                    //printf("<<< memcpy %d\n", S.tick);
+                }
+                cb_eff(0);
+            } else {
+                SDL_Event sdl;
+                p2p_evt   evt;
+                assert(SDL_PollEvent(&sdl));
+
+                switch (cb_rec(&sdl, &evt)) {
+                    case P2P_RET_NONE:
+                        break;
+                    case P2P_RET_QUIT:
+                        return;
+                    case P2P_RET_REC: {
+                        p2p_bcast(S.tick, &evt);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+_RET_TRV_: {
+
+    cb_eff(1);
+
+    //printf("TRV %d\n", S.tick);
+    uint32_t prv = SDL_GetTicks();
+    uint32_t nxt = SDL_GetTicks();
+    int tick = S.tick;
+    int tot  = PAKS.n;
+    int new  = -1;
+
+    while (1) {
+        uint32_t now = SDL_GetTicks();
+        if (now < nxt) {
+            SDL_WaitEventTimeout(NULL, nxt-now);
+            now = SDL_GetTicks();
+        }
+        if (now >= nxt) {
+            nxt += S.mpf;
+        }
+
+        if (new != -1) {
+            assert(0<=new && new<=S.tick);
+            memcpy(mem, MEM[new/100], n);   // load w/o events
+            int fst = new - new%100;
+            //printf(">>> memcpy %d / fst %d\n", new/100, fst);
+
+            // skip events before fst
+            int e = 0;
+            for (; e<PAKS.n && PAKS.buf[e].tick<fst; e++);
+
+            for (int i=fst; i<=new; i++) {
+                if (i > fst) { // first tick already loaded
+                    cb_sim((p2p_evt) { P2P_EVT_TICK, 1, {.i1=i} });
+                }
+                while (e<PAKS.n && PAKS.buf[e].tick==i) {
+                    cb_sim(PAKS.buf[e].evt);
+                    e++;
+                }
+            }
+            tick = new;
+            tot  = e;
+            //SDL_Delay(S.mpf);
+            cb_eff(1);
+        }
+
+#if 0
+        SDL_Event sdl;
+        SDL_Event* ptr = SDL_PollEvent(&sdl) ? &sdl : NULL;
+
+        switch (cb_trv(ptr, S.tick, tick, &new)) {
+            case P2P_RET_NONE:
+                new = -1;
+                break;
+            case P2P_RET_QUIT:
+                return;
+            case P2P_RET_REC:
+                S.nxt += (SDL_GetTicks() - prv);
+                //printf("OUT %d\n", tick);
+                S.tick = tick;
+                PAKS.i = PAKS.n = tot;
+                //PAKS.i = MIN(PAKS.i, PAKS.n);
+                goto _RET_REC_;
+                break;
+            case P2P_RET_TRV: {
+                break;
+            }
+        }
+#endif
+    }
+}
+}
