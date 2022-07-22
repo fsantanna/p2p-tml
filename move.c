@@ -51,13 +51,19 @@ int main (int argc, char** argv) {
     assert(REN != NULL);
     SDL_SetRenderDrawBlendMode(REN,SDL_BLENDMODE_BLEND);
 
-    p2p_init(me,port);
+    p2p_init (
+        me,
+        port,
+        50,
+        sizeof(G), &G,
+        cb_sim, cb_eff, cb_rec
+    );
     sleep(1);
     if (me == 1) {
         p2p_link("localhost", 5002, 2);
     }
 
-    p2p_loop(50, sizeof(G), &G, cb_sim, cb_eff, cb_rec);
+    p2p_loop();
     p2p_quit();
 
     SDL_DestroyRenderer(REN);
