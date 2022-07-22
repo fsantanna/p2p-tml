@@ -20,7 +20,7 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 
 #define FPS   50
 #define WIN   400
-#define VEL   3
+#define VEL   2
 #define DIM   10
 
 struct {
@@ -56,10 +56,13 @@ int main (int argc, char** argv) {
         sizeof(G), &G,
         cb_sim, cb_eff, cb_rec
     );
+
+#if 1
     sleep(1);
     if (me == 1) {
-        p2p_link("localhost", 5002, 2);
+        p2p_link("localhost", 5012, 2);
     }
+#endif
 
     p2p_loop();
     p2p_quit();
@@ -87,6 +90,7 @@ void cb_sim (p2p_evt evt) {
                 case SDLK_DOWN:  { G.dx= 0; G.dy= 1; break; }
                 case SDLK_LEFT:  { G.dx=-1; G.dy= 0; break; }
                 case SDLK_RIGHT: { G.dx= 1; G.dy= 0; break; }
+                case SDLK_SPACE: { G.dx= 0; G.dy= 0; break; }
             }
             break;
     }
@@ -98,6 +102,10 @@ void cb_eff (int trv) {
     SDL_Rect r = { G.x, G.y, DIM, DIM };
     SDL_SetRenderDrawColor(REN, 0xFF,0x00,0x00,0xFF);
     SDL_RenderFillRect(REN, &r);
+    if (trv) {
+        SDL_SetRenderDrawColor(REN, 0x77,0x77,0x77,0x77);
+        SDL_RenderFillRect(REN, NULL);
+    }
     SDL_RenderPresent(REN);
 }
 
