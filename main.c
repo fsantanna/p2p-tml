@@ -4,6 +4,7 @@ gcc -g -Wall `sdl2-config --cflags` p2p.c main.c -o xmain `sdl2-config --libs` -
 exit
 #endif
 
+#include <time.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <assert.h>
@@ -76,7 +77,7 @@ int main (int argc, char** argv) {
     void cb_eff (int trv) {
         if (trv) return;
         static int i = 0;
-        if (i++ == 350) {
+        if (++i%201 == 0) {
             flockfile(stdout);
             p2p_dump();
             printf("[%d] ", me);
@@ -90,8 +91,8 @@ int main (int argc, char** argv) {
     int cb_rec (SDL_Event* sdl, p2p_evt* p2p) {
         if (sdl == NULL) {
             static int tick = 0;
-            if (me==1 && ++tick==300) {
-            //if (rand()%1000 == 0) {
+            //if (me==1 && ++tick%200==0) {
+            if (rand()%1000 == 0) {
                 static int i = 1;
                 printf(">>>>>> [%d] %d/%d\n", me, me, i);
                 *p2p = (p2p_evt) { P2P_EVT_NEXT+me, 1, {.i1=me*100+i++} };
@@ -103,8 +104,8 @@ int main (int argc, char** argv) {
         return P2P_RET_NONE;
     }
 
-    srand(me);
-    p2p_init(me,port,FPS,0,&me,cb_sim,cb_eff,cb_rec);
+    srand(me+time(NULL));
+    p2p_init(me,port,FPS,sizeof(mem),&mem,cb_sim,cb_eff,cb_rec);
 
     sleep(1);
     for (int i=me+1; i<5; i++) {
