@@ -105,6 +105,16 @@ void cb_eff (int trv) {
     if (trv) {
         SDL_SetRenderDrawColor(REN, 0x77,0x77,0x77,0x77);
         SDL_RenderFillRect(REN, NULL);
+#if 0
+    } else {
+        static int i = 0;
+        if (++i%300 == 0) {
+            flockfile(stdout);
+            p2p_dump();
+            printf(">>> %d,%d,%d,%d\n", G.x,G.y,G.dx,G.dy);
+            funlockfile(stdout);
+        }
+#endif
     }
     SDL_RenderPresent(REN);
 }

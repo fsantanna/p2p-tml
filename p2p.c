@@ -182,7 +182,7 @@ static void* f (void* arg) {
     return NULL;
 }
 
-static int p2p_recv (void) {
+static int p2p_recv (int tick) {
     while (1) {
         TCPsocket s = SDLNet_TCP_Accept(G.net[G.me].s);
         if (s == NULL) {
@@ -204,7 +204,9 @@ static int p2p_recv (void) {
                 G.paks.i++;
                 break;
             case 1:         // ready
-                ret = G.paks.i++;
+                if (PAK(G.paks.i).tick <= tick) {
+                    ret = G.paks.i++;
+                }
                 break;
         }
     }
@@ -238,12 +240,16 @@ void p2p_dump (void) {
     }
     puts("");
     printf("[%d] ", G.me);
+    int sum = 0;
     for (int i=0; i<G.paks.n; i++) {
         if (PAK(i).status == 1) {
-            printf("%d ", PAK(i).evt.pay.i1);
+            int pay = PAK(i).evt.pay.i1;
+            pay = pay-(pay>999?SDLK_RIGHT:0);
+            sum += pay + PAK(i).tick;
+            printf("%d(%d) ", pay, PAK(i).tick);
         }
     }
-    puts("");
+    printf("= %d\n", sum);
 }
 
 static void p2p_travel (int to) {
@@ -275,7 +281,7 @@ static void p2p_travel (int to) {
 void p2p_loop (void) {
     //printf("REC %d\n", G.time.tick);
     while (1) {
-        int i = p2p_recv();
+        int i = p2p_recv(G.time.tick);
         if (i != -1) {
 //printf("[%d] %d vs %d\n", G.me, G.time.tick, PAK(i).tick);
             if (G.time.tick > PAK(i).tick) {
@@ -296,7 +302,8 @@ LOCK();
                 }
                 G.time.nxt = SDL_GetTicks() + G.time.mpf;
 UNLOCK();
-            } else if (G.time.tick == PAK(i).tick) {
+            } else {
+                assert(G.time.tick == PAK(i).tick);
                 G.cbs.sim(PAK(i).evt);
                 G.cbs.eff(0);
             }
