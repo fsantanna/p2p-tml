@@ -1,9 +1,9 @@
 #!/bin/sh
 
-valgrind ./xmain 0 5000 &
-valgrind ./xmain 1 5001 &
-valgrind ./xmain 2 5002 &
-valgrind ./xmain 3 5003 &
-valgrind ./xmain 4 5004 &
+./xmain 0 5010 &
+./xmain 1 5011 &
+./xmain 2 5012 &
+./xmain 3 5013 &
+./xmain 4 5014 &
 
 wait

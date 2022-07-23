@@ -50,27 +50,54 @@ int main (int argc, char** argv) {
         }
     }
 
+    struct {
+        int i;
+        int buf[1000];
+    } mem;
+
     void cb_sim (p2p_evt evt) {
-        if (evt.id >= P2P_EVT_NEXT) {
-            printf("<<< [%d] %d/%d\n", me, evt.id-P2P_EVT_NEXT, evt.pay.i1);
+        assert(mem.i < 1000);
+        switch (evt.id) {
+            case P2P_EVT_INIT:
+                mem.i = 0;
+                mem.buf[0] = -1;
+                break;
+            case P2P_EVT_TICK:
+                if (mem.buf[mem.i] < 0) {
+                    mem.buf[mem.i]--;
+                } else {
+                    mem.buf[++mem.i] = -1;
+                }
+                break;
+            default:
+                mem.buf[++mem.i] = evt.pay.i1;
         }
     }
     void cb_eff (int trv) {
         if (trv) return;
-        if (rand()%500 == 0) {
-            printf("-=-=-=-=- dump from %d\n", me);
+        static int i = 0;
+        if (i++ == 350) {
+            flockfile(stdout);
             p2p_dump();
-            puts("-=-=-=-=-");
-        }
-        if (rand()%100 == 0) {
-            static int i = 1;
-            printf(">>>>>> [%d] %d/%d\n", me, me, i);
-            p2p_evt evt = { P2P_EVT_NEXT+me, 1, {.i1=i++} };
-            p2p_bcast(0, &evt);
+            printf("[%d] ", me);
+            for (int i=0; i<=mem.i; i++) {
+                printf("%03d ", mem.buf[i]);
+            }
+            puts("");
+            funlockfile(stdout);
         }
     }
     int cb_rec (SDL_Event* sdl, p2p_evt* p2p) {
-        if (sdl->type == SDL_QUIT) {
+        if (sdl == NULL) {
+            static int tick = 0;
+            if (me==1 && ++tick==300) {
+            //if (rand()%1000 == 0) {
+                static int i = 1;
+                printf(">>>>>> [%d] %d/%d\n", me, me, i);
+                *p2p = (p2p_evt) { P2P_EVT_NEXT+me, 1, {.i1=me*100+i++} };
+                return P2P_RET_REC;
+            }
+        } else if (sdl->type == SDL_QUIT) {
             return P2P_RET_QUIT;
         }
         return P2P_RET_NONE;
@@ -82,7 +109,7 @@ int main (int argc, char** argv) {
     sleep(1);
     for (int i=me+1; i<5; i++) {
         if (NET[(int)me][i]) {
-            p2p_link("localhost", 5000+i, i);
+            p2p_link("localhost", 5010+i, i);
         }
     }
 
