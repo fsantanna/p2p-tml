@@ -110,6 +110,7 @@ void cb_eff (int trv) {
 }
 
 int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
+    if (sdl == NULL) return P2P_RET_NONE;
     switch (sdl->type) {
         case SDL_QUIT:
             return P2P_RET_QUIT;

@@ -310,12 +310,13 @@ UNLOCK();
                     printf("<<< memcpy %d\n", G.time.tick);
                 }
                 G.cbs.eff(0);
-            } else {
+            }
+            {
                 SDL_Event sdl;
                 p2p_evt   evt;
-                assert(SDL_PollEvent(&sdl));
+                int has = SDL_PollEvent(&sdl);
 
-                switch (G.cbs.rec(&sdl, &evt)) {
+                switch (G.cbs.rec(has?&sdl:NULL, &evt)) {
                     case P2P_RET_NONE:
                         break;
                     case P2P_RET_QUIT:
