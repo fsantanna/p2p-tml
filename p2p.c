@@ -6,9 +6,10 @@
 #include "p2p.h"
 #include "tcp.c"
 
-#define LOCK()   pthread_mutex_lock(&G.lock)
-#define UNLOCK() pthread_mutex_unlock(&G.lock);
-#define PAK(i)   G.paks.buf[i]
+#define LOCK()    pthread_mutex_lock(&G.lock)
+#define UNLOCK()  pthread_mutex_unlock(&G.lock);
+#define PAK(i)    G.paks.buf[i]
+#define LAT_TICKS (1+P2P_LATENCY/G.time.mpf)
 
 typedef struct {
     TCPsocket s;
@@ -210,27 +211,6 @@ static void* f (void* arg) {
     return NULL;
 }
 
-static int p2p_recv (int tick) {
-    while (1) {
-        TCPsocket s = SDLNet_TCP_Accept(G.net[G.me].s);
-        if (s == NULL) {
-            break;
-        } else {
-            IPaddress* ip = SDLNet_TCP_GetPeerAddress(s);
-            assert(ip != NULL);
-            pthread_t t;
-            assert(pthread_create(&t, NULL,f,(void*)s) == 0);
-        }
-    }
-
-    // G.paks.i holds the next recv/reordered packet
-    LOCK();
-    int ok  = (G.paks.i < G.paks.n) && (PAK(G.paks.i).tick <= tick);
-    int ret = ok ? G.paks.i++ : -1;
-    UNLOCK();
-    return ret;
-}
-
 void p2p_bcast (uint32_t tick, p2p_evt* evt) {
     LOCK();
     uint32_t seq = ++G.net[G.me].seq;
@@ -291,80 +271,128 @@ static void p2p_travel (int to) {
     }
 }
 
+void p2p_loop_net (void);
+void p2p_loop_sdl (void);
+
 void p2p_loop (void) {
-    //printf("REC %d\n", G.time.tick);
     while (1) {
-        int i = p2p_recv(G.time.tick);
-        if (i != -1) {
-//printf("[%d] %d vs %d\n", G.me, G.time.tick, PAK(i).tick);
-            if (G.time.tick == PAK(i).tick) {
-                G.cbs.sim(PAK(i).evt);
-                G.cbs.eff(0);
+        while (1) {
+            TCPsocket s = SDLNet_TCP_Accept(G.net[G.me].s);
+            if (s == NULL) {
+                break;
             } else {
-                assert(G.time.tick > PAK(i).tick);
-                int dt = MIN(G.time.mpf/2, 500/(G.time.tick-PAK(i).tick)/2);
-                LOCK();
-                G.paks.n--;     // do not include deviating event
-                for (int j=G.time.tick-1; j>PAK(i).tick; j--) {
-                    p2p_travel(j);
+                IPaddress* ip = SDLNet_TCP_GetPeerAddress(s);
+                assert(ip != NULL);
+                pthread_t t;
+                assert(pthread_create(&t, NULL,f,(void*)s) == 0);
+            }
+        }
+        p2p_loop_net();
+        p2p_loop_sdl();
+    }
+}
+
+void p2p_loop_net (void) {
+    LOCK();
+__LOCK__:
+    if (G.paks.i == G.paks.n) {
+        goto __UNLOCK__;
+    }
+
+    // i'm too much in the past, need to hurry
+    int last = PAK(G.paks.n-1).tick;
+    if (last > G.time.tick+LAT_TICKS) {
+        int dif = last - G.time.tick - LAT_TICKS;
+        int dt = MIN(G.time.mpf/2, 500/dif);
+        for (int i=0; i<dif; i++) {
+            G.time.tick++;
+            p2p_travel(G.time.tick);
+            G.cbs.eff(1);
+            SDL_Delay(dt);
+        }
+        G.paks.i = G.paks.n;
+        goto __UNLOCK__;
+    }
+
+    int next = PAK(G.paks.i).tick;
+
+    // i'm in the future, need to go back and forth
+    if (next < G.time.tick) {
+        int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
+        G.paks.n--;     // do not include deviating event
+        for (int j=G.time.tick-1; j>next; j--) {
+            p2p_travel(j);
 //printf("<<< %d\n", j);
-                    G.cbs.eff(1);
-                    SDL_Delay(dt);
-                }
-                G.paks.n++;     // now include it and move forward
-                for (int j=PAK(i).tick; j<=G.time.tick; j++) {
-                    p2p_travel(j);
+            G.cbs.eff(1);
+            SDL_Delay(dt);
+        }
+        G.paks.n++;     // now include it and move forward
+        for (int j=next; j<=G.time.tick; j++) {
+            p2p_travel(j);
 //printf(">>> %d\n", j);
-                    G.cbs.eff(1);
-                    SDL_Delay(dt);
-                }
-                G.time.nxt = SDL_GetTicks() + G.time.mpf;
-                UNLOCK();
-            }
-        } else {
-            uint32_t now = SDL_GetTicks();
-            if (now < G.time.nxt) {
-                SDL_WaitEventTimeout(NULL, G.time.nxt-now);
-                now = SDL_GetTicks();
-            }
-            if (now >= G.time.nxt) {
-                G.time.tick++;
-                G.time.nxt += G.time.mpf;
-                G.cbs.sim((p2p_evt) { P2P_EVT_TICK, 1, {.i1=G.time.tick} });
-                if (G.time.tick % P2P_HIS_TICKS == 0) {
-                    assert(P2P_MAX_MEM > G.time.tick/P2P_HIS_TICKS);
-                    memcpy(G.mem.his[G.time.tick/P2P_HIS_TICKS], G.mem.app.buf, G.mem.app.n);    // save w/o events
-                    //printf("<<< memcpy %d\n", G.time.tick);
-                }
-                G.cbs.eff(0);
-            }
-            {
-                SDL_Event sdl;
-                p2p_evt   evt;
-                int has = SDL_PollEvent(&sdl);
+            G.cbs.eff(1);
+            SDL_Delay(dt);
+        }
+        G.time.nxt = SDL_GetTicks() + G.time.mpf;
+        goto __UNLOCK__;
+    }
+
+    // i'm just in time, handle next event in real time
+    if (next == G.time.tick) {
+        G.cbs.sim(PAK(G.paks.i).evt);
+        G.cbs.eff(0);
+        G.paks.i++;
+        goto __LOCK__;  // try next
+    }
+
+__UNLOCK__:
+    UNLOCK();
+}
+
+void p2p_loop_sdl (void) {
+    uint32_t now = SDL_GetTicks();
+    if (now < G.time.nxt) {
+        SDL_WaitEventTimeout(NULL, G.time.nxt-now);
+        now = SDL_GetTicks();
+    }
+    if (now >= G.time.nxt) {
+        G.time.tick++;
+        G.time.nxt += G.time.mpf;
+        G.cbs.sim((p2p_evt) { P2P_EVT_TICK, 1, {.i1=G.time.tick} });
+        if (G.time.tick % P2P_HIS_TICKS == 0) {
+            assert(P2P_MAX_MEM > G.time.tick/P2P_HIS_TICKS);
+            memcpy(G.mem.his[G.time.tick/P2P_HIS_TICKS], G.mem.app.buf, G.mem.app.n);    // save w/o events
+            //printf("<<< memcpy %d\n", G.time.tick);
+        }
+        G.cbs.eff(0);
+    }
+    {
+        SDL_Event sdl;
+        p2p_evt   evt;
+        int has = SDL_PollEvent(&sdl);
 
 #if 1
-                if (has && sdl.type==SDL_KEYDOWN && sdl.key.keysym.sym==SDLK_ESCAPE) {
-                    LOCK();
-                    p2p_travel(G.time.tick);
-                    G.cbs.eff(0);
-                    p2p_dump();
-                    UNLOCK();
-                }
+        if (has && sdl.type==SDL_KEYDOWN && sdl.key.keysym.sym==SDLK_ESCAPE) {
+            LOCK();
+            p2p_travel(G.time.tick);
+            G.cbs.eff(0);
+            p2p_dump();
+            UNLOCK();
+        }
 #endif
 
-                switch (G.cbs.rec(has?&sdl:NULL, &evt)) {
-                    case P2P_RET_NONE:
-                        break;
-                    case P2P_RET_QUIT:
-                        return;
-                    case P2P_RET_REC: {
+        switch (G.cbs.rec(has?&sdl:NULL, &evt)) {
+            case P2P_RET_NONE:
+                break;
+            case P2P_RET_QUIT:
+                return;
+            case P2P_RET_REC: {
 //printf("-=-=-=- %d\n", G.time.tick);
-                        //p2p_bcast(G.time.tick-2+rand()%5, &evt);
-                        p2p_bcast(G.time.tick+P2P_LATENCY, &evt);
-                        break;
-                    }
-                }
+                //p2p_bcast(G.time.tick-2+rand()%5, &evt);
+                int t1 = G.time.tick + LAT_TICKS/G.time.mpf;
+                int t2 = (G.paks.n == 0) ? 0 : PAK(G.paks.n-1).tick+1;
+                p2p_bcast(MAX(t1,t2), &evt);
+                break;
             }
         }
     }
