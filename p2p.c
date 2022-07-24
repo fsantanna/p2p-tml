@@ -142,7 +142,7 @@ static void p2p_reorder (void) {
             break;      // same tick, but higher src
         }
 
-#if 1
+#if 0
 p2p_dump();
 printf("-=-=-=- [%d] [%d/%d] vs [%d/%d]\n", i, hi->tick,hi->src, lo->tick,lo->src);
 //assert(0);
@@ -300,9 +300,12 @@ __LOCK__:
     }
 
     // i'm too much in the past, need to hurry
+#if 1
     int last = PAK(G.paks.n-1).tick;
     if (last > G.time.tick+LAT_TICKS) {
-        int dif = last - G.time.tick - LAT_TICKS;
+printf("[%d] past\n", G.me);
+//assert(0);
+        int dif = last - G.time.tick; // - LAT_TICKS;
         int dt = MIN(G.time.mpf/2, 500/dif);
         for (int i=0; i<dif; i++) {
             G.time.tick++;
@@ -313,11 +316,13 @@ __LOCK__:
         G.paks.i = G.paks.n;
         goto __UNLOCK__;
     }
+#endif
 
     int next = PAK(G.paks.i).tick;
 
     // i'm in the future, need to go back and forth
     if (next < G.time.tick) {
+//printf("[%d] future\n", G.me);
         int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
         G.paks.n--;     // do not include deviating event
         for (int j=G.time.tick-1; j>next; j--) {
@@ -334,11 +339,13 @@ __LOCK__:
             SDL_Delay(dt);
         }
         G.time.nxt = SDL_GetTicks() + G.time.mpf;
-        goto __UNLOCK__;
+        G.paks.i++;
+        goto __LOCK__;
     }
 
     // i'm just in time, handle next event in real time
     if (next == G.time.tick) {
+//printf("[%d] timely\n", G.me);
         G.cbs.sim(PAK(G.paks.i).evt);
         G.cbs.eff(0);
         G.paks.i++;
