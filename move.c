@@ -23,6 +23,22 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 #define VEL   2
 #define DIM   10
 
+/*
+ *  0 - 1 - 2
+ *   \     /
+ *    - 3 -
+ *      |
+ *      4
+ */
+int NET[6][6] = {
+    { 0, 1, 0, 1, 0, 0 },
+    { 1, 0, 1, 0, 0, 0 },
+    { 0, 1, 0, 1, 0, 0 },
+    { 1, 0, 1, 0, 1, 0 },
+    { 0, 0, 0, 1, 0, 0 },
+    { 0, 0, 0, 0, 0, 0 }
+};
+
 struct {
     int x,  y;
     int dx, dy;
@@ -49,6 +65,10 @@ int main (int argc, char** argv) {
     assert(REN != NULL);
     SDL_SetRenderDrawBlendMode(REN, SDL_BLENDMODE_BLEND);
 
+    if (me == 5) {
+        sleep(10);
+    }
+
     p2p_init (
         me,
         port,
@@ -58,9 +78,21 @@ int main (int argc, char** argv) {
     );
 
 #if 1
+    for (int i=0; i<6; i++) {
+        for (int j=0; j<6; j++) {
+            assert(NET[i][j] == NET[j][i]);
+        }
+    }
+
+    if (me == 5) {
+        p2p_link("localhost", 5010, 0);
+    }
+
     sleep(1);
-    if (me == 1) {
-        p2p_link("localhost", 5012, 2);
+    for (int i=me+1; i<6; i++) {
+        if (NET[(int)me][i]) {
+            p2p_link("localhost", 5010+i, i);
+        }
     }
 #endif
 
