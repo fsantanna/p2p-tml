@@ -108,21 +108,21 @@ void p2p_quit (void) {
 	SDLNet_Quit();
 }
 
-static void p2p_bcast2 (p2p_pak* pak) {
+static void p2p_bcast2 (p2p_pak pak) {
     for (int i=0; i<P2P_MAX_NET; i++) {
         if (i == G.me) continue;
         TCPsocket s = G.net[i].s;
         if (s == NULL) continue;
         LOCK();
-        tcp_send_u8 (s, pak->src);
-        tcp_send_u32(s, pak->seq);
-        tcp_send_u32(s, pak->tick);
-        tcp_send_u8 (s, pak->evt.id);
-        tcp_send_u8 (s, pak->evt.n);
-        tcp_send_u32(s, pak->evt.pay.i4._1);
-        tcp_send_u32(s, pak->evt.pay.i4._2);
-        tcp_send_u32(s, pak->evt.pay.i4._3);
-        tcp_send_u32(s, pak->evt.pay.i4._4);
+        tcp_send_u8 (s, pak.src);
+        tcp_send_u32(s, pak.seq);
+        tcp_send_u32(s, pak.tick);
+        tcp_send_u8 (s, pak.evt.id);
+        tcp_send_u8 (s, pak.evt.n);
+        tcp_send_u32(s, pak.evt.pay.i4._1);
+        tcp_send_u32(s, pak.evt.pay.i4._2);
+        tcp_send_u32(s, pak.evt.pay.i4._3);
+        tcp_send_u32(s, pak.evt.pay.i4._4);
         UNLOCK();
     }
 }
@@ -144,7 +144,7 @@ static void* f (void* arg) {
 
     for (int i=0; i<N; i++) {
         if (PAK(i).status == 1) {
-            p2p_bcast2(&PAK(i));
+            p2p_bcast2(PAK(i));
         }
     }
 
@@ -162,14 +162,24 @@ static void* f (void* arg) {
 
         LOCK();
         assert(G.paks.n < P2P_MAX_PAKS);
-        p2p_pak* pak = &PAK(G.paks.n++);
-        *pak = (p2p_pak) { -1, src, seq, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
+        p2p_pak* ptr = &PAK(G.paks.n++);
+        *ptr = (p2p_pak) { -1, src, seq, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
 
         int cur = G.net[src].seq;
+        p2p_pak pak;
         if (seq > cur) {
             assert(seq == cur+1);
             G.net[src].seq++;
-            pak->status = 1;
+            ptr->status = 1;
+            pak = *ptr; // copy before reorder
+
+            // reorder to respect tick/src
+#if 0
+            while (1) {
+                // TODO
+                assert(0);
+            }
+#endif
         }
         UNLOCK();
 
@@ -196,6 +206,7 @@ static int p2p_recv (int tick) {
     }
     LOCK();
     int ret = -1;
+    // G.paks.i holds the next recv/reordered packet
     if (G.paks.i < G.paks.n) {
         switch (PAK(G.paks.i).status) {
             case 0:         // wait
@@ -218,8 +229,8 @@ void p2p_bcast (uint32_t tick, p2p_evt* evt) {
     LOCK();
     uint32_t seq = ++G.net[G.me].seq;
     assert(G.paks.n < P2P_MAX_PAKS);
-    p2p_pak* pak = &PAK(G.paks.n++);
-    *pak = (p2p_pak) { 1, G.me, seq, tick, *evt };
+    p2p_pak pak = { 1, G.me, seq, tick, *evt };
+    PAK(G.paks.n++) = pak;
     UNLOCK();
     p2p_bcast2(pak);
 }
@@ -336,6 +347,7 @@ UNLOCK();
                         return;
                     case P2P_RET_REC: {
 //printf("-=-=-=- %d\n", G.time.tick);
+                        //p2p_bcast(G.time.tick-2+rand()%5, &evt);
                         p2p_bcast(G.time.tick, &evt);
                         break;
                     }
