@@ -1,6 +1,6 @@
 #if 0
 #!/bin/sh
-gcc -Wall `sdl2-config --cflags` p2p.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net
+gcc -g -Wall `sdl2-config --cflags` p2p.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net
 exit
 #endif
 
@@ -47,7 +47,7 @@ int main (int argc, char** argv) {
 
     REN = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
     assert(REN != NULL);
-    SDL_SetRenderDrawBlendMode(REN,SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawBlendMode(REN, SDL_BLENDMODE_BLEND);
 
     p2p_init (
         me,
@@ -105,7 +105,7 @@ void cb_eff (int trv) {
     if (trv) {
         SDL_SetRenderDrawColor(REN, 0x77,0x77,0x77,0x77);
         SDL_RenderFillRect(REN, NULL);
-#if 0
+#if 1
     } else {
         static int i = 0;
         if (++i%300 == 0) {

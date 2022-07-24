@@ -158,6 +158,7 @@ static void* f (void* arg) {
         uint32_t i2   = tcp_recv_u32(s);
         uint32_t i3   = tcp_recv_u32(s);
         uint32_t i4   = tcp_recv_u32(s);
+        SDL_Delay(5); //rand()%30);
 //puts("-=-=-=-=-");
 
         LOCK();
@@ -174,10 +175,29 @@ static void* f (void* arg) {
             pak = *ptr; // copy before reorder
 
             // reorder to respect tick/src
-#if 0
+#if 1
+            int i = G.paks.n - 1;
             while (1) {
-                // TODO
-                assert(0);
+                if (i == 0) {
+                    break;      // nothing below to compare
+                }
+                p2p_pak* hi = &PAK(i);
+                p2p_pak* lo = &PAK(i-1);
+                if (hi->tick > lo->tick) {
+                    break;      // higher tick
+                } else if (hi->tick==lo->tick && hi->src>=lo->src) {
+                    break;      // same tick, but higher src
+                }
+p2p_dump();
+printf("-=-=-=- [%d] [%d/%d] vs [%d/%d]\n", i, hi->tick,hi->src, lo->tick,lo->src);
+assert(0);
+
+                // reorder: lower tick || same tick && lower src
+                p2p_pak tmp = *hi;
+                PAK(i) = *lo;
+                PAK(i-1) = tmp;
+                G.paks.i--;
+                i--;
             }
 #endif
         }
@@ -296,7 +316,7 @@ void p2p_loop (void) {
         if (i != -1) {
 //printf("[%d] %d vs %d\n", G.me, G.time.tick, PAK(i).tick);
             if (G.time.tick > PAK(i).tick) {
-LOCK();
+                LOCK();
                 G.paks.n--;     // do not include deviating event
                 for (int j=G.time.tick-1; j>PAK(i).tick; j--) {
                     p2p_travel(j);
@@ -312,7 +332,7 @@ LOCK();
                     SDL_Delay(G.time.mpf/2);
                 }
                 G.time.nxt = SDL_GetTicks() + G.time.mpf;
-UNLOCK();
+                UNLOCK();
             } else {
                 assert(G.time.tick == PAK(i).tick);
                 G.cbs.sim(PAK(i).evt);
