@@ -126,6 +126,36 @@ static void p2p_bcast2 (p2p_pak pak) {
     }
 }
 
+static void p2p_reorder (void) {
+    // reorder to respect tick/src
+    int i = G.paks.n - 1;
+    while (1) {
+        if (i == 0) {
+            break;      // nothing below to compare
+        }
+        p2p_pak* hi = &PAK(i);
+        p2p_pak* lo = &PAK(i-1);
+        if (hi->tick > lo->tick) {
+            break;      // higher tick
+        } else if (hi->tick==lo->tick && hi->src>=lo->src) {
+            break;      // same tick, but higher src
+        }
+
+#if 1
+p2p_dump();
+printf("-=-=-=- [%d] [%d/%d] vs [%d/%d]\n", i, hi->tick,hi->src, lo->tick,lo->src);
+//assert(0);
+#endif
+
+        // reorder: lower tick || same tick && lower src
+        p2p_pak tmp = *hi;
+        PAK(i) = *lo;
+        PAK(i-1) = tmp;
+        G.paks.i--;
+        i--;
+    }
+}
+
 static void* f (void* arg) {
     TCPsocket s = (TCPsocket) arg;
     LOCK();
@@ -155,7 +185,7 @@ static void* f (void* arg) {
         uint32_t i2   = tcp_recv_u32(s);
         uint32_t i3   = tcp_recv_u32(s);
         uint32_t i4   = tcp_recv_u32(s);
-        SDL_Delay(5); //rand()%30);
+        //SDL_Delay(5); //rand()%30);
 //puts("-=-=-=-=-");
         p2p_pak pak = { src, seq, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
 
@@ -167,41 +197,13 @@ static void* f (void* arg) {
             assert(seq == cur+1);
             G.net[src].seq++;
             PAK(G.paks.n++) = pak;
-
-            // reorder to respect tick/src
-#if 1
-            int i = G.paks.n - 1;
-            while (1) {
-                if (i == 0) {
-                    break;      // nothing below to compare
-                }
-                p2p_pak* hi = &PAK(i);
-                p2p_pak* lo = &PAK(i-1);
-                if (hi->tick > lo->tick) {
-                    break;      // higher tick
-                } else if (hi->tick==lo->tick && hi->src>=lo->src) {
-                    break;      // same tick, but higher src
-                }
-p2p_dump();
-printf("-=-=-=- [%d] [%d/%d] vs [%d/%d]\n", i, hi->tick,hi->src, lo->tick,lo->src);
-assert(0);
-
-                // reorder: lower tick || same tick && lower src
-                p2p_pak tmp = *hi;
-                PAK(i) = *lo;
-                PAK(i-1) = tmp;
-                G.paks.i--;
-                i--;
-            }
-#endif
+            p2p_reorder();
         }
         UNLOCK();
 
-#if 1
         if (seq > cur) {
             p2p_bcast2(pak);
         }
-#endif
     }
 
     SDLNet_TCP_Close(s);
@@ -235,6 +237,7 @@ void p2p_bcast (uint32_t tick, p2p_evt* evt) {
     assert(G.paks.n < P2P_MAX_PAKS);
     p2p_pak pak = { G.me, seq, tick, *evt };
     PAK(G.paks.n++) = pak;
+    p2p_reorder();
     UNLOCK();
     p2p_bcast2(pak);
 }
@@ -299,20 +302,21 @@ void p2p_loop (void) {
                 G.cbs.eff(0);
             } else {
                 assert(G.time.tick > PAK(i).tick);
+                int dt = MIN(G.time.mpf/2, 500/(G.time.tick-PAK(i).tick)/2);
                 LOCK();
                 G.paks.n--;     // do not include deviating event
                 for (int j=G.time.tick-1; j>PAK(i).tick; j--) {
                     p2p_travel(j);
 //printf("<<< %d\n", j);
                     G.cbs.eff(1);
-                    SDL_Delay(G.time.mpf/2);
+                    SDL_Delay(dt);
                 }
                 G.paks.n++;     // now include it and move forward
                 for (int j=PAK(i).tick; j<=G.time.tick; j++) {
                     p2p_travel(j);
 //printf(">>> %d\n", j);
                     G.cbs.eff(1);
-                    SDL_Delay(G.time.mpf/2);
+                    SDL_Delay(dt);
                 }
                 G.time.nxt = SDL_GetTicks() + G.time.mpf;
                 UNLOCK();
@@ -338,6 +342,8 @@ void p2p_loop (void) {
                 SDL_Event sdl;
                 p2p_evt   evt;
                 int has = SDL_PollEvent(&sdl);
+
+#if 1
                 if (has && sdl.type==SDL_KEYDOWN && sdl.key.keysym.sym==SDLK_ESCAPE) {
                     LOCK();
                     p2p_travel(G.time.tick);
@@ -345,6 +351,7 @@ void p2p_loop (void) {
                     p2p_dump();
                     UNLOCK();
                 }
+#endif
 
                 switch (G.cbs.rec(has?&sdl:NULL, &evt)) {
                     case P2P_RET_NONE:
@@ -354,7 +361,7 @@ void p2p_loop (void) {
                     case P2P_RET_REC: {
 //printf("-=-=-=- %d\n", G.time.tick);
                         //p2p_bcast(G.time.tick-2+rand()%5, &evt);
-                        p2p_bcast(G.time.tick, &evt);
+                        p2p_bcast(G.time.tick+P2P_LATENCY, &evt);
                         break;
                     }
                 }
