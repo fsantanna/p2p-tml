@@ -65,9 +65,11 @@ int main (int argc, char** argv) {
     assert(REN != NULL);
     SDL_SetRenderDrawBlendMode(REN, SDL_BLENDMODE_BLEND);
 
-    if (me == 5) {
-        sleep(10);
+#if 0
+    if (me == 1) {
+        sleep(4);
     }
+#endif
 
     p2p_init (
         me,
@@ -84,16 +86,20 @@ int main (int argc, char** argv) {
         }
     }
 
-    if (me == 5) {
+#if 0
+    if (me == 1) {
         p2p_link("localhost", 5010, 0);
     }
+#endif
 
+#if 1
     sleep(1);
-    for (int i=me+1; i<6; i++) {
+    for (int i=me+1; i<2; i++) {
         if (NET[(int)me][i]) {
             p2p_link("localhost", 5010+i, i);
         }
     }
+#endif
 #endif
 
     p2p_loop();
