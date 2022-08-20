@@ -1,6 +1,6 @@
 #if 0
 #!/bin/sh
-gcc -g -Wall `sdl2-config --cflags` p2p.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net
+gcc -g -Wall `sdl2-config --cflags` p2p.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
 exit
 #endif
 
@@ -8,6 +8,7 @@ exit
 #include <stdlib.h>
 #include <assert.h>
 #include <SDL.h>
+#include <SDL_image.h>
 #include "p2p.h"
 
 enum {
@@ -45,6 +46,7 @@ struct {
 } G;
 
 SDL_Renderer* REN = NULL;
+SDL_Texture *IMG_left, *IMG_right, *IMG_up, *IMG_down, *IMG_space;
 
 int main (int argc, char** argv) {
     assert(argc == 3);
@@ -64,6 +66,12 @@ int main (int argc, char** argv) {
     REN = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
     assert(REN != NULL);
     SDL_SetRenderDrawBlendMode(REN, SDL_BLENDMODE_BLEND);
+
+    IMG_up    = IMG_LoadTexture(REN, "imgs/up.png");
+    IMG_down  = IMG_LoadTexture(REN, "imgs/down.png");
+    IMG_left  = IMG_LoadTexture(REN, "imgs/left.png");
+    IMG_right = IMG_LoadTexture(REN, "imgs/right.png");
+    IMG_space = IMG_LoadTexture(REN, "imgs/space.png");
 
 #if 1
     if (me == 5) {
@@ -105,6 +113,7 @@ int main (int argc, char** argv) {
     p2p_loop();
     p2p_quit();
 
+    SDL_DestroyTexture(IMG_left);
     SDL_DestroyRenderer(REN);
     SDL_DestroyWindow(win);
     SDL_Quit();
@@ -165,6 +174,26 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
         case SDL_KEYDOWN: {
             int key = sdl->key.keysym.sym;
             *evt = (p2p_evt) { P2P_EVT_KEY, 1, {.i1=key} };
+            SDL_SetRenderDrawColor(REN, 0xFF,0x00,0x00,0xFF);
+	    switch (key) {
+		case SDLK_UP:
+		    SDL_RenderCopy(REN, IMG_left, NULL, NULL);
+		    break;
+		case SDLK_DOWN:
+		    SDL_RenderCopy(REN, IMG_down, NULL, NULL);
+		    break;
+		case SDLK_LEFT:
+		    SDL_RenderCopy(REN, IMG_left, NULL, NULL);
+		    break;
+		case SDLK_RIGHT:
+		    SDL_RenderCopy(REN, IMG_right, NULL, NULL);
+		    break;
+		case SDLK_SPACE:
+		    SDL_RenderCopy(REN, IMG_space, NULL, NULL);
+		    break;
+	    }
+            SDL_RenderPresent(REN);
+	    SDL_Delay(50);
             return P2P_RET_REC;
         }
     }
