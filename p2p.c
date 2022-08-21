@@ -51,63 +51,6 @@ static struct {
     } mem;
 } G = { -1, {}, {}, {0,0,{}}, {NULL,NULL,NULL}, {-1,-1,0}, {{-1,NULL},{}} };
 
-void p2p_init (
-    uint8_t me,
-    int port,
-    int fps,
-    int mem_n,
-    void* mem_buf,
-    void (*cb_sim) (p2p_evt),
-    void (*cb_eff) (int trv),
-    int (*cb_rec) (SDL_Event*,p2p_evt*)
-) {
-    assert(me < P2P_MAX_NET);
-    G.me = me;
-    for (int i=0; i<P2P_MAX_NET; i++) {
-        G.net[i] = (p2p_net) { NULL, 0 };
-    }
-    assert(pthread_mutex_init(&G.lock,NULL) == 0);
-    assert(SDLNet_Init() == 0);
-    IPaddress ip;
-    assert(SDLNet_ResolveHost(&ip, NULL, port) == 0);
-    TCPsocket s = SDLNet_TCP_Open(&ip);
-    assert(s != NULL);
-    G.net[G.me] = (p2p_net) { s, 0 };
-
-    int mpf = 1000 / fps;
-    assert(1000%fps == 0);
-
-    G.cbs.sim = cb_sim;
-    G.cbs.eff = cb_eff;
-    G.cbs.rec = cb_rec;
-
-    G.time.mpf = mpf;
-    G.time.nxt = SDL_GetTicks()+mpf;
-
-    G.cbs.sim((p2p_evt) { P2P_EVT_INIT, 0, {} });
-
-    G.mem.app.n   = mem_n;
-    G.mem.app.buf = mem_buf;
-    for (int i=0; i<P2P_MAX_MEM; i++) {
-        G.mem.his[i] = malloc(mem_n);
-    }
-    memcpy(G.mem.his[0], mem_buf, mem_n);
-    //printf("<<< memcpy %d\n", 0);
-}
-
-void p2p_quit (void) {
-    LOCK();
-    for (int i=0; i<P2P_MAX_NET; i++) {
-        SDLNet_TCP_Close(G.net[i].s);
-    }
-    UNLOCK();
-    pthread_mutex_destroy(&G.lock);
-    for (int i=0; i<P2P_MAX_MEM; i++) {
-        free(G.mem.his[i]);
-    }
-	SDLNet_Quit();
-}
-
 static void p2p_bcast2 (p2p_pak pak) {
     for (int i=0; i<P2P_MAX_NET; i++) {
         if (i == G.me) continue;
@@ -223,9 +166,9 @@ void p2p_bcast (uint32_t tick, p2p_evt* evt) {
 }
 
 void p2p_link (char* host, int port, uint8_t oth) {
-	IPaddress ip;
-	assert(SDLNet_ResolveHost(&ip, host, port) == 0);
-	TCPsocket s = SDLNet_TCP_Open(&ip);
+    IPaddress ip;
+    assert(SDLNet_ResolveHost(&ip, host, port) == 0);
+    TCPsocket s = SDLNet_TCP_Open(&ip);
     assert(s != NULL);
     pthread_t t;
     assert(pthread_create(&t, NULL,f,(void*)s) == 0);
@@ -274,7 +217,53 @@ static void p2p_travel (int to) {
 void p2p_loop_net (void);
 void p2p_loop_sdl (void);
 
-void p2p_loop (void) {
+void p2p_loop (
+    uint8_t me,
+    int port,
+    int fps,
+    int mem_n,
+    void* mem_buf,
+    void (*cb_ini) (int),
+    void (*cb_sim) (p2p_evt),
+    void (*cb_eff) (int trv),
+    int (*cb_rec) (SDL_Event*,p2p_evt*)
+) {
+    assert(SDL_Init(SDL_INIT_VIDEO) == 0);
+    cb_ini(1);
+
+    assert(me < P2P_MAX_NET);
+    G.me = me;
+    for (int i=0; i<P2P_MAX_NET; i++) {
+        G.net[i] = (p2p_net) { NULL, 0 };
+    }
+    assert(pthread_mutex_init(&G.lock,NULL) == 0);
+    assert(SDLNet_Init() == 0);
+    IPaddress ip;
+    assert(SDLNet_ResolveHost(&ip, NULL, port) == 0);
+    TCPsocket s = SDLNet_TCP_Open(&ip);
+    assert(s != NULL);
+    G.net[G.me] = (p2p_net) { s, 0 };
+
+    int mpf = 1000 / fps;
+    assert(1000%fps == 0);
+
+    G.cbs.sim = cb_sim;
+    G.cbs.eff = cb_eff;
+    G.cbs.rec = cb_rec;
+
+    G.time.mpf = mpf;
+    G.time.nxt = SDL_GetTicks()+mpf;
+
+    G.cbs.sim((p2p_evt) { P2P_EVT_INIT, 0, {} });
+
+    G.mem.app.n   = mem_n;
+    G.mem.app.buf = mem_buf;
+    for (int i=0; i<P2P_MAX_MEM; i++) {
+        G.mem.his[i] = malloc(mem_n);
+    }
+    memcpy(G.mem.his[0], mem_buf, mem_n);
+    //printf("<<< memcpy %d\n", 0);
+
     while (1) {
         while (1) {
             TCPsocket s = SDLNet_TCP_Accept(G.net[G.me].s);
@@ -290,6 +279,18 @@ void p2p_loop (void) {
         p2p_loop_net();
         p2p_loop_sdl();
     }
+
+    cb_ini(0);
+    LOCK();
+    for (int i=0; i<P2P_MAX_NET; i++) {
+        SDLNet_TCP_Close(G.net[i].s);
+    }
+    UNLOCK();
+    pthread_mutex_destroy(&G.lock);
+    for (int i=0; i<P2P_MAX_MEM; i++) {
+        free(G.mem.his[i]);
+    }
+    SDLNet_Quit();
 }
 
 void p2p_loop_net (void) {

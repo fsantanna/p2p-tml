@@ -15,12 +15,13 @@ enum {
     P2P_EVT_KEY = P2P_EVT_NEXT
 };
 
+void cb_ini (int);
 void cb_sim (p2p_evt);
 void cb_eff (int trv);
 int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 
 #define FPS   50
-#define WIN   400
+#define SIZE  400
 #define VEL   2
 #define DIM   10
 
@@ -45,78 +46,83 @@ struct {
     int dx, dy;
 } G;
 
+char ME = -1;
+SDL_Window* WIN = NULL;
 SDL_Renderer* REN = NULL;
 SDL_Texture *IMG_left, *IMG_right, *IMG_up, *IMG_down, *IMG_space;
 
 int main (int argc, char** argv) {
     assert(argc == 3);
-    char me   = atoi(argv[1]);
-    int  port = atoi(argv[2]);
-
-    assert(SDL_Init(SDL_INIT_VIDEO) == 0);
-
-    SDL_Window* win = SDL_CreateWindow (
-        "P2P-TML: Peer-to-Peer Time Machine Library",
-        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-        WIN, WIN,
-        SDL_WINDOW_SHOWN
-    );
-    assert(win != NULL);
-
-    REN = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
-    assert(REN != NULL);
-    SDL_SetRenderDrawBlendMode(REN, SDL_BLENDMODE_BLEND);
-
-    IMG_up    = IMG_LoadTexture(REN, "imgs/up.png");
-    IMG_down  = IMG_LoadTexture(REN, "imgs/down.png");
-    IMG_left  = IMG_LoadTexture(REN, "imgs/left.png");
-    IMG_right = IMG_LoadTexture(REN, "imgs/right.png");
-    IMG_space = IMG_LoadTexture(REN, "imgs/space.png");
+    ME = atoi(argv[1]);
+    int port = atoi(argv[2]);
 
 #if 1
-    if (me == 5) {
+    if (ME == 5) {
         sleep(10);
     }
 #endif
 
-    p2p_init (
-        me,
+    p2p_loop (
+        ME,
         port,
         FPS,
         sizeof(G), &G,
-        cb_sim, cb_eff, cb_rec
+        cb_ini, cb_sim, cb_eff, cb_rec
     );
+}
+
+void cb_ini (int ini) {
+    if (ini) {
+        WIN = SDL_CreateWindow (
+            "P2P-TML: Peer-to-Peer Time Machine Library",
+            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+            SIZE, SIZE,
+            SDL_WINDOW_SHOWN
+        );
+        assert(WIN != NULL);
+
+        REN = SDL_CreateRenderer(WIN, -1, SDL_RENDERER_ACCELERATED);
+        assert(REN != NULL);
+        SDL_SetRenderDrawBlendMode(REN, SDL_BLENDMODE_BLEND);
+
+        IMG_up    = IMG_LoadTexture(REN, "imgs/up.png");
+        IMG_down  = IMG_LoadTexture(REN, "imgs/down.png");
+        IMG_left  = IMG_LoadTexture(REN, "imgs/left.png");
+        IMG_right = IMG_LoadTexture(REN, "imgs/right.png");
+        IMG_space = IMG_LoadTexture(REN, "imgs/space.png");
 
 #if 1
-    for (int i=0; i<6; i++) {
-        for (int j=0; j<6; j++) {
-            assert(NET[i][j] == NET[j][i]);
+        for (int i=0; i<6; i++) {
+            for (int j=0; j<6; j++) {
+                assert(NET[i][j] == NET[j][i]);
+            }
         }
-    }
 
 #if 1
-    if (me == 5) {
-        p2p_link("localhost", 5010, 0);
-    }
-#endif
-
-#if 1
-    sleep(1);
-    for (int i=me+1; i<6; i++) {
-        if (NET[(int)me][i]) {
-            p2p_link("localhost", 5010+i, i);
+        if (ME == 5) {
+            p2p_link("localhost", 5010, 0);
         }
+#endif
+
+#if 1
+        sleep(1);
+        for (int i=ME+1; i<6; i++) {
+            if (NET[(int)ME][i]) {
+                p2p_link("localhost", 5010+i, i);
+            }
+        }
+#endif
+#endif
+    } else {
+        SDL_DestroyTexture(IMG_up);
+        SDL_DestroyTexture(IMG_down);
+        SDL_DestroyTexture(IMG_left);
+        SDL_DestroyTexture(IMG_right);
+        SDL_DestroyTexture(IMG_space);
+        SDL_DestroyRenderer(REN);
+        SDL_DestroyWindow(WIN);
+        SDL_Quit();
     }
-#endif
-#endif
-
-    p2p_loop();
-    p2p_quit();
-
-    SDL_DestroyTexture(IMG_left);
-    SDL_DestroyRenderer(REN);
-    SDL_DestroyWindow(win);
-    SDL_Quit();
 }
 
 void cb_sim (p2p_evt evt) {

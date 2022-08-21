@@ -39,19 +39,18 @@ typedef struct {
     } pay;
 } p2p_evt;
 
-void p2p_init (
+void p2p_loop (
     uint8_t me,
-    int por,
+    int port,
     int fps,                            // desired frame rate
     int mem_n,                          // memory size in bytes
     void* mam_app,                      // pointer to memory contents
+    void (*cb_ini) (int ini),           // initialization/finalization callback
     void (*cb_sim) (p2p_evt),           // simulation callback
     void (*cb_eff) (int trv),           // effects callback
     int (*cb_rec) (SDL_Event*,p2p_evt*) // event recording callback
 );
 
-void p2p_quit  (void);
-void p2p_loop  (void);
 void p2p_bcast (uint32_t tick, p2p_evt* evt);
 void p2p_link  (char* host, int port, uint8_t me);
 void p2p_dump  (void);
