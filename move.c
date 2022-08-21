@@ -177,7 +177,7 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
             SDL_SetRenderDrawColor(REN, 0xFF,0x00,0x00,0xFF);
 	    switch (key) {
 		case SDLK_UP:
-		    SDL_RenderCopy(REN, IMG_left, NULL, NULL);
+		    SDL_RenderCopy(REN, IMG_up, NULL, NULL);
 		    break;
 		case SDLK_DOWN:
 		    SDL_RenderCopy(REN, IMG_down, NULL, NULL);
