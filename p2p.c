@@ -229,7 +229,6 @@ void p2p_loop (
     int (*cb_rec) (SDL_Event*,p2p_evt*)
 ) {
     assert(SDL_Init(SDL_INIT_VIDEO) == 0);
-    cb_ini(1);
 
     assert(me < P2P_MAX_NET);
     G.me = me;
@@ -263,6 +262,8 @@ void p2p_loop (
     }
     memcpy(G.mem.his[0], mem_buf, mem_n);
     //printf("<<< memcpy %d\n", 0);
+
+    cb_ini(1);
 
     while (1) {
         while (1) {
