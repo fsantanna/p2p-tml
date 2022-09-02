@@ -7,8 +7,7 @@ exit
 #include <unistd.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <SDL.h>
-#include <SDL_image.h>
+#include <time.h>
 #include "p2p.h"
 
 enum {
@@ -20,10 +19,8 @@ void cb_sim (p2p_evt);
 void cb_eff (int trv);
 int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 
-#define FPS   50
-#define SIZE  400
-#define VEL   2
-#define DIM   10
+#define FPS 50
+#define VEL  2
 
 /*
  *                   11                    31
@@ -33,9 +30,9 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
  *                   19                    39
  */
 int NET[50][10] = {
-    {  1,  0, -1, -1, -1, -1, -1, -1, -1, -1 }, // 0
+    {  1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, // 0
     {  0,  2, -1, -1, -1, -1, -1, -1, -1, -1 },
-    {  1,  3, -1, -1, -1, -1, -1, -1, -1, -1 },
+    {  1,  -9, -1, -1, -1, -1, -1, -1, -1, -1 },
     {  2,  4, -1, -1, -1, -1, -1, -1, -1, -1 },
     {  3,  5, -1, -1, -1, -1, -1, -1, -1, -1 },
     {  4,  6, -1, -1, -1, -1, -1, -1, -1, -1 }, // 5
@@ -92,14 +89,12 @@ struct {
 
 int  TICK = 0;
 char ME = -1;
-SDL_Window* WIN = NULL;
-SDL_Renderer* REN = NULL;
-SDL_Texture *IMG_left, *IMG_right, *IMG_up, *IMG_down, *IMG_space;
 
 int main (int argc, char** argv) {
     assert(argc == 3);
     ME = atoi(argv[1]);
     int port = atoi(argv[2]);
+    srand(port+time(NULL));
 
     p2p_loop (
         ME,
@@ -112,40 +107,15 @@ int main (int argc, char** argv) {
 
 void cb_ini (int ini) {
     if (ini) {
-        WIN = SDL_CreateWindow (
-            "P2P-TML: Peer-to-Peer Time Machine Library",
-            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-            SIZE, SIZE,
-            SDL_WINDOW_SHOWN
-        );
-        assert(WIN != NULL);
-
-        REN = SDL_CreateRenderer(WIN, -1, SDL_RENDERER_ACCELERATED);
-        assert(REN != NULL);
-        SDL_SetRenderDrawBlendMode(REN, SDL_BLENDMODE_BLEND);
-
-        IMG_up    = IMG_LoadTexture(REN, "imgs/up.png");
-        IMG_down  = IMG_LoadTexture(REN, "imgs/down.png");
-        IMG_left  = IMG_LoadTexture(REN, "imgs/left.png");
-        IMG_right = IMG_LoadTexture(REN, "imgs/right.png");
-        IMG_space = IMG_LoadTexture(REN, "imgs/space.png");
-
         sleep(1);
         for (int i=0; i<5; i++) {
             int v = NET[(int)ME][i];
-            if (v>=0 && v>ME) {
-                p2p_link("localhost", 5000+i, i);
+            if (v!=-1 && v>ME) {
+                printf(">>> %d <-> %d\n", ME, v);
+                p2p_link("localhost", 5000+v, v);
             }
         }
     } else {
-        SDL_DestroyTexture(IMG_up);
-        SDL_DestroyTexture(IMG_down);
-        SDL_DestroyTexture(IMG_left);
-        SDL_DestroyTexture(IMG_right);
-        SDL_DestroyTexture(IMG_space);
-        SDL_DestroyRenderer(REN);
-        SDL_DestroyWindow(WIN);
-        SDL_Quit();
     }
 }
 
@@ -176,8 +146,7 @@ void cb_sim (p2p_evt evt) {
 
 void cb_eff (int trv) {
     if (trv) return;
-    static int i = 0;
-    if (++i%300 == 0) {
+    if (TICK%300 == 0) {
         flockfile(stdout);
         printf(">>> [%d:%d] (%d,%d,%d,%d)\n", ME,TICK, G.x,G.y,G.dx,G.dy);
         funlockfile(stdout);
@@ -187,47 +156,28 @@ void cb_eff (int trv) {
 int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     if (sdl != NULL) return P2P_RET_NONE;
 
-    if (TICK > 1000) {
+    if (TICK > 10000) {
         return P2P_RET_QUIT;
     }
 
     static int i = 0;
     static int _i = 0;
-    if (++i == _i) {
+    if (i++ == _i) {
         _i += rand() % 300;
         if (i > 0) {
+            int v = rand() % 5;
             flockfile(stdout);
-            printf(">>> [%d] EVT\n", ME);
             funlockfile(stdout);
-        }
-    }
- return P2P_RET_NONE;
-    switch (sdl->type) {
-        case SDL_QUIT:
-            return P2P_RET_QUIT;
-        case SDL_KEYDOWN: {
-            int key = sdl->key.keysym.sym;
-            *evt = (p2p_evt) { P2P_EVT_KEY, 1, {.i1=key} };
-            SDL_SetRenderDrawColor(REN, 0xFF,0x00,0x00,0xFF);
-            switch (key) {
-                case SDLK_UP:
-                    SDL_RenderCopy(REN, IMG_up, NULL, NULL);
-                    break;
-                case SDLK_DOWN:
-                    SDL_RenderCopy(REN, IMG_down, NULL, NULL);
-                    break;
-                case SDLK_LEFT:
-                    SDL_RenderCopy(REN, IMG_left, NULL, NULL);
-                    break;
-                case SDLK_RIGHT:
-                    SDL_RenderCopy(REN, IMG_right, NULL, NULL);
-                    break;
-                case SDLK_SPACE:
-                    SDL_RenderCopy(REN, IMG_space, NULL, NULL);
-                    break;
+            printf(">>> [%d] EVT=%d\n", ME,v);
+            int key;
+            switch (v) {
+                case 0: { key=SDLK_LEFT;  break; }
+                case 1: { key=SDLK_RIGHT; break; }
+                case 2: { key=SDLK_UP;    break; }
+                case 3: { key=SDLK_DOWN;  break; }
+                case 4: { key=SDLK_SPACE; break; }
             }
-            SDL_RenderPresent(REN);
-	        SDL_Delay(50);
+            *evt = (p2p_evt) { P2P_EVT_KEY, 1, {.i1=key} };
             return P2P_RET_REC;
         }
     }
