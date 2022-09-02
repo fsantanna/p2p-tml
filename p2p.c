@@ -215,7 +215,7 @@ static void p2p_travel (int to) {
 }
 
 void p2p_loop_net (void);
-void p2p_loop_sdl (void);
+int  p2p_loop_sdl (void);
 
 void p2p_loop (
     uint8_t me,
@@ -278,7 +278,9 @@ void p2p_loop (
             }
         }
         p2p_loop_net();
-        p2p_loop_sdl();
+        if (p2p_loop_sdl()) {
+            break;
+        }
     }
 
     cb_ini(0);
@@ -358,7 +360,7 @@ __UNLOCK__:
     UNLOCK();
 }
 
-void p2p_loop_sdl (void) {
+int p2p_loop_sdl (void) {
     uint32_t now = SDL_GetTicks();
     if (now < G.time.nxt) {
         SDL_WaitEventTimeout(NULL, G.time.nxt-now);
@@ -394,7 +396,7 @@ void p2p_loop_sdl (void) {
             case P2P_RET_NONE:
                 break;
             case P2P_RET_QUIT:
-                return;
+                return 1;
             case P2P_RET_REC: {
 //printf("-=-=-=- %d\n", G.time.tick);
                 //p2p_bcast(G.time.tick-2+rand()%5, &evt);
@@ -405,4 +407,5 @@ void p2p_loop_sdl (void) {
             }
         }
     }
+    return 0;
 }
