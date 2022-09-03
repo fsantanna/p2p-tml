@@ -72,6 +72,7 @@ static void p2p_bcast2 (p2p_pak pak) {
 
 static void p2p_reorder (void) {
     // reorder to respect tick/src
+    assert(G.paks.n > 0);
     int i = G.paks.n - 1;
     while (1) {
         if (i == 0) {
@@ -95,7 +96,9 @@ printf("-=-=-=- [%d] [%d/%d] vs [%d/%d]\n", i, hi->tick,hi->src, lo->tick,lo->sr
         p2p_pak tmp = *hi;
         PAK(i) = *lo;
         PAK(i-1) = tmp;
-        G.paks.i--;
+        if (i == G.paks.i) {
+            G.paks.i--;
+        }
         i--;
     }
 }
@@ -307,7 +310,7 @@ __LOCK__:
 #if 1
     int last = PAK(G.paks.n-1).tick;
     if (last > G.time.tick+LAT_TICKS) {
-printf("[%d] past\n", G.me);
+//printf("[%d] past\n", G.me);
 //assert(0);
         int dif = last - G.time.tick; // - LAT_TICKS;
         int dt = MIN(G.time.mpf/2, 500/dif);
