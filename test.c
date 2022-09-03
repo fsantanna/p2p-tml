@@ -32,7 +32,7 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 int NET[50][10] = {
     {  1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, // 0
     {  0,  2, -1, -1, -1, -1, -1, -1, -1, -1 },
-    {  1,  -9, -1, -1, -1, -1, -1, -1, -1, -1 },
+    {  1,  3, -1, -1, -1, -1, -1, -1, -1, -1 },
     {  2,  4, -1, -1, -1, -1, -1, -1, -1, -1 },
     {  3,  5, -1, -1, -1, -1, -1, -1, -1, -1 },
     {  4,  6, -1, -1, -1, -1, -1, -1, -1, -1 }, // 5
@@ -107,11 +107,11 @@ int main (int argc, char** argv) {
 
 void cb_ini (int ini) {
     if (ini) {
-        sleep(1);
-        for (int i=0; i<5; i++) {
+        sleep(5);
+        for (int i=0; i<10; i++) {
             int v = NET[(int)ME][i];
             if (v!=-1 && v>ME) {
-                printf(">>> %d <-> %d\n", ME, v);
+                //printf(">>> %d <-> %d\n", ME, v);
                 p2p_link("localhost", 5000+v, v);
             }
         }
@@ -146,9 +146,10 @@ void cb_sim (p2p_evt evt) {
 
 void cb_eff (int trv) {
     if (trv) return;
-    if (TICK%300 == 0) {
+    if (TICK%250 == 0) {
         flockfile(stdout);
-        printf(">>> [%d:%d] (%d,%d,%d,%d)\n", ME,TICK, G.x,G.y,G.dx,G.dy);
+        printf("[%02d] TICK=%d pos=(%d,%d,%d,%d)\n", ME,TICK, G.x,G.y,G.dx,G.dy);
+        fflush(stdout);
         funlockfile(stdout);
     }
 }
@@ -158,17 +159,20 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
 
     if (TICK > 10000) {
         return P2P_RET_QUIT;
+    } else if (TICK > 9000) {
+        return P2P_RET_NONE;
     }
 
     static int i = 0;
     static int _i = 0;
     if (i++ == _i) {
-        _i += rand() % 300;
+        _i += rand() % 3000;
         if (i > 0) {
             int v = rand() % 5;
             flockfile(stdout);
+            printf("[%02d] EVT=%d\n", ME,v);
+            fflush(stdout);
             funlockfile(stdout);
-            printf(">>> [%d] EVT=%d\n", ME,v);
             int key;
             switch (v) {
                 case 0: { key=SDLK_LEFT;  break; }
