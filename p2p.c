@@ -141,6 +141,10 @@ static void* f (void* arg) {
 
         int cur = G.net[src].seq;
         if (seq > cur) {
+            if (seq != cur+1) {
+                printf(">>> [%02d] %d == %d+1\n", G.me, seq, cur);
+                fflush(stdout);
+            }
             assert(seq == cur+1);
             G.net[src].seq++;
             PAK(G.paks.n++) = pak;
@@ -195,6 +199,9 @@ void p2p_dump (void) {
 }
 
 static void p2p_travel (int to) {
+    if (!(0<=to && to<=G.time.tick)) {
+        printf("TO=%d TICK=%d\n", to, G.time.tick);
+    }
     assert(0<=to && to<=G.time.tick);
     memcpy(G.mem.app.buf, G.mem.his[to/P2P_HIS_TICKS], G.mem.app.n);   // load w/o events
 
@@ -314,6 +321,12 @@ __LOCK__:
 //assert(0);
         int dif = last - G.time.tick; // - LAT_TICKS;
         int dt = MIN(G.time.mpf/2, 500/dif);
+        if (dif > 0) {
+            flockfile(stdout);
+            printf("[%03d] BAK=%d\n", G.me, dif);
+            fflush(stdout);
+            funlockfile(stdout);
+        }
         for (int i=0; i<dif; i++) {
             G.time.tick++;
             p2p_travel(G.time.tick);
@@ -332,7 +345,17 @@ __LOCK__:
 //printf("[%d] future\n", G.me);
         int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
         G.paks.n--;     // do not include deviating event
+        if (next > G.time.tick-1) {
+            flockfile(stdout);
+            printf("[%03d] FWD=%d\n", G.me, next-(G.time.tick-1));
+            fflush(stdout);
+            funlockfile(stdout);
+        }
         for (int j=G.time.tick-1; j>next; j--) {
+if (j== 0) {
+    printf("i=%d n=%d\n", G.paks.i, G.paks.n);
+    printf("NEXT=%d\n", next);
+}
             p2p_travel(j);
 //printf("<<< %d\n", j);
             G.cbs.eff(1);
