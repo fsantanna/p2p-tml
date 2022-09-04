@@ -19,8 +19,18 @@ void cb_sim (p2p_evt);
 void cb_eff (int trv);
 int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 
-#define FPS 50
-#define VEL  2
+#define TST_TCK_MS   100
+#define TST_TCK_TCKS (TST_TCK_MS*FPS/1000)
+
+#define TST_SIM_MIN  5
+#define TST_SIM_TOT  (5*60*FPS)
+
+#define TST_EVT_MIN  100  // 100 evt per minute
+#define TST_EVT_PEER (FPS*60*TST_EVT_MIN/NODES)
+
+#define NODES 50
+#define FPS   50
+#define VEL    2
 
 /*
  *                   11                    31
@@ -29,7 +39,7 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
  *                  \  /                  \  /
  *                   19                    39
  */
-int NET[50][10] = {
+int NET[NODES][10] = {
     {  1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, // 0
     {  0,  2, -1, -1, -1, -1, -1, -1, -1, -1 },
     {  1,  3, -1, -1, -1, -1, -1, -1, -1, -1 },
@@ -107,7 +117,7 @@ int main (int argc, char** argv) {
 
 void cb_ini (int ini) {
     if (ini) {
-        sleep(5);
+        SDL_Delay(5000);
         for (int i=0; i<10; i++) {
             int v = NET[(int)ME][i];
             if (v!=-1 && v>ME) {
@@ -115,6 +125,7 @@ void cb_ini (int ini) {
                 p2p_link("localhost", 5000+v, v);
             }
         }
+        SDL_Delay(rand()%10000);
     } else {
     }
 }
@@ -146,7 +157,7 @@ void cb_sim (p2p_evt evt) {
 
 void cb_eff (int trv) {
     if (trv) return;
-    if (TICK%250 == 0) {
+    if (TICK%TST_TCK_TCKS == 0) {
         flockfile(stdout);
         printf("[%02d] TICK=%d pos=(%d,%d,%d,%d)\n", ME,TICK, G.x,G.y,G.dx,G.dy);
         fflush(stdout);
@@ -157,16 +168,16 @@ void cb_eff (int trv) {
 int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     if (sdl != NULL) return P2P_RET_NONE;
 
-    if (TICK > 10000) {
+    if (TICK > TST_SIM_TOT) {
         return P2P_RET_QUIT;
-    } else if (TICK > 9000) {
+    } else if (TICK > TST_SIM_TOT-(30*FPS)) {
         return P2P_RET_NONE;
     }
 
     static int i = 0;
     static int _i = 0;
     if (i++ == _i) {
-        _i += rand() % 3000;
+        _i += rand() % TST_EVT_PEER;
         if (i > 0) {
             int v = rand() % 5;
             flockfile(stdout);
