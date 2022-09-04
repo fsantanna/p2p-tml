@@ -158,7 +158,7 @@ void cb_eff (int trv) {
     if (trv) {
         SDL_SetRenderDrawColor(REN, 0x77,0x77,0x77,0x77);
         SDL_RenderFillRect(REN, NULL);
-#if 1
+#if 0
     } else {
         static int i = 0;
         if (++i%300 == 0) {

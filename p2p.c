@@ -86,12 +86,6 @@ static void p2p_reorder (void) {
             break;      // same tick, but higher src
         }
 
-#if 0
-p2p_dump();
-printf("-=-=-=- [%d] [%d/%d] vs [%d/%d]\n", i, hi->tick,hi->src, lo->tick,lo->src);
-//assert(0);
-#endif
-
         // reorder: lower tick || same tick && lower src
         p2p_pak tmp = *hi;
         PAK(i) = *lo;
@@ -141,10 +135,12 @@ static void* f (void* arg) {
 
         int cur = G.net[src].seq;
         if (seq > cur) {
+#if 1 // remove when assert no longer fails
             if (seq != cur+1) {
                 printf(">>> [%02d] %d == %d+1\n", G.me, seq, cur);
                 fflush(stdout);
             }
+#endif
             assert(seq == cur+1);
             G.net[src].seq++;
             PAK(G.paks.n++) = pak;
@@ -199,9 +195,6 @@ void p2p_dump (void) {
 }
 
 static void p2p_travel (int to) {
-    if (!(0<=to && to<=G.time.tick)) {
-        printf("TO=%d TICK=%d\n", to, G.time.tick);
-    }
     assert(0<=to && to<=G.time.tick);
     memcpy(G.mem.app.buf, G.mem.his[to/P2P_HIS_TICKS], G.mem.app.n);   // load w/o events
 
@@ -216,8 +209,6 @@ static void p2p_travel (int to) {
             G.cbs.sim((p2p_evt) { P2P_EVT_TICK, 1, {.i1=i} });
         }
         while (e<G.paks.n && PAK(e).tick==i) {
-//int pay = PAK(e).evt.pay.i1;
-//printf(">>> %d / %d / %d\n", i, PAK(e).evt.id, pay-(pay>999?SDLK_RIGHT:0));
             G.cbs.sim(PAK(e).evt);
             e++;
         }
@@ -271,7 +262,6 @@ void p2p_loop (
         G.mem.his[i] = malloc(mem_n);
     }
     memcpy(G.mem.his[0], mem_buf, mem_n);
-    //printf("<<< memcpy %d\n", 0);
 
     cb_ini(1);
 
@@ -308,81 +298,61 @@ void p2p_loop (
 
 void p2p_loop_net (void) {
     LOCK();
-__LOCK__:
-    if (G.paks.i == G.paks.n) {
-        goto __UNLOCK__;
-    }
+    while (1) {
+        int next = PAK(G.paks.i).tick;
+        int last = PAK(G.paks.n-1).tick;
 
-    // i'm too much in the past, need to hurry
-#if 1
-    int last = PAK(G.paks.n-1).tick;
-    if (last > G.time.tick+LAT_TICKS) {
-//printf("[%d] past\n", G.me);
-//assert(0);
-        int dif = last - G.time.tick; // - LAT_TICKS;
-        int dt = MIN(G.time.mpf/2, 500/dif);
-        if (dif > 0) {
-            flockfile(stdout);
-            printf("[%03d] BAK=%d\n", G.me, dif);
-            fflush(stdout);
-            funlockfile(stdout);
-        }
-        for (int i=0; i<dif; i++) {
-            G.time.tick++;
-            p2p_travel(G.time.tick);
-            G.cbs.eff(1);
-            SDL_Delay(dt);
-        }
-        G.paks.i = G.paks.n;
-        goto __UNLOCK__;
-    }
+        if (G.paks.i == G.paks.n) {
+            break;
+        } else if (next == G.time.tick) {
+            // i'm just in time, handle next event in real time
+            G.cbs.sim(PAK(G.paks.i).evt);
+            G.cbs.eff(0);
+            G.paks.i++;
+        } else if (last > G.time.tick+LAT_TICKS) {
+            // i'm too much in the past, need to hurry
+            int dif = last - G.time.tick - LAT_TICKS;
+            if (dif > 0) {
+                G.time.nxt -= G.time.mpf/2;
+#if 1 // paper instrumentation
+                {
+                    flockfile(stdout);
+                    printf("[%02d] BAK=%d\n", G.me, dif);
+                    fflush(stdout);
+                    funlockfile(stdout);
+                }
 #endif
-
-    int next = PAK(G.paks.i).tick;
-
-    // i'm in the future, need to go back and forth
-    if (next < G.time.tick) {
-//printf("[%d] future\n", G.me);
-        int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
-        G.paks.n--;     // do not include deviating event
-        if (next > G.time.tick-1) {
-            flockfile(stdout);
-            printf("[%03d] FWD=%d\n", G.me, next-(G.time.tick-1));
-            fflush(stdout);
-            funlockfile(stdout);
+            }
+            break;
+        } else if (next < G.time.tick) {
+            // i'm in the future, need to go back and forth
+            int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
+            G.paks.n--;     // do not include deviating event
+#if 1 // paper instrumentation
+            {
+                flockfile(stdout);
+                printf("[%02d] FWD=%d\n", G.me, next-(G.time.tick-1));
+                fflush(stdout);
+                funlockfile(stdout);
+            }
+#endif
+            for (int j=G.time.tick-1; j>next; j--) {
+                p2p_travel(j);
+                G.cbs.eff(1);
+                SDL_Delay(dt);
+            }
+            G.paks.n++;     // now include it and move forward
+            for (int j=next; j<=G.time.tick; j++) {
+                p2p_travel(j);
+                G.cbs.eff(1);
+                SDL_Delay(dt);
+            }
+            G.time.nxt = SDL_GetTicks() + G.time.mpf;
+            G.paks.i++;
+        } else {
+            break;
         }
-        for (int j=G.time.tick-1; j>next; j--) {
-if (j== 0) {
-    printf("i=%d n=%d\n", G.paks.i, G.paks.n);
-    printf("NEXT=%d\n", next);
-}
-            p2p_travel(j);
-//printf("<<< %d\n", j);
-            G.cbs.eff(1);
-            SDL_Delay(dt);
-        }
-        G.paks.n++;     // now include it and move forward
-        for (int j=next; j<=G.time.tick; j++) {
-            p2p_travel(j);
-//printf(">>> %d\n", j);
-            G.cbs.eff(1);
-            SDL_Delay(dt);
-        }
-        G.time.nxt = SDL_GetTicks() + G.time.mpf;
-        G.paks.i++;
-        goto __LOCK__;
     }
-
-    // i'm just in time, handle next event in real time
-    if (next == G.time.tick) {
-//printf("[%d] timely\n", G.me);
-        G.cbs.sim(PAK(G.paks.i).evt);
-        G.cbs.eff(0);
-        G.paks.i++;
-        goto __LOCK__;  // try next
-    }
-
-__UNLOCK__:
     UNLOCK();
 }
 
@@ -399,7 +369,6 @@ int p2p_loop_sdl (void) {
         if (G.time.tick % P2P_HIS_TICKS == 0) {
             assert(P2P_MAX_MEM > G.time.tick/P2P_HIS_TICKS);
             memcpy(G.mem.his[G.time.tick/P2P_HIS_TICKS], G.mem.app.buf, G.mem.app.n);    // save w/o events
-            //printf("<<< memcpy %d\n", G.time.tick);
         }
         G.cbs.eff(0);
     }
@@ -424,7 +393,6 @@ int p2p_loop_sdl (void) {
             case P2P_RET_QUIT:
                 return 1;
             case P2P_RET_REC: {
-//printf("-=-=-=- %d\n", G.time.tick);
                 //p2p_bcast(G.time.tick-2+rand()%5, &evt);
                 int t1 = G.time.tick + LAT_TICKS/G.time.mpf;
                 int t2 = (G.paks.n == 0) ? 0 : PAK(G.paks.n-1).tick+1;
