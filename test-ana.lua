@@ -1,7 +1,13 @@
 -- cat out.log | lua5.3 test-ana.lua
 
+local _PEERS_   = 21
+local _LATENCY_ = 500
+local _TOTAL_   = 15000
+local _START_   = 3000   -- 1 minuto
+local _DELTA_   = 5
+
 local ok,no,tot = 1,1,0
-local TICK = 3000   -- 1 minuto
+local TICK = _START_
 local BAKS = 0
 
 for l in io.lines(...) do
@@ -13,26 +19,27 @@ for l in io.lines(...) do
         tick = tonumber(tick)
         --print(peer, tick)
         tot = tot + 1
-        if tick <= 3000 then
+        if tick <= _START_ then
             tot = tot - 1
             -- wait
         elseif tick > TICK then
             TICK = tick
             --print(peer, tick)
-        elseif tick == TICK then
+        elseif tick <= TICK+_LATENCY_ then
             ok = ok + 1
         else
-            assert(tick < TICK)
 --print(peer,tick,TICK)
             no = no + 1
             --no = no + (TICK-tick)/5
         end
     elseif bak then
-        bak = tonumber(bak)
-        BAKS = BAKS + bak
+        if TICK > _START_ then
+            bak = tonumber(bak)
+            BAKS = BAKS + 1 --bak
+        end
     end
 end
 
-print('TOT', tot, 'EXP', (15000-3000)*21/5)
+print('TOT', tot, 'EXP', (_TOTAL_-_START_)*_PEERS_/_DELTA_)
 print('NO',no, 'OK',ok, 'TOT',no+ok)
 print('BAKS', BAKS)
