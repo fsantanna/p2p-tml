@@ -25,8 +25,8 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 #define TST_SIM_MIN  5
 #define TST_SIM_TOT  (5*60*FPS)
 
-#define TST_EVT_MIN  100  // 100 evt per minute
-#define TST_EVT_PEER (FPS*60*TST_EVT_MIN/NODES)
+#define TST_EVT_MIN  100  // 100 evt/min
+#define TST_EVT_PEER (FPS*60*NODES/TST_EVT_MIN)
 
 #define NODES 21
 #define FPS   50
@@ -148,11 +148,11 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     static int i = 0;
     static int _i = 0;
     if (i++ == _i) {
-        _i += rand() % TST_EVT_PEER;
+        _i += rand() % TST_EVT_PEER*2;
         if (i > 0) {
             int v = rand() % 5;
             flockfile(stdout);
-            printf("[%02d] EVT=%d\n", ME,v);
+            printf("[%02d] EVT=%d (%d)\n", ME,v, TICK);
             fflush(stdout);
             funlockfile(stdout);
             int key;
