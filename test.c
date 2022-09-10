@@ -22,13 +22,13 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 #define TST_TCK_MS   100
 #define TST_TCK_TCKS (TST_TCK_MS*FPS/1000)
 
-#define TST_SIM_MIN  5
+#define TST_SIM_MIN  3
 #define TST_SIM_TOT  (5*60*FPS)
 
 #define TST_EVT_MIN  100  // 100 evt/min
-#define TST_EVT_PEER (FPS*60*NODES/TST_EVT_MIN)
+#define TST_EVT_PEER (FPS*60*PEERS/TST_EVT_MIN)
 
-#define NODES 21
+#define PEERS 21
 #define FPS   50
 #define VEL    2
 
@@ -39,7 +39,9 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
  *               \     /                    \  / \  /
  *                8 - 7                      17 - 16
  */
-int NET[NODES][10] = {
+#if 1
+int NET[PEERS][10] = {
+    //{  1, 20, -1, -1, -1, -1, -1, -1, -1, -1 }, // 0
     {  1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, // 0
     {  0,  2, -1, -1, -1, -1, -1, -1, -1, -1 },
     {  1,  3, -1, -1, -1, -1, -1, -1, -1, -1 },
@@ -61,7 +63,15 @@ int NET[NODES][10] = {
     { 15, 19, -1, -1, -1, -1, -1, -1, -1, -1 },
     { 18, 20, -1, -1, -1, -1, -1, -1, -1, -1 },
     { 19, -1, -1, -1, -1, -1, -1, -1, -1, -1 }  // 20
+    //{ 19,  0, -1, -1, -1, -1, -1, -1, -1, -1 }  // 20
 };
+#else
+int NET[PEERS][10] = {
+    {  1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, // 0
+    {  0,  2, -1, -1, -1, -1, -1, -1, -1, -1 },
+    {  1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }
+};
+#endif
 
 struct {
     int x,  y;

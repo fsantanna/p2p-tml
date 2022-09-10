@@ -9,7 +9,8 @@
 #define LOCK()    pthread_mutex_lock(&G.lock)
 #define UNLOCK()  pthread_mutex_unlock(&G.lock);
 #define PAK(i)    G.paks.buf[i]
-#define LAT_TICKS (1+P2P_LATENCY/G.time.mpf)
+//#define LAT_TICKS (MAX(2, P2P_LATENCY/G.time.mpf))
+#define LAT_TICKS (P2P_LATENCY/G.time.mpf)
 
 typedef struct {
     TCPsocket s;
@@ -126,7 +127,7 @@ static void* f (void* arg) {
         uint32_t i2   = tcp_recv_u32(s);
         uint32_t i3   = tcp_recv_u32(s);
         uint32_t i4   = tcp_recv_u32(s);
-        //SDL_Delay(5); //rand()%30);
+        SDL_Delay(25); //rand()%30);
 //puts("-=-=-=-=-");
         p2p_pak pak = { src, seq, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
 
@@ -172,6 +173,12 @@ void p2p_link (char* host, int port, uint8_t oth) {
     IPaddress ip;
     assert(SDLNet_ResolveHost(&ip, host, port) == 0);
     TCPsocket s = SDLNet_TCP_Open(&ip);
+#if 0
+if (s == NULL) {
+    printf("%d %d\n", port, oth);
+    fflush(stdout);
+}
+#endif
     assert(s != NULL);
     pthread_t t;
     assert(pthread_create(&t, NULL,f,(void*)s) == 0);
@@ -252,7 +259,6 @@ void p2p_loop (
     G.cbs.rec = cb_rec;
 
     G.time.mpf = mpf;
-    G.time.nxt = SDL_GetTicks()+mpf;
 
     G.cbs.sim((p2p_evt) { P2P_EVT_INIT, 0, {} });
 
@@ -264,6 +270,7 @@ void p2p_loop (
     memcpy(G.mem.his[0], mem_buf, mem_n);
 
     cb_ini(1);
+    G.time.nxt = SDL_GetTicks()+mpf;
 
     while (1) {
         while (1) {
@@ -317,7 +324,7 @@ void p2p_loop_net (void) {
 #if 1 // paper instrumentation
                 {
                     flockfile(stdout);
-                    printf("[%02d] BAK=%d\n", G.me, dif);
+                    printf("[%02d] GOFWD=%d\n", G.me, dif);
                     fflush(stdout);
                     funlockfile(stdout);
                 }
@@ -331,7 +338,7 @@ void p2p_loop_net (void) {
 #if 1 // paper instrumentation
             {
                 flockfile(stdout);
-                printf("[%02d] FWD=%d\n", G.me, next-(G.time.tick-1));
+                printf("[%02d] GOBAK=%d\n", G.me, G.time.tick-next);
                 fflush(stdout);
                 funlockfile(stdout);
             }
@@ -358,10 +365,13 @@ void p2p_loop_net (void) {
 
 int p2p_loop_sdl (void) {
     uint32_t now = SDL_GetTicks();
+    //assert(now <= G.time.nxt);
     if (now < G.time.nxt) {
         SDL_WaitEventTimeout(NULL, G.time.nxt-now);
         now = SDL_GetTicks();
     }
+
+    // TICK
     if (now >= G.time.nxt) {
         G.time.tick++;
         G.time.nxt += G.time.mpf;
@@ -372,6 +382,8 @@ int p2p_loop_sdl (void) {
         }
         G.cbs.eff(0);
     }
+
+    // EVENT
     {
         SDL_Event sdl;
         p2p_evt   evt;
@@ -394,7 +406,7 @@ int p2p_loop_sdl (void) {
                 return 1;
             case P2P_RET_REC: {
                 //p2p_bcast(G.time.tick-2+rand()%5, &evt);
-                int t1 = G.time.tick + LAT_TICKS/G.time.mpf;
+                int t1 = G.time.tick + LAT_TICKS;
                 int t2 = (G.paks.n == 0) ? 0 : PAK(G.paks.n-1).tick+1;
                 p2p_bcast(MAX(t1,t2), &evt);
                 break;
