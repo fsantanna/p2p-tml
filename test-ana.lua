@@ -1,10 +1,11 @@
 -- cat out.log | lua5.3 test-ana.lua
 
 local _PEERS_   = 21
-local _LATENCY_ = 500
-local _TOTAL_   = 9000
-local _START_   = 3000   -- 1 minuto
-local _DELTA_   = 5
+local _LATENCY_ = 50
+local _FPS_     = 50
+local _TOTAL_   = _FPS_*60*3 -- 3min
+local _START_   = _FPS_*60*0.5 -- 30s
+local _COUNT_   = 5
 
 local ok,no,tot = 1,1,0
 local TICK = _START_
@@ -27,7 +28,7 @@ for l in io.lines(...) do
         elseif tick > TICK then
             TICK = tick
             --print(peer, tick)
-        elseif tick <= TICK+_LATENCY_ then
+        elseif tick <= TICK+(_FPS_*_LATENCY_/1000) then
             ok = ok + 1
         else
 --print(peer,tick,TICK)
@@ -47,7 +48,8 @@ for l in io.lines(...) do
     end
 end
 
-print('TOT', tot, 'EXP', (_TOTAL_-_START_)*_PEERS_/_DELTA_)
-print('NO',no, 'OK',ok, 'TOT',no+ok)
-print('GOFWDS', GOFWDS)
-print('GOBAKS', GOBAKS)
+print('TOT', tot, 'EXP', (_TOTAL_-_START_)*_PEERS_/_COUNT_)
+--print('NO',no, 'OK',ok, 'TOT',no+ok)
+print('NORLTS', no,     (no/(no+ok)))
+print('GOFWDS', GOFWDS, (GOFWDS/tot*100))
+print('GOBAKS', GOBAKS, (GOBAKS/tot*100))

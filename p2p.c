@@ -9,8 +9,8 @@
 #define LOCK()    pthread_mutex_lock(&G.lock)
 #define UNLOCK()  pthread_mutex_unlock(&G.lock);
 #define PAK(i)    G.paks.buf[i]
-//#define LAT_TICKS (MAX(2, P2P_LATENCY/G.time.mpf))
-#define LAT_TICKS (P2P_LATENCY/G.time.mpf)
+//#define DELTA_TICKS (MAX(2, P2P_DELTA/G.time.mpf))
+#define DELTA_TICKS (P2P_DELTA/G.time.mpf)
 
 typedef struct {
     TCPsocket s;
@@ -127,7 +127,7 @@ static void* f (void* arg) {
         uint32_t i2   = tcp_recv_u32(s);
         uint32_t i3   = tcp_recv_u32(s);
         uint32_t i4   = tcp_recv_u32(s);
-        SDL_Delay(25); //rand()%30);
+        SDL_Delay(P2P_LATENCY); //rand()%30);
 //puts("-=-=-=-=-");
         p2p_pak pak = { src, seq, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
 
@@ -303,8 +303,11 @@ void p2p_loop (
     SDLNet_Quit();
 }
 
+static int TRAVEL = 0;
+
 void p2p_loop_net (void) {
     LOCK();
+TRAVEL = 0;
     while (1) {
         int next = PAK(G.paks.i).tick;
         int last = PAK(G.paks.n-1).tick;
@@ -316,15 +319,18 @@ void p2p_loop_net (void) {
             G.cbs.sim(PAK(G.paks.i).evt);
             G.cbs.eff(0);
             G.paks.i++;
-        } else if (last > G.time.tick+LAT_TICKS) {
+        } else if (last > G.time.tick+DELTA_TICKS) {
             // i'm too much in the past, need to hurry
-            int dif = last - G.time.tick - LAT_TICKS;
+            int dif = last - G.time.tick - DELTA_TICKS;
             if (dif > 0) {
-                G.time.nxt -= G.time.mpf/2;
+TRAVEL = 1;
+                int x = G.time.mpf*1000/MAX(2000,2*dif*G.time.mpf);
+                G.time.nxt -= G.time.mpf;
+                G.time.nxt += x;
 #if 1 // paper instrumentation
                 {
                     flockfile(stdout);
-                    printf("[%02d] GOFWD=%d\n", G.me, dif);
+                    printf("[%02d] GOFWD=%d [%d = 2*%d*%d/1000]\n", G.me, dif, x, dif, G.time.mpf);
                     fflush(stdout);
                     funlockfile(stdout);
                 }
@@ -399,6 +405,7 @@ int p2p_loop_sdl (void) {
         }
 #endif
 
+if (!TRAVEL) {
         switch (G.cbs.rec(has?&sdl:NULL, &evt)) {
             case P2P_RET_NONE:
                 break;
@@ -406,12 +413,13 @@ int p2p_loop_sdl (void) {
                 return 1;
             case P2P_RET_REC: {
                 //p2p_bcast(G.time.tick-2+rand()%5, &evt);
-                int t1 = G.time.tick + LAT_TICKS;
+                int t1 = G.time.tick + DELTA_TICKS;
                 int t2 = (G.paks.n == 0) ? 0 : PAK(G.paks.n-1).tick+1;
                 p2p_bcast(MAX(t1,t2), &evt);
                 break;
             }
         }
+}
     }
     return 0;
 }

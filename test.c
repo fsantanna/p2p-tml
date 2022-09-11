@@ -23,7 +23,7 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 #define TST_TCK_TCKS (TST_TCK_MS*FPS/1000)
 
 #define TST_SIM_MIN  3
-#define TST_SIM_TOT  (5*60*FPS)
+#define TST_SIM_TOT  (TST_SIM_MIN*60*FPS)
 
 #define TST_EVT_MIN  100  // 100 evt/min
 #define TST_EVT_PEER (FPS*60*PEERS/TST_EVT_MIN)
@@ -156,7 +156,7 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     }
 
     static int i = 0;
-    static int _i = 0;
+    static int _i = FPS;    // 1st after 1s
     if (i++ == _i) {
         _i += rand() % TST_EVT_PEER*2;
         if (i > 0) {
