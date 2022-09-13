@@ -19,7 +19,7 @@ void cb_sim (p2p_evt);
 void cb_eff (int trv);
 int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 
-#define TST_TCK_MS   100
+#define TST_TCK_MS   1000
 #define TST_TCK_TCKS (TST_TCK_MS*FPS/1000)
 
 #define TST_SIM_MIN  3
@@ -32,12 +32,13 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 #define FPS   50
 #define VEL    2
 
+// 14 ou 7 saltos
 /*
- *                4 - 5                      13 - 14
+ *                4 - 6                      13 - 15
  *               /     \                    /  \ /  \
- *  0 - 1 - 2 - 3       6 - 9 - 10 - 11 - 12 -- + -- 15 - 18 - 19 - 20
+ *  0 - 1 - 2 - 3       8 - 9 - 10 - 11 - 12 -- + -- 17 - 18 - 19 - 20
  *               \     /                    \  / \  /
- *                8 - 7                      17 - 16
+ *                5 - 7                      14 - 16
  */
 #if 1
 int NET[PEERS][10] = {
@@ -96,6 +97,8 @@ int main (int argc, char** argv) {
     );
 }
 
+int XXX = 0;
+
 void cb_ini (int ini) {
     if (ini) {
         SDL_Delay(5000);
@@ -106,7 +109,9 @@ void cb_ini (int ini) {
                 p2p_link("localhost", 5000+v, v);
             }
         }
-        SDL_Delay(rand()%10000);
+        XXX = rand() % 10000;
+        SDL_Delay(XXX);
+        printf("[%02d] rand %d\n", ME, XXX);
     } else {
     }
 }
@@ -139,32 +144,42 @@ void cb_sim (p2p_evt evt) {
 void cb_eff (int trv) {
     if (trv) return;
     if (TICK%TST_TCK_TCKS == 0) {
-        flockfile(stdout);
-        printf("[%02d] TICK=%d pos=(%d,%d,%d,%d)\n", ME,TICK, G.x,G.y,G.dx,G.dy);
+        printf("[%02d] tick %d pos=(%d,%d,%d,%d)\n", ME,TICK, G.x,G.y,G.dx,G.dy);
         fflush(stdout);
-        funlockfile(stdout);
     }
 }
 
+static int first = 0;
+static int FIRST = 0;
+
 int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
+    static int evts = 0;
+    if (first == 0) {
+        first = 1;
+        printf("[%02d] frst %d\n", ME, TICK);
+    }
+
     if (sdl != NULL) return P2P_RET_NONE;
 
     if (TICK > TST_SIM_TOT) {
+        printf("[%02d] evts %d\n", ME, evts);
         return P2P_RET_QUIT;
-    } else if (TICK > TST_SIM_TOT-(30*FPS)) {
+    } else if (TICK > TST_SIM_TOT-(10*FPS)) {   // -10s
         return P2P_RET_NONE;
     }
 
     static int i = 0;
-    static int _i = FPS;    // 1st after 1s
+    static int _i = 0;    // 1st after 1s
     if (i++ == _i) {
         _i += rand() % TST_EVT_PEER*2;
         if (i > 0) {
+            if (FIRST == 0) {
+                FIRST = 1;
+                printf("[%02d] FRST %d %d\n", ME, TICK, SDL_GetTicks());
+            }
             int v = rand() % 5;
-            flockfile(stdout);
-            printf("[%02d] EVT=%d (%d)\n", ME,v, TICK);
-            fflush(stdout);
-            funlockfile(stdout);
+            evts++;
+            //printf("[%02d] EVT=%d (%d)\n", ME,v, TICK);
             int key;
             switch (v) {
                 case 0: { key=SDLK_LEFT;  break; }

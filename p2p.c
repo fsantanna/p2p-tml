@@ -52,6 +52,16 @@ static struct {
     } mem;
 } G = { -1, {}, {}, {0,0,{}}, {NULL,NULL,NULL}, {-1,-1,0}, {{-1,NULL},{}} };
 
+struct {
+    int start;
+    int tcks;
+    int fwds_i;
+    int fwds_s;
+    int baks_i;
+    int baks_s;
+    int travel;
+} T = { 0, 0, 0, 0, 0, 0, 0 };
+
 static void p2p_bcast2 (p2p_pak pak) {
     for (int i=0; i<P2P_MAX_NET; i++) {
         if (i == G.me) continue;
@@ -127,7 +137,8 @@ static void* f (void* arg) {
         uint32_t i2   = tcp_recv_u32(s);
         uint32_t i3   = tcp_recv_u32(s);
         uint32_t i4   = tcp_recv_u32(s);
-        SDL_Delay(P2P_LATENCY); //rand()%30);
+        //SDL_Delay(P2P_LATENCY); // - P2P_LATENCY/10 + rand()%P2P_LATENCY/5);
+        SDL_Delay(P2P_LATENCY - P2P_LATENCY/10 + rand()%P2P_LATENCY/5);
 //puts("-=-=-=-=-");
         p2p_pak pak = { src, seq, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
 
@@ -139,7 +150,6 @@ static void* f (void* arg) {
 #if 1 // remove when assert no longer fails
             if (seq != cur+1) {
                 printf(">>> [%02d] %d == %d+1\n", G.me, seq, cur);
-                fflush(stdout);
             }
 #endif
             assert(seq == cur+1);
@@ -176,7 +186,6 @@ void p2p_link (char* host, int port, uint8_t oth) {
 #if 0
 if (s == NULL) {
     printf("%d %d\n", port, oth);
-    fflush(stdout);
 }
 #endif
     assert(s != NULL);
@@ -259,6 +268,7 @@ void p2p_loop (
     G.cbs.rec = cb_rec;
 
     G.time.mpf = mpf;
+    T.start = fps*60*1;
 
     G.cbs.sim((p2p_evt) { P2P_EVT_INIT, 0, {} });
 
@@ -301,16 +311,21 @@ void p2p_loop (
         free(G.mem.his[i]);
     }
     SDLNet_Quit();
+    printf("[%02d] tcks %d\n", G.me, T.tcks);
+    printf("[%02d] fwds %d %d\n", G.me, T.fwds_s, T.fwds_i);
+    printf("[%02d] baks %d %d\n", G.me, T.baks_s, T.baks_i);
 }
-
-static int TRAVEL = 0;
 
 void p2p_loop_net (void) {
     LOCK();
-TRAVEL = 0;
+T.travel = 0;
     while (1) {
         int next = PAK(G.paks.i).tick;
         int last = PAK(G.paks.n-1).tick;
+
+        static int islate = 0;
+        int oldislate = islate;
+        islate = 0;
 
         if (G.paks.i == G.paks.n) {
             break;
@@ -322,43 +337,45 @@ TRAVEL = 0;
         } else if (last > G.time.tick+DELTA_TICKS) {
             // i'm too much in the past, need to hurry
             int dif = last - G.time.tick - DELTA_TICKS;
-            if (dif > 0) {
-TRAVEL = 1;
-                int x = G.time.mpf*1000/MAX(2000,2*dif*G.time.mpf);
-                G.time.nxt -= G.time.mpf;
-                G.time.nxt += x;
+            assert(dif > 0);
+T.travel = 1;
+            int x = G.time.mpf*1000/MAX(2000,2*dif*G.time.mpf);
+            G.time.nxt -= G.time.mpf;
+            G.time.nxt += x;
 #if 1 // paper instrumentation
-                {
-                    flockfile(stdout);
-                    printf("[%02d] GOFWD=%d [%d = 2*%d*%d/1000]\n", G.me, dif, x, dif, G.time.mpf);
-                    fflush(stdout);
-                    funlockfile(stdout);
+            if (G.time.tick > T.start) {
+                if (!oldislate) {
+//printf("[%02d] late=%d\n", G.me, G.time.tick);
+//printf("[%02d] etal=%d\n", G.me, G.time.tick);
+                    T.fwds_i++;
+                    islate = 1;
                 }
-#endif
+                T.fwds_s++;
             }
+            //printf("[%02d] GOFWD=%d [%d = 2*%d*%d/1000]\n", G.me, dif, x, dif, G.time.mpf);
+#endif
             break;
         } else if (next < G.time.tick) {
             // i'm in the future, need to go back and forth
             int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
             G.paks.n--;     // do not include deviating event
 #if 1 // paper instrumentation
-            {
-                flockfile(stdout);
-                printf("[%02d] GOBAK=%d\n", G.me, G.time.tick-next);
-                fflush(stdout);
-                funlockfile(stdout);
+            if (G.time.tick > T.start) {
+                T.baks_i += 1;
+                T.baks_s += (G.time.tick-next);
             }
+            //printf("[%02d] GOBAK=%d\n", G.me, G.time.tick-next);
 #endif
             for (int j=G.time.tick-1; j>next; j--) {
                 p2p_travel(j);
                 G.cbs.eff(1);
-                SDL_Delay(dt);
+                //SDL_Delay(dt);
             }
             G.paks.n++;     // now include it and move forward
             for (int j=next; j<=G.time.tick; j++) {
                 p2p_travel(j);
                 G.cbs.eff(1);
-                SDL_Delay(dt);
+                //SDL_Delay(dt);
             }
             G.time.nxt = SDL_GetTicks() + G.time.mpf;
             G.paks.i++;
@@ -386,6 +403,9 @@ int p2p_loop_sdl (void) {
             assert(P2P_MAX_MEM > G.time.tick/P2P_HIS_TICKS);
             memcpy(G.mem.his[G.time.tick/P2P_HIS_TICKS], G.mem.app.buf, G.mem.app.n);    // save w/o events
         }
+        if (G.time.tick > T.start) {
+            T.tcks++;
+        }
         G.cbs.eff(0);
     }
 
@@ -405,7 +425,7 @@ int p2p_loop_sdl (void) {
         }
 #endif
 
-if (!TRAVEL) {
+if (!T.travel) {
         switch (G.cbs.rec(has?&sdl:NULL, &evt)) {
             case P2P_RET_NONE:
                 break;

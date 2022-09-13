@@ -1,22 +1,27 @@
 -- cat out.log | lua5.3 test-ana.lua
 
 local _PEERS_   = 21
-local _LATENCY_ = 50
+local _LATENCY_ = 100
 local _FPS_     = 50
-local _TOTAL_   = _FPS_*60*3 -- 3min
-local _START_   = _FPS_*60*0.5 -- 30s
+local _TOTAL_   = _FPS_*60*5 -- 5min
+local _START_   = _FPS_*60*2 -- 1min
 local _COUNT_   = 5
 
 local ok,no,tot = 1,1,0
 local TICK = _START_
 local GOFWDS = 0
 local GOBAKS = 0
+local T = {}
 
 for l in io.lines(...) do
     --local peer,tick = string.find(l,'TICK')
     local peer,tick = string.match(l,'%[(%d+)%] TICK=(%d+)')
     local _,gofwd = string.match(l,'%[(%d+)%] GOFWD=(%d+)')
     local _,gobak = string.match(l,'%[(%d+)%] GOBAK=(%d+)')
+    local n,state = string.match(l,'%[(%d+)%] TICK='.._TOTAL_..' pos=(.*)')
+    if n then
+        T[tonumber(n)] = state
+    end
     if peer then
         peer = tonumber(peer)
         tick = tonumber(tick)
@@ -48,6 +53,12 @@ for l in io.lines(...) do
     end
 end
 
+local state = T[0]
+for i=1, 20 do
+    assert(T[i] == state)
+end
+
+print(state)
 print('TOT', tot, 'EXP', (_TOTAL_-_START_)*_PEERS_/_COUNT_)
 --print('NO',no, 'OK',ok, 'TOT',no+ok)
 print('NORLTS', no,     (no/(no+ok)))
