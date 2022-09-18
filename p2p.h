@@ -52,6 +52,7 @@ void p2p_loop (
     int (*cb_rec) (SDL_Event*,p2p_evt*) // event recording callback
 );
 
-void p2p_bcast (uint32_t tick, p2p_evt* evt);
-void p2p_link  (char* host, int port, uint8_t me);
-void p2p_dump  (void);
+void p2p_bcast  (uint32_t tick, p2p_evt* evt);
+void p2p_link   (char* host, int port, uint8_t me);
+void p2p_unlink (uint8_t oth);
+void p2p_dump   (void);

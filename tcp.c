@@ -1,21 +1,21 @@
 int tcp_recv_n (TCPsocket s, int n, char* buf) {
     int i = 0;
     while (i < n) {
-        int n = SDLNet_TCP_Recv(s, &buf[i], n-i);
-        if (n <= 0) {
+        int x = SDLNet_TCP_Recv(s, &buf[i], n-i);
+        if (x <= 0) {
             return 0;
         }
-        i += n;
+        i += x;
     }
     return 1;
 }
 
 int tcp_recv_u8 (TCPsocket s, uint8_t* ret) {
-    return tcp_recv_n(s, sizeof(v), (char*)ret);
+    return tcp_recv_n(s, sizeof(*ret), (char*)ret);
 }
 
 int tcp_recv_u32 (TCPsocket s, uint32_t* ret) {
-    int ok = tcp_recv_n(s, sizeof(v), (char*)ret);
+    int ok = tcp_recv_n(s, sizeof(*ret), (char*)ret);
     *ret = be32toh(*ret);
     return ok;
 }

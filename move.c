@@ -58,7 +58,7 @@ int main (int argc, char** argv) {
 
 #if 1
     if (ME == 5) {
-        sleep(10);
+        //sleep(10);
     }
 #endif
 
@@ -73,8 +73,11 @@ int main (int argc, char** argv) {
 
 void cb_ini (int ini) {
     if (ini) {
+        char title[255] = "[XX] P2P-TML: Peer-to-Peer Time Machine Library";
+        title[1] = '0' + ME/10;
+        title[2] = '0' + ME%10;
         WIN = SDL_CreateWindow (
-            "P2P-TML: Peer-to-Peer Time Machine Library",
+            title,
             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
             SIZE, SIZE,
             SDL_WINDOW_SHOWN
@@ -196,6 +199,20 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
                     break;
                 case SDLK_SPACE:
                     SDL_RenderCopy(REN, IMG_space, NULL, NULL);
+                    break;
+                case SDLK_x:
+                    for (int i=0; i<6; i++) {
+                        if (NET[(int)ME][i]) {
+                            p2p_unlink(i);
+                        }
+                    }
+                    break;
+                case SDLK_z:
+                    for (int i=0; i<6; i++) {
+                        if (NET[(int)ME][i]) {
+                            p2p_link("localhost", 5010+i, i);
+                        }
+                    }
                     break;
             }
             SDL_RenderPresent(REN);

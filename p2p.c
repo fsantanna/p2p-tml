@@ -67,21 +67,21 @@ static void p2p_bcast2 (p2p_pak pak) {
         if (i == G.me) continue;
         TCPsocket s = G.net[i].s;
         if (s == NULL) continue;
-        int ok = 1;
         LOCK();
-        ok &&= tcp_send_u8 (s, pak.src);
-        ok &&= tcp_send_u32(s, pak.seq);
-        ok &&= tcp_send_u32(s, pak.tick);
-        ok &&= tcp_send_u8 (s, pak.evt.id);
-        ok &&= tcp_send_u8 (s, pak.evt.n);
-        ok &&= tcp_send_u32(s, pak.evt.pay.i4._1);
-        ok &&= tcp_send_u32(s, pak.evt.pay.i4._2);
-        ok &&= tcp_send_u32(s, pak.evt.pay.i4._3);
-        ok &&= tcp_send_u32(s, pak.evt.pay.i4._4);
-        UNLOCK();
+        int ok = 1;
+        ok = ok && tcp_send_u8 (s, pak.src);
+        ok = ok && tcp_send_u32(s, pak.seq);
+        ok = ok && tcp_send_u32(s, pak.tick);
+        ok = ok && tcp_send_u8 (s, pak.evt.id);
+        ok = ok && tcp_send_u8 (s, pak.evt.n);
+        ok = ok && tcp_send_u32(s, pak.evt.pay.i4._1);
+        ok = ok && tcp_send_u32(s, pak.evt.pay.i4._2);
+        ok = ok && tcp_send_u32(s, pak.evt.pay.i4._3);
+        ok = ok && tcp_send_u32(s, pak.evt.pay.i4._4);
         if (!ok) {
-            G.net[i] = NULL;
+            G.net[i].s = NULL;
         }
+        UNLOCK();
     }
 }
 
@@ -142,17 +142,17 @@ static void* f (void* arg) {
         uint32_t i1, i2, i3, i4;
 
         int ok = 1;
-        ok &&= tcp_recv_u8(s, &src);
-        ok &&= tcp_recv_u32(s, &seq);
-        ok &&= tcp_recv_u32(s, &tick);
-        ok &&= tcp_recv_u8(s, &id);
-        ok &&= tcp_recv_u8(s, &n);
-        ok &&= tcp_recv_u32(s, &i1);
-        ok &&= tcp_recv_u32(s, &i2);
-        ok &&= tcp_recv_u32(s, &i3);
-        ok &&= tcp_recv_u32(s, &i4);
+        ok = ok && tcp_recv_u8 (s, &src);
+        ok = ok && tcp_recv_u32(s, &seq);
+        ok = ok && tcp_recv_u32(s, &tick);
+        ok = ok && tcp_recv_u8 (s, &id);
+        ok = ok && tcp_recv_u8 (s, &n);
+        ok = ok && tcp_recv_u32(s, &i1);
+        ok = ok && tcp_recv_u32(s, &i2);
+        ok = ok && tcp_recv_u32(s, &i3);
+        ok = ok && tcp_recv_u32(s, &i4);
+        ok = ok && (G.net[oth].s != NULL);
         if (!ok) {
-            G.net[oth] = NULL;
             goto _OUT_;
         }
 
@@ -184,6 +184,8 @@ static void* f (void* arg) {
     }
 
 _OUT_:
+    //printf(">>> %p\n", s);
+    G.net[oth].s = NULL;
     SDLNet_TCP_Close(s);
     return NULL;
 }
@@ -203,14 +205,22 @@ void p2p_link (char* host, int port, uint8_t oth) {
     IPaddress ip;
     assert(SDLNet_ResolveHost(&ip, host, port) == 0);
     TCPsocket s = SDLNet_TCP_Open(&ip);
-#if 0
+#if 1
 if (s == NULL) {
-    printf("%d %d\n", port, oth);
+    printf("%d %d %s\n", port, oth, SDLNet_GetError());
 }
 #endif
     assert(s != NULL);
     pthread_t t;
     assert(pthread_create(&t, NULL,f,(void*)s) == 0);
+}
+
+void p2p_unlink (uint8_t oth) {
+    LOCK();
+    assert(G.net[oth].s != NULL);
+    //SDLNet_TCP_Close(G.net[oth].s);
+    G.net[oth].s = NULL;
+    UNLOCK();
 }
 
 void p2p_dump (void) {
@@ -386,6 +396,7 @@ T.travel = 1;
             }
             //printf("[%02d] GOBAK=%d\n", G.me, G.time.tick-next);
 #endif
+#if 0
             for (int j=G.time.tick-1; j>next; j--) {
                 p2p_travel(j);
                 G.cbs.eff(1);
@@ -397,6 +408,9 @@ T.travel = 1;
                 G.cbs.eff(1);
                 //if (dt>0) SDL_Delay(dt);
             }
+#endif
+            G.paks.n++;     // now include it and move forward
+            p2p_travel(G.time.tick);
             G.time.nxt = SDL_GetTicks() + G.time.mpf;
             G.paks.i++;
         } else {
