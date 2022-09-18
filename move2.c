@@ -1,6 +1,6 @@
 #if 0
 #!/bin/sh
-gcc -g -Wall `sdl2-config --cflags` -DP2P_LATENCY=5 -DP2P_WAIT=0 p2p.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
+gcc -g -Wall `sdl2-config --cflags` -DP2P_LATENCY=5 -DP2P_WAIT=0 p2p.c move2.c -o xmove2 `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
 exit
 #endif
 
@@ -25,22 +25,31 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 #define VEL   2
 #define DIM   10
 
-/*
- *  0 - 1 - 2
- *   \     /
- *    - 3 -
- *      |
- *      4
- */
-int NET[6][6] = {
-    { 0, 1, 0, 1, 0, 0 },
-    { 1, 0, 1, 0, 0, 0 },
-    { 0, 1, 0, 1, 0, 0 },
-    { 1, 0, 1, 0, 1, 0 },
-    { 0, 0, 0, 1, 0, 0 },
-    { 0, 0, 0, 0, 0, 0 }
+int NET[21][10] = {
+    //{  1, 20, -1, -1, -1, -1, -1, -1, -1, -1 }, // 0
+    {  1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }, // 0
+    {  0,  2, -1, -1, -1, -1, -1, -1, -1, -1 },
+    {  1,  3, -1, -1, -1, -1, -1, -1, -1, -1 },
+    {  2,  4,  8, -1, -1, -1, -1, -1, -1, -1 },
+    {  3,  5, -1, -1, -1, -1, -1, -1, -1, -1 },
+    {  4,  6, -1, -1, -1, -1, -1, -1, -1, -1 }, // 5
+    {  5,  7,  9, -1, -1, -1, -1, -1, -1, -1 },
+    {  6,  8, -1, -1, -1, -1, -1, -1, -1, -1 },
+    {  3,  7, -1, -1, -1, -1, -1, -1, -1, -1 },
+    {  6, 10, -1, -1, -1, -1, -1, -1, -1, -1 },
+    {  9, 11, -1, -1, -1, -1, -1, -1, -1, -1 }, // 10
+    { 10, 12, -1, -1, -1, -1, -1, -1, -1, -1 },
+    { 11, 13, 14, 15, 16, 17, -1, -1, -1, -1 },
+    { 12, 14, 15, 16, 17, -1, -1, -1, -1, -1 },
+    { 12, 13, 15, 16, 17, -1, -1, -1, -1, -1 },
+    { 12, 13, 14, 16, 17, 18, -1, -1, -1, -1 }, // 15
+    { 12, 13, 14, 15, 17, -1, -1, -1, -1, -1 },
+    { 12, 13, 14, 15, 16, -1, -1, -1, -1, -1 },
+    { 15, 19, -1, -1, -1, -1, -1, -1, -1, -1 },
+    { 18, 20, -1, -1, -1, -1, -1, -1, -1, -1 },
+    { 19, -1, -1, -1, -1, -1, -1, -1, -1, -1 }  // 20
+    //{ 19,  0, -1, -1, -1, -1, -1, -1, -1, -1 }  // 20
 };
-
 struct {
     int x,  y;
     int dx, dy;
@@ -73,8 +82,11 @@ int main (int argc, char** argv) {
 
 void cb_ini (int ini) {
     if (ini) {
+        char title[255] = "[XX] P2P-TML: Peer-to-Peer Time Machine Library";
+        title[1] = '0' + ME/10;
+        title[2] = '0' + ME%10;
         WIN = SDL_CreateWindow (
-            "P2P-TML: Peer-to-Peer Time Machine Library",
+            title,
             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
             SIZE, SIZE,
             SDL_WINDOW_SHOWN
@@ -91,28 +103,14 @@ void cb_ini (int ini) {
         IMG_right = IMG_LoadTexture(REN, "imgs/right.png");
         IMG_space = IMG_LoadTexture(REN, "imgs/space.png");
 
-#if 1
-        for (int i=0; i<6; i++) {
-            for (int j=0; j<6; j++) {
-                assert(NET[i][j] == NET[j][i]);
+        sleep(10);
+        for (int i=0; i<10; i++) {
+            int v = NET[(int)ME][i];
+            if (v!=-1 && v>ME) {
+                //printf(">>> %d <-> %d\n", ME, v);
+                p2p_link("localhost", 5000+v, v);
             }
         }
-
-#if 1
-        if (ME == 5) {
-            p2p_link("localhost", 5010, 0);
-        }
-#endif
-
-#if 1
-        sleep(1);
-        for (int i=ME+1; i<6; i++) {
-            if (NET[(int)ME][i]) {
-                p2p_link("localhost", 5010+i, i);
-            }
-        }
-#endif
-#endif
     } else {
         SDL_DestroyTexture(IMG_up);
         SDL_DestroyTexture(IMG_down);

@@ -22,11 +22,8 @@ int  cb_rec (SDL_Event* sdl, p2p_evt* evt);
 #define TST_TCK_MS   1000
 #define TST_TCK_TCKS (TST_TCK_MS*FPS/1000)
 
-#define TST_SIM_MIN  3
-#define TST_SIM_TOT  (TST_SIM_MIN*60*FPS)
-
-#define TST_EVT_MIN  100  // 100 evt/min
-#define TST_EVT_PEER (FPS*60*PEERS/TST_EVT_MIN)
+#define TST_SIM_TOT  (P2P_TOTAL*FPS)
+#define TST_EVT_PEER (FPS*60*PEERS/P2P_EVENTS)
 
 #define PEERS 21
 #define FPS   50
@@ -106,7 +103,7 @@ void cb_ini (int ini) {
             int v = NET[(int)ME][i];
             if (v!=-1 && v>ME) {
                 //printf(">>> %d <-> %d\n", ME, v);
-                p2p_link("localhost", 5000+v, v);
+                p2p_link("localhost", 5100+v, v);
             }
         }
         XXX = rand() % 10000;
@@ -169,10 +166,10 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     }
 
     static int i = 0;
-    static int _i = 0;    // 1st after 1s
+    static int _i = FPS;    // 1st after 1s
     if (i++ == _i) {
         _i += rand() % TST_EVT_PEER*2;
-        if (i > 0) {
+        //if (i > 0) {
             if (FIRST == 0) {
                 FIRST = 1;
                 printf("[%02d] FRST %d %d\n", ME, TICK, SDL_GetTicks());
@@ -190,7 +187,7 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
             }
             *evt = (p2p_evt) { P2P_EVT_KEY, 1, {.i1=key} };
             return P2P_RET_REC;
-        }
+        //}
     }
     return P2P_RET_NONE;
 }

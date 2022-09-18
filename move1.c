@@ -1,6 +1,6 @@
 #if 0
 #!/bin/sh
-gcc -g -Wall `sdl2-config --cflags` -DP2P_LATENCY=5 -DP2P_WAIT=0 p2p.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
+gcc -g -Wall `sdl2-config --cflags` -DP2P_LATENCY=5 -DP2P_WAIT=0 p2p.c move1.c -o xmove1 `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
 exit
 #endif
 
@@ -106,7 +106,7 @@ void cb_ini (int ini) {
 
 #if 1
         sleep(1);
-        for (int i=ME+1; i<6; i++) {
+        for (int i=0; i<6; i++) {
             if (NET[(int)ME][i]) {
                 p2p_link("localhost", 5010+i, i);
             }

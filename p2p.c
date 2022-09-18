@@ -53,7 +53,7 @@ static struct {
 } G = { -1, {}, {}, {0,0,{}}, {NULL,NULL,NULL}, {-1,-1,0}, {{-1,NULL},{}} };
 
 struct {
-    int start;
+    int wait;
     int tcks;
     int fwds_i;
     int fwds_s;
@@ -268,7 +268,7 @@ void p2p_loop (
     G.cbs.rec = cb_rec;
 
     G.time.mpf = mpf;
-    T.start = fps*60*1;
+    T.wait = fps*P2P_WAIT;
 
     G.cbs.sim((p2p_evt) { P2P_EVT_INIT, 0, {} });
 
@@ -343,7 +343,7 @@ T.travel = 1;
             G.time.nxt -= G.time.mpf;
             G.time.nxt += x;
 #if 1 // paper instrumentation
-            if (G.time.tick > T.start) {
+            if (G.time.tick > T.wait) {
                 if (!oldislate) {
 //printf("[%02d] late=%d\n", G.me, G.time.tick);
 //printf("[%02d] etal=%d\n", G.me, G.time.tick);
@@ -360,7 +360,7 @@ T.travel = 1;
             int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
             G.paks.n--;     // do not include deviating event
 #if 1 // paper instrumentation
-            if (G.time.tick > T.start) {
+            if (G.time.tick > T.wait) {
                 T.baks_i += 1;
                 T.baks_s += (G.time.tick-next);
             }
@@ -369,13 +369,13 @@ T.travel = 1;
             for (int j=G.time.tick-1; j>next; j--) {
                 p2p_travel(j);
                 G.cbs.eff(1);
-                //SDL_Delay(dt);
+                //if (dt>0) SDL_Delay(dt);
             }
             G.paks.n++;     // now include it and move forward
             for (int j=next; j<=G.time.tick; j++) {
                 p2p_travel(j);
                 G.cbs.eff(1);
-                //SDL_Delay(dt);
+                //if (dt>0) SDL_Delay(dt);
             }
             G.time.nxt = SDL_GetTicks() + G.time.mpf;
             G.paks.i++;
@@ -403,7 +403,7 @@ int p2p_loop_sdl (void) {
             assert(P2P_MAX_MEM > G.time.tick/P2P_HIS_TICKS);
             memcpy(G.mem.his[G.time.tick/P2P_HIS_TICKS], G.mem.app.buf, G.mem.app.n);    // save w/o events
         }
-        if (G.time.tick > T.start) {
+        if (G.time.tick > T.wait) {
             T.tcks++;
         }
         G.cbs.eff(0);

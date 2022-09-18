@@ -8,7 +8,7 @@
 #define P2P_MAX_PAKS  65536
 #define P2P_MAX_MEM   1000
 #define P2P_HIS_TICKS 10000  // 500s (50fps)
-#define P2P_LATENCY   75
+//#define P2P_LATENCY   75
 #define P2P_DELTA     (P2P_LATENCY*5) //*1.1
 
 enum {
