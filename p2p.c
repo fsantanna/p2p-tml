@@ -67,17 +67,21 @@ static void p2p_bcast2 (p2p_pak pak) {
         if (i == G.me) continue;
         TCPsocket s = G.net[i].s;
         if (s == NULL) continue;
+        int ok = 1;
         LOCK();
-        tcp_send_u8 (s, pak.src);
-        tcp_send_u32(s, pak.seq);
-        tcp_send_u32(s, pak.tick);
-        tcp_send_u8 (s, pak.evt.id);
-        tcp_send_u8 (s, pak.evt.n);
-        tcp_send_u32(s, pak.evt.pay.i4._1);
-        tcp_send_u32(s, pak.evt.pay.i4._2);
-        tcp_send_u32(s, pak.evt.pay.i4._3);
-        tcp_send_u32(s, pak.evt.pay.i4._4);
+        ok &&= tcp_send_u8 (s, pak.src);
+        ok &&= tcp_send_u32(s, pak.seq);
+        ok &&= tcp_send_u32(s, pak.tick);
+        ok &&= tcp_send_u8 (s, pak.evt.id);
+        ok &&= tcp_send_u8 (s, pak.evt.n);
+        ok &&= tcp_send_u32(s, pak.evt.pay.i4._1);
+        ok &&= tcp_send_u32(s, pak.evt.pay.i4._2);
+        ok &&= tcp_send_u32(s, pak.evt.pay.i4._3);
+        ok &&= tcp_send_u32(s, pak.evt.pay.i4._4);
         UNLOCK();
+        if (!ok) {
+            G.net[i] = NULL;
+        }
     }
 }
 
@@ -111,9 +115,13 @@ static void p2p_reorder (void) {
 static void* f (void* arg) {
     TCPsocket s = (TCPsocket) arg;
     LOCK();
-    tcp_send_u8(s, G.me);
+    int ok = tcp_send_u8(s, G.me);
     UNLOCK();
-    uint8_t oth = tcp_recv_u8(s);
+
+    uint8_t oth;
+    if (!ok || !tcp_recv_u8(s, &oth)) {
+        goto _OUT_;
+    }
 
     LOCK();
     assert(oth < P2P_MAX_NET);
@@ -128,15 +136,26 @@ static void* f (void* arg) {
     }
 
     while (1) {
-        uint8_t  src  = tcp_recv_u8(s);
-        uint32_t seq  = tcp_recv_u32(s);
-        uint32_t tick = tcp_recv_u32(s);
-        uint8_t  id   = tcp_recv_u8(s);
-        uint8_t  n    = tcp_recv_u8(s);
-        uint32_t i1   = tcp_recv_u32(s);
-        uint32_t i2   = tcp_recv_u32(s);
-        uint32_t i3   = tcp_recv_u32(s);
-        uint32_t i4   = tcp_recv_u32(s);
+        uint8_t  src;
+        uint32_t seq, tick;
+        uint8_t  id, n;
+        uint32_t i1, i2, i3, i4;
+
+        int ok = 1;
+        ok &&= tcp_recv_u8(s, &src);
+        ok &&= tcp_recv_u32(s, &seq);
+        ok &&= tcp_recv_u32(s, &tick);
+        ok &&= tcp_recv_u8(s, &id);
+        ok &&= tcp_recv_u8(s, &n);
+        ok &&= tcp_recv_u32(s, &i1);
+        ok &&= tcp_recv_u32(s, &i2);
+        ok &&= tcp_recv_u32(s, &i3);
+        ok &&= tcp_recv_u32(s, &i4);
+        if (!ok) {
+            G.net[oth] = NULL;
+            goto _OUT_;
+        }
+
         //SDL_Delay(P2P_LATENCY); // - P2P_LATENCY/10 + rand()%P2P_LATENCY/5);
         SDL_Delay(P2P_LATENCY - P2P_LATENCY/10 + rand()%P2P_LATENCY/5);
 //puts("-=-=-=-=-");
@@ -164,6 +183,7 @@ static void* f (void* arg) {
         }
     }
 
+_OUT_:
     SDLNet_TCP_Close(s);
     return NULL;
 }
