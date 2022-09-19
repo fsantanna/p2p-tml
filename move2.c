@@ -195,6 +195,24 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
                 case SDLK_SPACE:
                     SDL_RenderCopy(REN, IMG_space, NULL, NULL);
                     break;
+                case SDLK_x:
+                    for (int i=0; i<10; i++) {
+                        int v = NET[(int)ME][i];
+                        if (v != -1) {
+                            //printf(">>> %d <-> %d\n", ME, v);
+                            p2p_unlink(v);
+                        }
+                    }
+                    break;
+                case SDLK_z:
+                    for (int i=0; i<10; i++) {
+                        int v = NET[(int)ME][i];
+                        if (v != -1) {
+                            //printf(">>> %d <-> %d\n", ME, v);
+                            p2p_link("localhost", 5000+v, v);
+                        }
+                    }
+                    break;
             }
             SDL_RenderPresent(REN);
 	        SDL_Delay(50);
