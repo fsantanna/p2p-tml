@@ -14,7 +14,8 @@
 
 typedef struct {
     TCPsocket s;
-    uint32_t seq;
+    int       isloc;
+    uint32_t  seq;
 } p2p_net;
 
 typedef struct {
@@ -65,21 +66,24 @@ struct {
 static void p2p_bcast2 (p2p_pak pak) {
     for (int i=0; i<P2P_MAX_NET; i++) {
         if (i == G.me) continue;
-        TCPsocket s = G.net[i].s;
-        if (s == NULL) continue;
         LOCK();
-        int ok = 1;
-        ok = ok && tcp_send_u8 (s, pak.src);
-        ok = ok && tcp_send_u32(s, pak.seq);
-        ok = ok && tcp_send_u32(s, pak.tick);
-        ok = ok && tcp_send_u8 (s, pak.evt.id);
-        ok = ok && tcp_send_u8 (s, pak.evt.n);
-        ok = ok && tcp_send_u32(s, pak.evt.pay.i4._1);
-        ok = ok && tcp_send_u32(s, pak.evt.pay.i4._2);
-        ok = ok && tcp_send_u32(s, pak.evt.pay.i4._3);
-        ok = ok && tcp_send_u32(s, pak.evt.pay.i4._4);
-        if (!ok) {
-            G.net[i].s = NULL;
+        TCPsocket s = G.net[i].s;
+        if (s == NULL) {
+            // skip
+        } else {
+            int ok = 1;
+            ok = ok && tcp_send_u8 (s, pak.src);
+            ok = ok && tcp_send_u32(s, pak.seq);
+            ok = ok && tcp_send_u32(s, pak.tick);
+            ok = ok && tcp_send_u8 (s, pak.evt.id);
+            ok = ok && tcp_send_u8 (s, pak.evt.n);
+            ok = ok && tcp_send_u32(s, pak.evt.pay.i4._1);
+            ok = ok && tcp_send_u32(s, pak.evt.pay.i4._2);
+            ok = ok && tcp_send_u32(s, pak.evt.pay.i4._3);
+            ok = ok && tcp_send_u32(s, pak.evt.pay.i4._4);
+            if (!ok) {
+                G.net[i].s = NULL;
+            }
         }
         UNLOCK();
     }
@@ -125,8 +129,11 @@ static void* f (void* arg) {
 
     LOCK();
     assert(oth < P2P_MAX_NET);
-    //assert(G.net[oth].s == NULL);
-    G.net[oth] = (p2p_net) { s, 0 };
+    if (G.net[oth].s == NULL) {
+        G.net[oth] = (p2p_net) { s, 0, G.net[oth].seq };
+    } else {
+        assert(G.net[oth].isloc);
+    }
 
     int N = G.paks.n;
     UNLOCK();
@@ -151,7 +158,9 @@ static void* f (void* arg) {
         ok = ok && tcp_recv_u32(s, &i2);
         ok = ok && tcp_recv_u32(s, &i3);
         ok = ok && tcp_recv_u32(s, &i4);
+        LOCK();
         ok = ok && (G.net[oth].s != NULL);
+        UNLOCK();
         if (!ok) {
             goto _OUT_;
         }
@@ -184,8 +193,10 @@ static void* f (void* arg) {
     }
 
 _OUT_:
-    //printf(">>> %p\n", s);
+    LOCK();
     G.net[oth].s = NULL;
+    UNLOCK();
+    //printf(">>> %p\n", s);
     SDLNet_TCP_Close(s);
     return NULL;
 }
@@ -202,17 +213,24 @@ void p2p_bcast (uint32_t tick, p2p_evt* evt) {
 }
 
 void p2p_link (char* host, int port, uint8_t oth) {
-    IPaddress ip;
-    assert(SDLNet_ResolveHost(&ip, host, port) == 0);
-    TCPsocket s = SDLNet_TCP_Open(&ip);
+    LOCK();
+    if (G.net[oth].s != NULL) {
+        // already connected
+    } else {
+        IPaddress ip;
+        assert(SDLNet_ResolveHost(&ip, host, port) == 0);
+        TCPsocket s = SDLNet_TCP_Open(&ip);
 #if 1
 if (s == NULL) {
     printf("%d %d %s\n", port, oth, SDLNet_GetError());
 }
 #endif
-    assert(s != NULL);
-    pthread_t t;
-    assert(pthread_create(&t, NULL,f,(void*)s) == 0);
+        assert(s != NULL);
+        G.net[oth] = (p2p_net) { s, 1, G.net[oth].seq };
+        pthread_t t;
+        assert(pthread_create(&t, NULL,f,(void*)s) == 0);
+    }
+    UNLOCK();
 }
 
 void p2p_unlink (uint8_t oth) {
@@ -280,7 +298,7 @@ void p2p_loop (
     assert(me < P2P_MAX_NET);
     G.me = me;
     for (int i=0; i<P2P_MAX_NET; i++) {
-        G.net[i] = (p2p_net) { NULL, 0 };
+        G.net[i] = (p2p_net) { NULL, 0, 0 };
     }
     assert(pthread_mutex_init(&G.lock,NULL) == 0);
     assert(SDLNet_Init() == 0);
@@ -288,7 +306,7 @@ void p2p_loop (
     assert(SDLNet_ResolveHost(&ip, NULL, port) == 0);
     TCPsocket s = SDLNet_TCP_Open(&ip);
     assert(s != NULL);
-    G.net[G.me] = (p2p_net) { s, 0 };
+    G.net[G.me] = (p2p_net) { s, 0, 0 };
 
     int mpf = 1000 / fps;
     assert(1000%fps == 0);
