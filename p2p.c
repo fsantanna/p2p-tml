@@ -125,7 +125,7 @@ static void* f (void* arg) {
 
     LOCK();
     assert(oth < P2P_MAX_NET);
-    assert(G.net[oth].s == NULL);
+    //assert(G.net[oth].s == NULL);
     G.net[oth] = (p2p_net) { s, 0 };
 
     int N = G.paks.n;
@@ -217,7 +217,7 @@ if (s == NULL) {
 
 void p2p_unlink (uint8_t oth) {
     LOCK();
-    assert(G.net[oth].s != NULL);
+    //assert(G.net[oth].s != NULL);
     //SDLNet_TCP_Close(G.net[oth].s);
     G.net[oth].s = NULL;
     UNLOCK();
