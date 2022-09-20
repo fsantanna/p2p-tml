@@ -132,9 +132,9 @@ static void* f (void* arg) {
     if (G.net[oth].s == NULL) {
         G.net[oth] = (p2p_net) { s, G.net[oth].seq };
     } else {
+        UNLOCK();
         goto _OUT2_;
     }
-
     int N = G.paks.n;
     UNLOCK();
 
