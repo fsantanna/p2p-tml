@@ -42,6 +42,8 @@ static struct {
         int      mpf;
         uint32_t nxt;
         int      tick;
+        int      dif2;
+        int      mpf2;
     } time;
     struct {
         struct {
@@ -50,7 +52,7 @@ static struct {
         } app;
         char* his[P2P_MAX_MEM];
     } mem;
-} G = { -1, {}, {}, {0,0,{}}, {NULL,NULL,NULL}, {-1,-1,0}, {{-1,NULL},{}} };
+} G = { -1, {}, {}, {0,0,{}}, {NULL,NULL,NULL}, {-1,-1,0,0,0}, {{-1,NULL},{}} };
 
 struct {
     int wait;
@@ -382,14 +384,12 @@ T.travel = 0;
             G.cbs.sim(PAK(G.paks.i).evt);
             G.cbs.eff(0);
             G.paks.i++;
-        } else if (last > G.time.tick+DELTA_TICKS) {
+        } else if (G.time.dif2==0 && last>G.time.tick+DELTA_TICKS) {
             // i'm too much in the past, need to hurry
-            int dif = last - G.time.tick - DELTA_TICKS;
-            assert(dif > 0);
-T.travel = 1;
-            int x = G.time.mpf*1000/MAX(2000,2*dif*G.time.mpf);
-            G.time.nxt -= G.time.mpf;
-            G.time.nxt += x;
+            int dif = (last - G.time.tick - DELTA_TICKS) * G.time.mpf;
+            G.time.dif2 = dif + 1000;
+            G.time.mpf2 = G.time.mpf*1000 / (dif+1000);
+//printf("[%02d] dif=%d %d/%d\n", G.me, dif, G.time.mpf2, G.time.dif2);
 #if 1 // paper instrumentation
             if (G.time.tick > T.wait) {
                 if (!oldislate) {
@@ -449,7 +449,12 @@ int p2p_loop_sdl (void) {
     // TICK
     if (now >= G.time.nxt) {
         G.time.tick++;
-        G.time.nxt += G.time.mpf;
+        if (G.time.dif2 > 0) {
+            G.time.dif2 -= G.time.mpf;
+            G.time.nxt += G.time.mpf2;
+        } else {
+            G.time.nxt += G.time.mpf;
+        }
         G.cbs.sim((p2p_evt) { P2P_EVT_TICK, 1, {.i1=G.time.tick} });
         if (G.time.tick % P2P_HIS_TICKS == 0) {
             assert(P2P_MAX_MEM > G.time.tick/P2P_HIS_TICKS);

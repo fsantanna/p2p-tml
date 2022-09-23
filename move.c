@@ -58,7 +58,7 @@ int main (int argc, char** argv) {
 
 #if 1
     if (ME == 5) {
-        //sleep(10);
+        sleep(10);
     }
 #endif
 
