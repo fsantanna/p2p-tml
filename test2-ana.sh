@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ./test-ana.sh
+# ./test2-ana.sh
 
 TOTAL=300
 WAIT=30
@@ -35,14 +35,14 @@ do
         fi
 
         echo "=== TOTAL=$TOTAL, WAIT=$WAIT, LATENCY=$LATENCY, EVENTS=$EVENTS" | tee -a all.log
-        echo "" | tee -a all.log
+        echo "" | tee -a all2.log
 
-        gcc -g -Wall `sdl2-config --cflags` -DP2P_LATENCY=$LATENCY -DP2P_TOTAL=$TOTAL -DP2P_WAIT=$WAIT -DP2P_EVENTS=$EVENTS p2p.c test.c -o xtest `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
+        gcc -g -Wall `sdl2-config --cflags` -DP2P_LATENCY=$LATENCY -DP2P_TOTAL=$TOTAL -DP2P_WAIT=$WAIT -DP2P_EVENTS=$EVENTS p2p.c test2.c -o xtest2 `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
 
-        pkill -9 -f xtest
-        time ./test.sh | tee out.log
+        pkill -9 -f xtest2
+        time ./test2.sh | tee out2.log
 
-        lua5.3 test-ana.lua $TOTAL $WAIT $LATENCY | tee -a all.log
-        echo "" | tee -a all.log
+        lua5.3 test2-ana.lua $TOTAL $WAIT $LATENCY | tee -a all2.log
+        echo "" | tee -a all2.log
     done
 done

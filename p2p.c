@@ -132,7 +132,7 @@ static void* f (void* arg) {
     LOCK();
     assert(oth < P2P_MAX_NET);
     if (G.net[oth].s == NULL) {
-        G.net[oth] = (p2p_net) { s, G.net[oth].seq };
+        G.net[oth] = (p2p_net) { s, 0 };
     } else {
         UNLOCK();
         goto _OUT2_;

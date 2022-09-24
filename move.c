@@ -109,7 +109,7 @@ void cb_ini (int ini) {
 
 #if 1
         sleep(1);
-        for (int i=ME+1; i<6; i++) {
+        for (int i=0; i<6; i++) {
             if (NET[(int)ME][i]) {
                 p2p_link("localhost", 5010+i, i);
             }
