@@ -98,7 +98,7 @@ int XXX = 0;
 
 void cb_ini (int ini) {
     if (ini) {
-        SDL_Delay(5000);
+        //SDL_Delay(5000);
         for (int i=0; i<10; i++) {
             int v = NET[(int)ME][i];
             if (v!=-1 && v>ME) {
@@ -109,6 +109,7 @@ void cb_ini (int ini) {
         XXX = rand() % 10000;
         SDL_Delay(XXX);
         printf("[%02d] rand %d\n", ME, XXX);
+        fflush(stdout);
     } else {
     }
 }
@@ -154,12 +155,14 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     if (first == 0) {
         first = 1;
         printf("[%02d] frst %d\n", ME, TICK);
+        fflush(stdout);
     }
 
     if (sdl != NULL) return P2P_RET_NONE;
 
     if (TICK > TST_SIM_TOT) {
         printf("[%02d] evts %d\n", ME, evts);
+        fflush(stdout);
         return P2P_RET_QUIT;
     } else if (TICK > TST_SIM_TOT-(10*FPS)) {   // -10s
         return P2P_RET_NONE;
@@ -173,10 +176,12 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
             if (FIRST == 0) {
                 FIRST = 1;
                 printf("[%02d] FRST %d %d\n", ME, TICK, SDL_GetTicks());
+                fflush(stdout);
             }
             int v = rand() % 5;
             evts++;
-            //printf("[%02d] EVT=%d (%d)\n", ME,v, TICK);
+            printf("[%02d] EVT=%d (%d)\n", ME,v, TICK);
+            fflush(stdout);
             int key;
             switch (v) {
                 case 0: { key=SDLK_LEFT;  break; }

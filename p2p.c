@@ -160,9 +160,6 @@ static void* f (void* arg) {
         ok = ok && tcp_recv_u32(s, &i2);
         ok = ok && tcp_recv_u32(s, &i3);
         ok = ok && tcp_recv_u32(s, &i4);
-        LOCK();
-        ok = ok && (G.net[oth].s != NULL);
-        UNLOCK();
         if (!ok) {
             goto _OUT1_;
         }
@@ -180,6 +177,7 @@ static void* f (void* arg) {
 #if 1 // remove when assert no longer fails
             if (seq != cur+1) {
                 printf(">>> [%02d] %d == %d+1\n", G.me, seq, cur);
+                fflush(stdout);
             }
 #endif
             assert(seq == cur+1);
@@ -198,7 +196,6 @@ _OUT1_:
     LOCK();
     G.net[oth].s = NULL;
     UNLOCK();
-    //printf(">>> %p\n", s);
 _OUT2_:
     SDLNet_TCP_Close(s);
     return NULL;
@@ -223,18 +220,22 @@ void p2p_link (char* host, int port, uint8_t oth) {
         IPaddress ip;
         assert(SDLNet_ResolveHost(&ip, host, port) == 0);
         TCPsocket s = SDLNet_TCP_Open(&ip);
-#if 1
+#if 0
 if (s == NULL) {
     printf("%d %d %s\n", port, oth, SDLNet_GetError());
+    fflush(stdout);
 }
+//assert(s != NULL);
 #endif
-        assert(s != NULL);
-        pthread_t t;
-        assert(pthread_create(&t, NULL,f,(void*)s) == 0);
+        if (s != NULL) {
+            pthread_t t;
+            assert(pthread_create(&t, NULL,f,(void*)s) == 0);
+        }
     }
     UNLOCK();
 }
 
+#if 0
 void p2p_unlink (uint8_t oth) {
     LOCK();
     //assert(G.net[oth].s != NULL);
@@ -242,6 +243,7 @@ void p2p_unlink (uint8_t oth) {
     G.net[oth].s = NULL;
     UNLOCK();
 }
+#endif
 
 void p2p_dump (void) {
     printf("[%d] ", G.me);
@@ -258,6 +260,7 @@ void p2p_dump (void) {
         printf("%d(%d) ", pay, PAK(i).tick);
     }
     printf("= %d\n", sum);
+    fflush(stdout);
 }
 
 static void p2p_travel (int to) {
@@ -307,6 +310,12 @@ void p2p_loop (
     IPaddress ip;
     assert(SDLNet_ResolveHost(&ip, NULL, port) == 0);
     TCPsocket s = SDLNet_TCP_Open(&ip);
+#if 1
+if (s == NULL) {
+    printf("%d %d %s\n", G.me, port, SDLNet_GetError());
+    fflush(stdout);
+}
+#endif
     assert(s != NULL);
     G.net[G.me] = (p2p_net) { s, 0 };
 
@@ -351,9 +360,13 @@ void p2p_loop (
     }
 
     cb_ini(0);
+#if 0
     LOCK();
     for (int i=0; i<P2P_MAX_NET; i++) {
-        SDLNet_TCP_Close(G.net[i].s);
+        if (G.net[i].s != NULL) {
+            G.net[i].s = NULL;
+            SDLNet_TCP_Close(G.net[i].s);
+        }
     }
     UNLOCK();
     pthread_mutex_destroy(&G.lock);
@@ -361,9 +374,11 @@ void p2p_loop (
         free(G.mem.his[i]);
     }
     SDLNet_Quit();
+#endif
     printf("[%02d] tcks %d\n", G.me, T.tcks);
     printf("[%02d] fwds %d %d\n", G.me, T.fwds_s, T.fwds_i);
     printf("[%02d] baks %d %d\n", G.me, T.baks_s, T.baks_i);
+    fflush(stdout);
 }
 
 void p2p_loop_net (void) {
