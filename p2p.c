@@ -14,12 +14,11 @@
 
 typedef struct {
     TCPsocket s;
-    uint32_t  seq;
+    uint32_t  tick;
 } p2p_net;
 
 typedef struct {
     uint8_t  src;
-    uint32_t seq;
     uint32_t tick;
     p2p_evt  evt;
 } p2p_pak;
@@ -74,7 +73,6 @@ static void p2p_bcast2 (p2p_pak pak) {
         } else {
             int ok = 1;
             ok = ok && tcp_send_u8 (s, pak.src);
-            ok = ok && tcp_send_u32(s, pak.seq);
             ok = ok && tcp_send_u32(s, pak.tick);
             ok = ok && tcp_send_u8 (s, pak.evt.id);
             ok = ok && tcp_send_u8 (s, pak.evt.n);
@@ -146,13 +144,12 @@ static void* f (void* arg) {
 
     while (1) {
         uint8_t  src;
-        uint32_t seq, tick;
+        uint32_t tick;
         uint8_t  id, n;
         uint32_t i1, i2, i3, i4;
 
         int ok = 1;
         ok = ok && tcp_recv_u8 (s, &src);
-        ok = ok && tcp_recv_u32(s, &seq);
         ok = ok && tcp_recv_u32(s, &tick);
         ok = ok && tcp_recv_u8 (s, &id);
         ok = ok && tcp_recv_u8 (s, &n);
@@ -167,27 +164,20 @@ static void* f (void* arg) {
         //SDL_Delay(P2P_LATENCY); // - P2P_LATENCY/10 + rand()%P2P_LATENCY/5);
         SDL_Delay(P2P_LATENCY - P2P_LATENCY/10 + rand()%P2P_LATENCY/5);
 //puts("-=-=-=-=-");
-        p2p_pak pak = { src, seq, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
+        p2p_pak pak = { src, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
 
         LOCK();
         assert(G.paks.n < P2P_MAX_PAKS);
 
-        int cur = G.net[src].seq;
-        if (seq > cur) {
-#if 1 // remove when assert no longer fails
-            if (seq != cur+1) {
-                printf(">>> [%02d] %d == %d+1\n", G.me, seq, cur);
-                fflush(stdout);
-            }
-#endif
-            assert(seq == cur+1);
-            G.net[src].seq++;
+        int cur = G.net[src].tick;
+        if (tick > cur) {
+            G.net[src].tick = tick;
             PAK(G.paks.n++) = pak;
             p2p_reorder();
         }
         UNLOCK();
 
-        if (seq > cur) {
+        if (tick > cur) {
             p2p_bcast2(pak);
         }
     }
@@ -203,9 +193,9 @@ _OUT2_:
 
 void p2p_bcast (uint32_t tick, p2p_evt* evt) {
     LOCK();
-    uint32_t seq = ++G.net[G.me].seq;
+    G.net[G.me].tick = tick;
     assert(G.paks.n < P2P_MAX_PAKS);
-    p2p_pak pak = { G.me, seq, tick, *evt };
+    p2p_pak pak = { G.me, tick, *evt };
     PAK(G.paks.n++) = pak;
     p2p_reorder();
     UNLOCK();
@@ -248,7 +238,7 @@ void p2p_unlink (uint8_t oth) {
 void p2p_dump (void) {
     printf("[%d] ", G.me);
     for (int i=0; i<5; i++) {
-        printf("%d ", G.net[i].seq);
+        printf("%d ", G.net[i].tick);
     }
     puts("");
     printf("[%d] ", G.me);
@@ -396,6 +386,8 @@ T.travel = 0;
             break;
         } else if (next == G.time.tick) {
             // i'm just in time, handle next event in real time
+//printf("[%02d] TMR\n", G.me);
+//fflush(stdout);
             G.cbs.sim(PAK(G.paks.i).evt);
             G.cbs.eff(0);
             G.paks.i++;
@@ -404,7 +396,8 @@ T.travel = 0;
             int dif = (last - G.time.tick - DELTA_TICKS) * G.time.mpf;
             G.time.dif2 = dif + 1000;
             G.time.mpf2 = G.time.mpf*1000 / (dif+1000);
-//printf("[%02d] dif=%d %d/%d\n", G.me, dif, G.time.mpf2, G.time.dif2);
+//printf("[%02d] FWD dif=%d %d/%d\n", G.me, dif, G.time.mpf2, G.time.dif2);
+//fflush(stdout);
 #if 1 // paper instrumentation
             if (G.time.tick > T.wait) {
                 if (!oldislate) {
@@ -419,6 +412,8 @@ T.travel = 0;
 #endif
             break;
         } else if (next < G.time.tick) {
+//printf("[%02d] BAK\n", G.me);
+//fflush(stdout);
             // i'm in the future, need to go back and forth
             int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
             G.paks.n--;     // do not include deviating event

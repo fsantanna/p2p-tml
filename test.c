@@ -101,7 +101,7 @@ void cb_ini (int ini) {
         //SDL_Delay(5000);
         for (int i=0; i<10; i++) {
             int v = NET[(int)ME][i];
-            if (v!=-1 && v>ME) {
+            if (v != -1) {
                 //printf(">>> %d <-> %d\n", ME, v);
                 p2p_link("localhost", 5100+v, v);
             }

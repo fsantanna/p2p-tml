@@ -1,4 +1,4 @@
--- lua5.3 test-ana-2.lua 300 30
+-- lua5.3 test-ana.lua 300 30 50
 
 local total,wait,_LATENCY_ = ...
 
@@ -37,7 +37,8 @@ for l in io.lines('out.log') do
         elseif tick > TICK then
             TICK = tick
             --print(peer, tick)
-        elseif tick < TICK-50 then --(_LATENCY_*_FPS_/1000) then
+        elseif tick < TICK-50 then
+        --elseif tick < TICK-(_LATENCY_*_FPS_/1000) then
             --print('NO', n1, tick, TICK)
             no = no + 1
             local i = tick // 1000
