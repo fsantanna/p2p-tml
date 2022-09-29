@@ -130,7 +130,7 @@ static void* f (void* arg) {
     LOCK();
     assert(oth < P2P_MAX_NET);
     if (G.net[oth].s == NULL) {
-        G.net[oth] = (p2p_net) { s, 0 };
+        G.net[oth].s = s;
     } else {
         UNLOCK();
         goto _OUT2_;
@@ -236,20 +236,24 @@ void p2p_unlink (uint8_t oth) {
 #endif
 
 void p2p_dump (void) {
-    printf("[%d] ", G.me);
-    for (int i=0; i<5; i++) {
+    printf("[%02d] XXX ", G.me);
+    int sum1 = 0;
+    for (int i=0; i<21; i++) {
+        sum1 += i * G.net[i].tick;
         printf("%d ", G.net[i].tick);
     }
-    puts("");
-    printf("[%d] ", G.me);
-    int sum = 0;
+    //puts("");
+    //printf("[%02d] YYY ", G.me);
+    int sum2 = 0;
     for (int i=0; i<G.paks.n; i++) {
         int pay = PAK(i).evt.pay.i1;
         pay = pay-(pay>999?SDLK_RIGHT:0);
-        sum += pay + PAK(i).tick;
-        printf("%d(%d) ", pay, PAK(i).tick);
+        sum2 += i*pay + i*PAK(i).tick;
+        //printf("%d/%d ", PAK(i).src, PAK(i).tick);
     }
-    printf("= %d\n", sum);
+    //printf("= %d\n", sum2);
+    printf("[%02d] XXX = %d\n", G.me, sum1);
+    printf("[%02d] YYY = %d\n", G.me, sum2);
     fflush(stdout);
 }
 

@@ -78,12 +78,24 @@ struct {
 
 int  TICK = 0;
 char ME = -1;
+int  LAST = 0;
 
 int main (int argc, char** argv) {
     assert(argc == 3);
     ME = atoi(argv[1]);
     int port = atoi(argv[2]);
     srand(port+time(NULL));
+
+    {
+        char s[255];
+        sprintf(s, "files/file-%d.txt", ME);
+        FILE* f = fopen(s, "rb");
+        if (f != NULL) {
+            fread(&LAST, sizeof(int), 1, f);
+printf("READ = %d\n", LAST);
+            fclose(f);
+        }
+    }
 
     p2p_loop (
         ME,
@@ -163,6 +175,7 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     if (TICK > TST_SIM_TOT) {
         printf("[%02d] evts %d\n", ME, evts);
         fflush(stdout);
+        p2p_dump();
         return P2P_RET_QUIT;
     } else if (TICK > TST_SIM_TOT-(10*FPS)) {   // -10s
         return P2P_RET_NONE;
@@ -172,7 +185,18 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     static int _i = FPS;    // 1st after 1s
     if (i++ == _i) {
         _i += rand() % TST_EVT_PEER*2;
-        //if (i > 0) {
+        if (i > LAST) {
+            {
+                char s[255];
+                sprintf(s, "files/file-%d.txt", ME);
+                FILE* f = fopen(s, "wb");
+                LAST = i;
+printf("WRITE = %d\n", LAST);
+                if (f != NULL) {
+                    fwrite(&LAST, sizeof(int), 1, f);
+                    fclose(f);
+                }
+            }
             if (FIRST == 0) {
                 FIRST = 1;
                 printf("[%02d] FRST %d %d\n", ME, TICK, SDL_GetTicks());
@@ -192,7 +216,7 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
             }
             *evt = (p2p_evt) { P2P_EVT_KEY, 1, {.i1=key} };
             return P2P_RET_REC;
-        //}
+        }
     }
     return P2P_RET_NONE;
 }
