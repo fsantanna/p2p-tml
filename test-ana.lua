@@ -28,7 +28,7 @@ for l in io.lines('out.log') do
     if n1 then
         tick = tonumber(tick)
         if tick == _TOTAL_ then
-            POS[tonumber(n1)] = state
+            POS[tonumber(n1)] = pos
         end
         tot = tot + 1
         if tick <= _WAIT_ then
@@ -61,8 +61,12 @@ for l in io.lines('out.log') do
 end
 
 local pos = POS[0]
+assert(pos)
 for i=1, _PEERS_-1 do
-    assert(POS[i] == pos)
+    --assert(POS[i] == pos)
+    if POS[i] ~= pos then
+        print('ERR', i, pos, POS[i])
+    end
 end
 
 local tcks = TCKS[0] * _PEERS_

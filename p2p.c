@@ -9,8 +9,8 @@
 #define LOCK()    pthread_mutex_lock(&G.lock)
 #define UNLOCK()  pthread_mutex_unlock(&G.lock);
 #define PAK(i)    G.paks.buf[i]
-//#define DELTA_TICKS (MAX(2, P2P_DELTA/G.time.mpf))
-#define DELTA_TICKS (P2P_DELTA/G.time.mpf)
+//#define DELTA_TICKS (MAX(2, P2P_LATENCY_N/G.time.mpf))
+#define DELTA_TICKS (P2P_LATENCY_N/G.time.mpf)
 
 typedef struct {
     TCPsocket s;
@@ -236,32 +236,33 @@ void p2p_unlink (uint8_t oth) {
 #endif
 
 void p2p_dump (void) {
-    printf("[%02d] XXX ", G.me);
+    printf("[%02d] AAA ", G.me);
     int sum1 = 0;
     for (int i=0; i<21; i++) {
         sum1 += i * G.net[i].tick;
         printf("%d ", G.net[i].tick);
     }
-    //puts("");
-    //printf("[%02d] YYY ", G.me);
+    puts("");
+    printf("[%02d] BBB ", G.me);
     int sum2 = 0;
     for (int i=0; i<G.paks.n; i++) {
         int pay = PAK(i).evt.pay.i1;
         pay = pay-(pay>999?SDLK_RIGHT:0);
         sum2 += i*pay + i*PAK(i).tick;
-        //printf("%d/%d ", PAK(i).src, PAK(i).tick);
+        printf("%d/%d ", PAK(i).src, PAK(i).tick);
     }
-    //printf("= %d\n", sum2);
+    printf("= %d\n", sum2);
     printf("[%02d] XXX = %d\n", G.me, sum1);
     printf("[%02d] YYY = %d\n", G.me, sum2);
     fflush(stdout);
 }
 
-static void p2p_travel (int to) {
+int END = 1;
+void p2p_travel (int to) {
     assert(0<=to && to<=G.time.tick);
-    memcpy(G.mem.app.buf, G.mem.his[to/P2P_HIS_TICKS], G.mem.app.n);   // load w/o events
+    memcpy(G.mem.app.buf, G.mem.his[END?0:to/P2P_HIS_TICKS], G.mem.app.n);   // load w/o events
 
-    int fst = to - to%P2P_HIS_TICKS;
+    int fst = END ? 0 : to - to%P2P_HIS_TICKS;
     int e = 0;
 
     // skip events before fst
@@ -400,7 +401,7 @@ T.travel = 0;
             int dif = (last - G.time.tick - DELTA_TICKS) * G.time.mpf;
             G.time.dif2 = dif + 1000;
             G.time.mpf2 = G.time.mpf*1000 / (dif+1000);
-//printf("[%02d] FWD dif=%d %d/%d\n", G.me, dif, G.time.mpf2, G.time.dif2);
+printf("[%02d] FWD from=%d to=%d dif=%d/%d\n", G.me, G.time.tick, last, dif/G.time.mpf, dif);
 //fflush(stdout);
 #if 1 // paper instrumentation
             if (G.time.tick > T.wait) {
@@ -409,8 +410,8 @@ T.travel = 0;
 //printf("[%02d] etal=%d\n", G.me, G.time.tick);
                     T.fwds_i++;
                     islate = 1;
+                    T.fwds_s += (last - G.time.tick - DELTA_TICKS);
                 }
-                T.fwds_s++;
             }
             //printf("[%02d] GOFWD=%d [%d = 2*%d*%d/1000]\n", G.me, dif, x, dif, G.time.mpf);
 #endif
@@ -496,6 +497,7 @@ int p2p_loop_sdl (void) {
         }
 #endif
 
+if (G.time.dif2 == 0) {
 if (!T.travel) {
         switch (G.cbs.rec(has?&sdl:NULL, &evt)) {
             case P2P_RET_NONE:
@@ -510,6 +512,7 @@ if (!T.travel) {
                 break;
             }
         }
+}
 }
     }
     return 0;

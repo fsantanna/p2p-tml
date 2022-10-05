@@ -97,7 +97,10 @@ int main (int argc, char** argv) {
         if (TICK > TST_SIM_TOT) {
             break;
         }
-        SDL_Delay(rand() % FPS*10*2);
+        printf("[%02d] xxx\n", SDL_GetTicks());
+        fflush(stdout);
+        sleep(rand() % (10*2));
+        printf("[%02d] xxx\n", SDL_GetTicks());
     }
 }
 
@@ -105,7 +108,7 @@ int XXX = 0;
 
 void cb_ini (int ini) {
     if (ini) {
-        SDL_Delay(5000);
+        SDL_Delay(10000);
         for (int i=0; i<10; i++) {
             int v = NET[(int)ME][i];
             if (v!=-1 && v>ME) {
@@ -186,7 +189,7 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
     static int i = 0;
     static int _i = FPS;    // 1st after 1s
     if (i++ == _i) {
-        _i += rand() % TST_EVT_PEER*2;
+        _i += rand() % (TST_EVT_PEER*2);
         //if (i > 0) {
             if (FIRST == 0) {
                 FIRST = 1;

@@ -17,22 +17,6 @@ for LATENCY in 5 25 50 100 250 500 1000
 do
     for EVENTS in 1 5 10 25 50 100 250 500
     do
-        if [ "$LATENCY" == "100" ] && [ "$EVENTS" == "1000" ]
-        then
-            break
-        fi
-        if [ "$LATENCY" == "250" ] && [ "$EVENTS" == "250" ]
-        then
-            break
-        fi
-        if [ "$LATENCY" == "500" ] && [ "$EVENTS" == "250" ]
-        then
-            break
-        fi
-        if [ "$LATENCY" == "1000" ] && [ "$EVENTS" == "100" ]
-        then
-            break
-        fi
 
         echo "=== TOTAL=$TOTAL, WAIT=$WAIT, LATENCY=$LATENCY, EVENTS=$EVENTS" | tee -a all.log
         echo "" | tee -a all.log

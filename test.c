@@ -176,6 +176,11 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
         printf("[%02d] evts %d\n", ME, evts);
         fflush(stdout);
         p2p_dump();
+END = 1;
+        p2p_travel(15000);
+        p2p_dump();
+        printf("[%02d] TICK %d pos=(%d,%d,%d,%d)\n", ME,TICK, G.x,G.y,G.dx,G.dy);
+        fflush(stdout);
         return P2P_RET_QUIT;
     } else if (TICK > TST_SIM_TOT-(10*FPS)) {   // -10s
         return P2P_RET_NONE;

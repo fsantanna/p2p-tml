@@ -9,7 +9,7 @@
 #define P2P_MAX_MEM   1000
 #define P2P_HIS_TICKS 10000  // 500s (50fps)
 //#define P2P_LATENCY   75
-#define P2P_DELTA     (P2P_LATENCY*5) //*1.1
+#define P2P_LATENCY_N (P2P_LATENCY*5) //*1.1
 
 enum {
     P2P_EVT_INIT = 0,
@@ -52,7 +52,9 @@ void p2p_loop (
     int (*cb_rec) (SDL_Event*,p2p_evt*) // event recording callback
 );
 
+extern int END;
 void p2p_bcast  (uint32_t tick, p2p_evt* evt);
 void p2p_link   (char* host, int port, uint8_t me);
 void p2p_unlink (uint8_t oth);
 void p2p_dump   (void);
+void p2p_travel (int to);
