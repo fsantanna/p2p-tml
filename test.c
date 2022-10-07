@@ -106,8 +106,6 @@ printf("READ = %d\n", LAST);
     );
 }
 
-int XXX = 0;
-
 void cb_ini (int ini) {
     if (ini) {
         //SDL_Delay(5000);
@@ -118,10 +116,12 @@ void cb_ini (int ini) {
                 p2p_link("localhost", 5100+v, v);
             }
         }
-        XXX = rand() % 10000;
+#if 1
+        int XXX = rand() % 10000;
         SDL_Delay(XXX);
         printf("[%02d] rand %d\n", ME, XXX);
         fflush(stdout);
+#endif
     } else {
     }
 }
@@ -177,12 +177,20 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
         fflush(stdout);
         p2p_dump();
 END = 1;
+#if 1
         p2p_travel(15000);
+#else
+        p2p_travel(6000);
+#endif
         p2p_dump();
         printf("[%02d] TICK %d pos=(%d,%d,%d,%d)\n", ME,TICK, G.x,G.y,G.dx,G.dy);
         fflush(stdout);
         return P2P_RET_QUIT;
+#if 1
     } else if (TICK > TST_SIM_TOT-(10*FPS)) {   // -10s
+#else
+    } else if (TICK > TST_SIM_TOT-(30*FPS)) {   // -10s
+#endif
         return P2P_RET_NONE;
     }
 

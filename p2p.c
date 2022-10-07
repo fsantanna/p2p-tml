@@ -161,8 +161,6 @@ static void* f (void* arg) {
             goto _OUT1_;
         }
 
-        //SDL_Delay(P2P_LATENCY); // - P2P_LATENCY/10 + rand()%P2P_LATENCY/5);
-        SDL_Delay(P2P_LATENCY - P2P_LATENCY/10 + rand()%P2P_LATENCY/5);
 //puts("-=-=-=-=-");
         p2p_pak pak = { src, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
 

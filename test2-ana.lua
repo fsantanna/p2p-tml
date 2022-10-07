@@ -1,61 +1,106 @@
--- lua5.3 test-ana-2.lua 300 30
+-- lua5.3 test-ana-2.lua 120 50
 
-local total,wait,_LATENCY_ = ...
+local total,_LATENCY_ = ...
 
 local _PEERS_ = 21
 local _FPS_   = 50
 
 local _TOTAL_ = _FPS_*total
-local _WAIT_  = _FPS_*wait
 
 local ok,no,tot = 0,0,0
-local TICK = _WAIT_
+local SECS = 0
+local TICK = 0
 
-local NOS = {}
-local POS = {}
-local EVTS = 0
+local POS  = {}
+local OFFS = {}
 local TCKS = {}
-local FWDS1, FWDS2 = 0, 0
-local BAKS1, BAKS2 = 0, 0
 
-for l in io.lines('out.log') do
-    local n1,tick,pos = string.match(l,'%[(%d+)%] tick (%d+) pos=(.*)')
-    local n2,evts = string.match(l,'%[(%d+)%] evts (%d+)')
-    local n3,tcks = string.match(l,'%[(%d+)%] tcks (%d+)')
-    local n4,fwds1,fwds2 = string.match(l,'%[(%d+)%] fwds (%d+) (%d+)')
-    local n5,baks1,baks2 = string.match(l,'%[(%d+)%] baks (%d+) (%d+)')
+local NET  = {
+     [0] = {  1 },
+     [1] = {  0,  2 },
+     [2] = {  1,  3 },
+     [3] = {  2,  4,  8 },
+     [4] = {  3,  5 },
+     [5] = {  4,  6 },
+     [6] = {  5,  7,  9 },
+     [7] = {  6,  8 },
+     [8] = {  3,  7 },
+     [9] = {  6, 10 },
+    [10] = {  9, 11 },
+    [11] = { 10, 12 },
+    [12] = { 11, 13, 14, 15, 16, 17 },
+    [13] = { 12, 14, 15, 16, 17 },
+    [14] = { 12, 13, 15, 16, 17 },
+    [15] = { 12, 13, 14, 16, 17, 18 },
+    [16] = { 12, 13, 14, 15, 17 },
+    [17] = { 12, 13, 14, 15, 16 },
+    [18] = { 15, 19 },
+    [19] = { 18, 20 },
+    [20] = { 19 },
+};
 
-    if n1 then
-        tick = tonumber(tick)
-        if tick == _TOTAL_ then
-            POS[tonumber(n1)] = state
+function is_up (i, j, cache)
+    cache = cache or {}
+    if cache[j] then
+        return false
+    end
+    cache[j] = true
+    if i == j then
+        return true
+    end
+    for _,v in ipairs(NET[j]) do
+        if (not OFFS[v]) or (OFFS[v].state ~= 'offline') then
+            if is_up(i, v, cache) then
+                return true
+            end
         end
-        tot = tot + 1
-        if tick <= _WAIT_ then
-            tot = tot - 1
-            -- wait
-        elseif tick > TICK then
+    end
+    return false
+end
+
+function max_tick (i)
+    local ret = 0
+    for j=0, _PEERS_-1 do
+--print(i,j, is_up(i,j))
+        if is_up(i,j) then
+            ret = math.max(ret, TCKS[j] or 0)
+        end
+    end
+    return ret
+end
+
+for l in io.lines('out2.log') do
+    local n1,tick,pos = string.match(l,'%[(%d+)%] tick (%d+) pos=(.*)')
+    local n2 = string.match(l,'%[(%d+)%] OFFLINE')
+    local n3 = string.match(l,'%[(%d+)%] ONLINE')
+    local s  = string.match(l,'=== (%d+) ===')
+
+    n1   = tonumber(n1)
+    n2   = tonumber(n2)
+    n3   = tonumber(n3)
+    s    = tonumber(s)
+    tick = tonumber(tick)
+
+    if s then
+        SECS = s
+    elseif n1 then
+        if tick > TICK then
             TICK = tick
-            --print(peer, tick)
-        elseif tick < TICK-50 then --(_LATENCY_*_FPS_/1000) then
-            --print('NO', n1, tick, TICK)
-            no = no + 1
-            local i = tick // 1000
-            NOS[i] = (NOS[i] or 0) + 1
-            --no = no + (TICK-tick)/5
-        else
-            ok = ok + 1
+        end
+        TCKS[n1] = tick
+        if tick == _TOTAL_ then
+            POS[n1] = state
+        end
+        if OFFS[n1] and OFFS[n1].state=='online' then
+print(n1, SECS, tick, max_tick(n1), tick>=max_tick(n1)-_LATENCY_*5)
+            if tick >= max_tick(n1)-_LATENCY_*5 then
+                OFFS[n1] = { state='done', ret=(SECS-OFFS[n1].secs) }
+            end
         end
     elseif n2 then
-        EVTS = EVTS + tonumber(evts)
-    elseif n3 then
-        TCKS[tonumber(n3)] = tonumber(tcks)
-    elseif n4 then
-        FWDS1 = FWDS1 + tonumber(fwds1)
-        FWDS2 = FWDS2 + tonumber(fwds2)
-    elseif n5 then
-        BAKS1 = BAKS1 + tonumber(baks1)
-        BAKS2 = BAKS2 + tonumber(baks2)
+        OFFS[n2] = { state='offline' }
+    elseif n3 and OFFS[n3] and OFFS[n3].state=='offline' then
+        OFFS[n3] = { state='online', secs=SECS }
     end
 end
 
@@ -64,18 +109,7 @@ for i=1, _PEERS_-1 do
     assert(POS[i] == pos)
 end
 
-local tcks = TCKS[0] * _PEERS_
 for i=0, _PEERS_-1 do
-    assert(TCKS[i] == _TOTAL_-_WAIT_+1)
+    assert(OFFS[i], i)
+    print(i, OFFS[i].ret)
 end
-
-for i=0, 15 do
-    print('NOS['..i..'] = '..(NOS[i] or 0))
-end
-print()
-
-print(string.format('TCKS    %d', tcks))
-print(string.format('EVTS    %d', EVTS))
-print(string.format('NO      %02.3f', (no/(no+ok))))
-print(string.format('FWDS    %02.3f    %02.3f', (FWDS2/tcks), (FWDS1/tcks)))
-print(string.format('BAKS    %02.3f    %02.3f', (BAKS2/tcks), (BAKS1/tcks)))

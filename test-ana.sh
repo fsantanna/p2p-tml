@@ -15,6 +15,7 @@ WAIT=30
 
 for LATENCY in 5 25 50 100 250 500 1000
 do
+    sudo tc qdisc add dev lo root netem delay $(LATENCY)ms $((LATENCY/5))ms distribution normal
     for EVENTS in 1 5 10 25 50 100 250 500
     do
 
@@ -29,4 +30,5 @@ do
         lua5.3 test-ana.lua $TOTAL $WAIT $LATENCY | tee -a all.log
         echo "" | tee -a all.log
     done
+    sudo tc qdisc del dev lo root
 done
