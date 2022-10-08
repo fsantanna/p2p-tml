@@ -92,7 +92,7 @@ for l in io.lines('out2.log') do
             POS[n1] = state
         end
         if OFFS[n1] and OFFS[n1].state=='online' then
-print(n1, SECS, tick, max_tick(n1), tick>=max_tick(n1)-_LATENCY_*5)
+--print(n1, SECS, tick, max_tick(n1), tick>=max_tick(n1)-_LATENCY_*5)
             if tick >= max_tick(n1)-_LATENCY_*5 then
                 OFFS[n1] = { state='done', ret=(SECS-OFFS[n1].secs) }
             end

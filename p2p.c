@@ -43,6 +43,7 @@ static struct {
         int      tick;
         int      dif2;
         int      mpf2;
+        int      max;
     } time;
     struct {
         struct {
@@ -51,7 +52,7 @@ static struct {
         } app;
         char* his[P2P_MAX_MEM];
     } mem;
-} G = { -1, {}, {}, {0,0,{}}, {NULL,NULL,NULL}, {-1,-1,0,0,0}, {{-1,NULL},{}} };
+} G = { -1, {}, {}, {0,0,{}}, {NULL,NULL,NULL}, {-1,-1,0,0,0,0}, {{-1,NULL},{}} };
 
 struct {
     int wait;
@@ -165,10 +166,10 @@ static void* f (void* arg) {
             goto _OUT1_;
         }
 
-#if 0
+#if 1
         if (id == P2P_EVT_SYNC) {
             LOCK();
-            MAX_TICK = MAX(MAX_TICK, tick);
+            G.time.max = MAX(G.time.max, tick);
             UNLOCK();
         }
 #endif
@@ -205,11 +206,13 @@ _OUT2_:
 
 void p2p_bcast (uint32_t tick, p2p_evt* evt) {
     LOCK();
-    G.net[G.me].tick = tick;
-    assert(G.paks.n < P2P_MAX_PAKS);
     p2p_pak pak = { G.me, tick, *evt };
-    PAK(G.paks.n++) = pak;
-    p2p_reorder();
+    if (evt->id != P2P_EVT_SYNC) {
+        G.net[G.me].tick = tick;
+        assert(G.paks.n < P2P_MAX_PAKS);
+        PAK(G.paks.n++) = pak;
+        p2p_reorder();
+    }
     UNLOCK();
     p2p_bcast2(pak);
 }
@@ -404,19 +407,18 @@ T.travel = 0;
         static int islate = 0;
         int oldislate = islate;
         islate = 0;
+        int max = G.time.tick + DELTA_TICKS;
 
-        if (G.paks.i == G.paks.n) {
+        if (G.time.max<=max && G.paks.i==G.paks.n) {
             break;
-        } else if (next == G.time.tick) {
-            // i'm just in time, handle next event in real time
-//printf("[%02d] TMR\n", G.me);
-//fflush(stdout);
-            G.cbs.sim(PAK(G.paks.i).evt);
-            G.cbs.eff(0);
-            G.paks.i++;
-        } else if (G.time.dif2==0 && last>G.time.tick+DELTA_TICKS) {
+        } else if (G.time.dif2==0 && (G.time.max>max || last>max)) {
             // i'm too much in the past, need to hurry
-            int dif = (last - G.time.tick - DELTA_TICKS) * G.time.mpf;
+            int xxx = (G.time.max>max ? G.time.max : last);
+if (G.time.max > max) {
+    //printf("!!!!\n");
+    //fflush(stdout);
+}
+            int dif = (xxx - G.time.tick - DELTA_TICKS) * G.time.mpf;
             G.time.dif2 = dif + 1000;
             G.time.mpf2 = G.time.mpf*1000 / (dif+1000);
 printf("[%02d] FWD from=%d to=%d dif=%d/%d\n", G.me, G.time.tick, last, dif/G.time.mpf, dif);
@@ -434,11 +436,18 @@ printf("[%02d] FWD from=%d to=%d dif=%d/%d\n", G.me, G.time.tick, last, dif/G.ti
             //printf("[%02d] GOFWD=%d [%d = 2*%d*%d/1000]\n", G.me, dif, x, dif, G.time.mpf);
 #endif
             break;
+        } else if (next == G.time.tick) {
+            // i'm just in time, handle next event in real time
+//printf("[%02d] TMR\n", G.me);
+//fflush(stdout);
+            G.cbs.sim(PAK(G.paks.i).evt);
+            G.cbs.eff(0);
+            G.paks.i++;
         } else if (next < G.time.tick) {
 //printf("[%02d] BAK\n", G.me);
 //fflush(stdout);
             // i'm in the future, need to go back and forth
-            int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
+            //int dt = MIN(G.time.mpf/2, 500/(G.time.tick-next)/2);
             G.paks.n--;     // do not include deviating event
 #if 1 // paper instrumentation
             if (G.time.tick > T.wait) {
@@ -500,12 +509,15 @@ int p2p_loop_sdl (void) {
     }
 
     // SYNC
-#if 0
+#if 1
     {
-        static uint32_t sync = 1000;
+        static uint32_t sync = 0; //1000 / G.time.mpf;
         if (G.time.tick >= sync) {
-            p2p_bcast(MAX(t1,t2), &evt);
-            sync += 1000;
+            p2p_evt evt = { P2P_EVT_SYNC, 0, {} };
+//printf("????\n");
+//fflush(stdout);
+            p2p_bcast(sync, &evt);
+            sync += 1000 / G.time.mpf;
         }
     }
 #endif
