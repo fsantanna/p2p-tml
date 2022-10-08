@@ -12,7 +12,8 @@
 #define P2P_LATENCY_N (P2P_LATENCY*5) //*1.1
 
 enum {
-    P2P_EVT_INIT = 0,
+    P2P_EVT_SYNC = 0,
+    P2P_EVT_INIT,
     P2P_EVT_TICK,
     P2P_EVT_NEXT
 };

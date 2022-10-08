@@ -129,12 +129,16 @@ static void* f (void* arg) {
 
     LOCK();
     assert(oth < P2P_MAX_NET);
+#if 1
+    G.net[oth].s = s;
+#else
     if (G.net[oth].s == NULL) {
         G.net[oth].s = s;
     } else {
         UNLOCK();
         goto _OUT2_;
     }
+#endif
     int N = G.paks.n;
     UNLOCK();
 
@@ -161,6 +165,14 @@ static void* f (void* arg) {
             goto _OUT1_;
         }
 
+#if 0
+        if (id == P2P_EVT_SYNC) {
+            LOCK();
+            MAX_TICK = MAX(MAX_TICK, tick);
+            UNLOCK();
+        }
+#endif
+
 //puts("-=-=-=-=-");
         p2p_pak pak = { src, tick, {id,n,{.i4={i1,i2,i3,i4}}} };
 
@@ -169,6 +181,8 @@ static void* f (void* arg) {
 
         int cur = G.net[src].tick;
         if (tick > cur) {
+//printf("[%02d] RCV %d from %d\n", G.me, tick, oth);
+//fflush(stdout);
             G.net[src].tick = tick;
             PAK(G.paks.n++) = pak;
             p2p_reorder();
@@ -257,6 +271,12 @@ void p2p_dump (void) {
 
 int END = 1;
 void p2p_travel (int to) {
+#if 0
+    if (!(0<=to && to<=G.time.tick)) {
+        printf("[%02d] ERR to=%d / tk=%d\n", G.me, to, G.time.tick);
+        fflush(stdout);
+    }
+#endif
     assert(0<=to && to<=G.time.tick);
     memcpy(G.mem.app.buf, G.mem.his[END?0:to/P2P_HIS_TICKS], G.mem.app.n);   // load w/o events
 
@@ -478,6 +498,17 @@ int p2p_loop_sdl (void) {
         }
         G.cbs.eff(0);
     }
+
+    // SYNC
+#if 0
+    {
+        static uint32_t sync = 1000;
+        if (G.time.tick >= sync) {
+            p2p_bcast(MAX(t1,t2), &evt);
+            sync += 1000;
+        }
+    }
+#endif
 
     // EVENT
     {
