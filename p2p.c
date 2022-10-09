@@ -171,6 +171,7 @@ static void* f (void* arg) {
             LOCK();
             G.time.max = MAX(G.time.max, tick);
             UNLOCK();
+            continue;
         }
 #endif
 
@@ -207,12 +208,10 @@ _OUT2_:
 void p2p_bcast (uint32_t tick, p2p_evt* evt) {
     LOCK();
     p2p_pak pak = { G.me, tick, *evt };
-    if (evt->id != P2P_EVT_SYNC) {
-        G.net[G.me].tick = tick;
-        assert(G.paks.n < P2P_MAX_PAKS);
-        PAK(G.paks.n++) = pak;
-        p2p_reorder();
-    }
+    G.net[G.me].tick = tick;
+    assert(G.paks.n < P2P_MAX_PAKS);
+    PAK(G.paks.n++) = pak;
+    p2p_reorder();
     UNLOCK();
     p2p_bcast2(pak);
 }
@@ -407,16 +406,14 @@ T.travel = 0;
         static int islate = 0;
         int oldislate = islate;
         islate = 0;
-        int max = G.time.tick + DELTA_TICKS;
+        int now = G.time.tick + DELTA_TICKS;
 
-        if (G.time.max<=max && G.paks.i==G.paks.n) {
-            break;
-        } else if (G.time.dif2==0 && (G.time.max>max || last>max)) {
+        if (G.paks.n>0 && G.time.dif2==0 && (G.time.max>now || last>now)) {
             // i'm too much in the past, need to hurry
-            int xxx = (G.time.max>max ? G.time.max : last);
-if (G.time.max > max) {
-    //printf("!!!!\n");
-    //fflush(stdout);
+            int xxx = (G.time.max>now ? G.time.max : last);
+if (G.time.max > now) {
+    printf("!!!!\n");
+    fflush(stdout);
 }
             int dif = (xxx - G.time.tick - DELTA_TICKS) * G.time.mpf;
             G.time.dif2 = dif + 1000;
@@ -430,11 +427,13 @@ printf("[%02d] FWD from=%d to=%d dif=%d/%d\n", G.me, G.time.tick, last, dif/G.ti
 //printf("[%02d] etal=%d\n", G.me, G.time.tick);
                     T.fwds_i++;
                     islate = 1;
-                    T.fwds_s += (last - G.time.tick - DELTA_TICKS);
+                    T.fwds_s += (xxx - G.time.tick - DELTA_TICKS);
                 }
             }
             //printf("[%02d] GOFWD=%d [%d = 2*%d*%d/1000]\n", G.me, dif, x, dif, G.time.mpf);
 #endif
+            break;
+        } else if (G.paks.i==G.paks.n) {
             break;
         } else if (next == G.time.tick) {
             // i'm just in time, handle next event in real time
@@ -513,10 +512,10 @@ int p2p_loop_sdl (void) {
     {
         static uint32_t sync = 0; //1000 / G.time.mpf;
         if (G.time.tick >= sync) {
-            p2p_evt evt = { P2P_EVT_SYNC, 0, {} };
 //printf("????\n");
 //fflush(stdout);
-            p2p_bcast(sync, &evt);
+            p2p_pak pak = { G.me, G.time.tick, { P2P_EVT_SYNC, 0, {} }};
+            p2p_bcast2(pak);
             sync += 1000 / G.time.mpf;
         }
     }
