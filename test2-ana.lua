@@ -48,11 +48,12 @@ function is_up (i, j, cache)
     if i == j then
         return true
     end
+    if OFFS[j] and (OFFS[j].state == 'offline') then
+        return false
+    end
     for _,v in ipairs(NET[j]) do
-        if (not OFFS[v]) or (OFFS[v].state ~= 'offline') then
-            if is_up(i, v, cache) then
-                return true
-            end
+        if is_up(i, v, cache) then
+            return true
         end
     end
     return false
@@ -61,7 +62,7 @@ end
 function max_tick (i)
     local ret = 0
     for j=0, _PEERS_-1 do
---print(i,j, is_up(i,j))
+--print('', i,j, is_up(i,j))
         if is_up(i,j) then
             ret = math.max(ret, TCKS[j] or 0)
         end
