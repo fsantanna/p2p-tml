@@ -1,0 +1,1708 @@
+=== TOTAL=300, WAIT=30, LATENCY=5, EVENTS=1
+
+
+real	5m0,058s
+user	0m32,457s
+sys	0m47,883s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    25
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== TOTAL=300, WAIT=30, LATENCY=5, EVENTS=5
+
+
+real	5m0,684s
+user	0m31,236s
+sys	0m46,470s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    33
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.001    0.001
+
+=== TOTAL=300, WAIT=30, LATENCY=5, EVENTS=10
+
+
+real	5m0,982s
+user	0m32,815s
+sys	0m48,966s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    57
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.001    0.003
+
+=== TOTAL=300, WAIT=30, LATENCY=5, EVENTS=25
+
+
+real	5m0,023s
+user	0m34,141s
+sys	0m50,889s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    130
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.004    0.010
+
+=== TOTAL=300, WAIT=30, LATENCY=5, EVENTS=50
+
+
+real	5m0,281s
+user	0m31,966s
+sys	0m49,040s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    238
+NO      0.000
+FWDS    0.001    0.001
+BAKS    0.009    0.019
+
+=== TOTAL=300, WAIT=30, LATENCY=5, EVENTS=100
+
+
+real	5m0,302s
+user	0m33,081s
+sys	0m51,190s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    440
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.019    0.037
+
+=== TOTAL=300, WAIT=30, LATENCY=5, EVENTS=250
+
+
+real	5m0,474s
+user	0m31,703s
+sys	0m47,936s
+lua5.3: test-ana.lua:74: assertion failed!
+stack traceback:
+	[C]: in function 'assert'
+	test-ana.lua:74: in main chunk
+	[C]: in ?
+
+=== TOTAL=300, WAIT=30, LATENCY=5, EVENTS=500
+
+
+real	4m58,596s
+user	0m31,750s
+sys	0m46,622s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1437
+NO      0.000
+FWDS    0.002    0.002
+BAKS    0.056    0.125
+
+=== TOTAL=300, WAIT=30, LATENCY=25, EVENTS=1
+
+
+real	5m1,040s
+user	0m31,806s
+sys	0m49,657s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    24
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.002
+
+=== TOTAL=300, WAIT=30, LATENCY=25, EVENTS=5
+
+
+real	5m1,533s
+user	0m32,523s
+sys	0m48,880s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    32
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.004
+
+=== TOTAL=300, WAIT=30, LATENCY=25, EVENTS=10
+
+
+real	5m1,139s
+user	0m32,888s
+sys	0m49,495s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    60
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.001    0.010
+
+=== TOTAL=300, WAIT=30, LATENCY=25, EVENTS=25
+
+
+real	5m0,994s
+user	0m32,045s
+sys	0m48,395s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    120
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.003    0.027
+
+=== TOTAL=300, WAIT=30, LATENCY=25, EVENTS=50
+
+
+real	5m1,179s
+user	0m31,242s
+sys	0m47,557s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    226
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.007    0.069
+
+=== TOTAL=300, WAIT=30, LATENCY=25, EVENTS=100
+
+
+real	5m0,652s
+user	0m30,561s
+sys	0m46,304s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    468
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.019    0.128
+
+=== TOTAL=300, WAIT=30, LATENCY=25, EVENTS=250
+
+
+real	5m1,054s
+user	0m29,035s
+sys	0m40,746s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1034
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.046    0.366
+
+=== TOTAL=300, WAIT=30, LATENCY=25, EVENTS=500
+
+
+real	5m0,737s
+user	0m28,201s
+sys	0m38,770s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1595
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.077    0.553
+
+=== TOTAL=300, WAIT=30, LATENCY=50, EVENTS=1
+
+
+real	5m1,552s
+user	0m30,152s
+sys	0m47,208s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    26
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.004
+
+=== TOTAL=300, WAIT=30, LATENCY=50, EVENTS=5
+
+
+real	5m1,305s
+user	0m30,530s
+sys	0m46,976s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    35
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.000    0.006
+
+=== TOTAL=300, WAIT=30, LATENCY=50, EVENTS=10
+
+
+real	5m1,642s
+user	0m31,054s
+sys	0m46,703s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    67
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.001    0.024
+
+=== TOTAL=300, WAIT=30, LATENCY=50, EVENTS=25
+
+
+real	5m1,662s
+user	0m30,760s
+sys	0m46,202s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    132
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.004    0.077
+
+=== TOTAL=300, WAIT=30, LATENCY=50, EVENTS=50
+
+
+real	5m1,163s
+user	0m30,776s
+sys	0m45,410s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    232
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.009    0.135
+
+=== TOTAL=300, WAIT=30, LATENCY=50, EVENTS=100
+
+
+real	5m1,323s
+user	0m29,539s
+sys	0m42,327s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    473
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.020    0.377
+
+=== TOTAL=300, WAIT=30, LATENCY=50, EVENTS=250
+
+
+real	5m1,051s
+user	0m28,357s
+sys	0m38,506s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1079
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.064    0.945
+
+=== TOTAL=300, WAIT=30, LATENCY=50, EVENTS=500
+
+
+real	5m0,914s
+user	0m27,784s
+sys	0m38,530s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1243
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.068    0.790
+
+=== TOTAL=300, WAIT=30, LATENCY=100, EVENTS=1
+
+
+real	5m2,559s
+user	0m30,127s
+sys	0m46,984s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    23
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.001
+
+=== TOTAL=300, WAIT=30, LATENCY=100, EVENTS=5
+
+
+real	5m1,631s
+user	0m30,226s
+sys	0m46,230s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    45
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.001    0.042
+
+=== TOTAL=300, WAIT=30, LATENCY=100, EVENTS=10
+
+
+real	5m2,599s
+user	0m30,075s
+sys	0m44,181s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    70
+NO      0.000
+FWDS    0.000    0.002
+BAKS    0.001    0.050
+
+=== TOTAL=300, WAIT=30, LATENCY=100, EVENTS=25
+
+
+real	5m2,214s
+user	0m30,511s
+sys	0m45,322s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    138
+NO      0.000
+FWDS    0.000    0.002
+BAKS    0.005    0.146
+
+=== TOTAL=300, WAIT=30, LATENCY=100, EVENTS=50
+
+
+real	5m1,889s
+user	0m30,185s
+sys	0m44,613s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    240
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.008    0.376
+
+=== TOTAL=300, WAIT=30, LATENCY=100, EVENTS=100
+
+
+real	5m2,078s
+user	0m30,324s
+sys	0m41,976s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    475
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.024    1.035
+
+=== TOTAL=300, WAIT=30, LATENCY=100, EVENTS=250
+
+
+real	5m1,205s
+user	0m28,745s
+sys	0m38,352s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1096
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.076    1.854
+
+=== TOTAL=300, WAIT=30, LATENCY=100, EVENTS=500
+
+
+real	5m2,920s
+user	0m29,876s
+sys	0m35,987s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1551
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.158    4.039
+
+=== TOTAL=300, WAIT=30, LATENCY=250, EVENTS=1
+
+
+real	5m5,126s
+user	0m31,022s
+sys	0m45,389s
+NOS[0] = 0
+NOS[1] = 90
+NOS[2] = 200
+NOS[3] = 200
+NOS[4] = 200
+NOS[5] = 200
+NOS[6] = 200
+NOS[7] = 200
+NOS[8] = 187
+NOS[9] = 180
+NOS[10] = 180
+NOS[11] = 180
+NOS[12] = 180
+NOS[13] = 180
+NOS[14] = 171
+NOS[15] = 0
+
+TCKS    283521
+EVTS    24
+NO      0.472
+FWDS    0.000    0.000
+BAKS    0.000    0.011
+
+=== TOTAL=300, WAIT=30, LATENCY=250, EVENTS=5
+
+
+real	5m5,247s
+user	0m31,191s
+sys	0m45,422s
+NOS[0] = 0
+NOS[1] = 36
+NOS[2] = 78
+NOS[3] = 60
+NOS[4] = 60
+NOS[5] = 60
+NOS[6] = 60
+NOS[7] = 60
+NOS[8] = 60
+NOS[9] = 60
+NOS[10] = 60
+NOS[11] = 60
+NOS[12] = 60
+NOS[13] = 60
+NOS[14] = 57
+NOS[15] = 0
+
+TCKS    283521
+EVTS    35
+NO      0.154
+FWDS    0.000    0.001
+BAKS    0.001    0.042
+
+=== TOTAL=300, WAIT=30, LATENCY=250, EVENTS=10
+
+
+real	5m4,769s
+user	0m29,628s
+sys	0m46,112s
+NOS[0] = 0
+NOS[1] = 54
+NOS[2] = 109
+NOS[3] = 100
+NOS[4] = 99
+NOS[5] = 60
+NOS[6] = 60
+NOS[7] = 57
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    63
+NO      0.100
+FWDS    0.000    0.002
+BAKS    0.002    0.150
+
+=== TOTAL=300, WAIT=30, LATENCY=250, EVENTS=25
+
+
+real	5m3,514s
+user	0m31,149s
+sys	0m44,020s
+NOS[0] = 0
+NOS[1] = 90
+NOS[2] = 154
+NOS[3] = 126
+NOS[4] = 20
+NOS[5] = 20
+NOS[6] = 10
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    123
+NO      0.077
+FWDS    0.000    0.004
+BAKS    0.005    0.401
+
+=== TOTAL=300, WAIT=30, LATENCY=250, EVENTS=50
+
+
+real	5m3,565s
+user	0m30,612s
+sys	0m43,338s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    256
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.013    0.973
+
+=== TOTAL=300, WAIT=30, LATENCY=250, EVENTS=100
+
+
+real	5m3,372s
+user	0m29,861s
+sys	0m42,170s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    464
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.035    2.041
+
+=== TOTAL=300, WAIT=30, LATENCY=250, EVENTS=250
+
+
+real	5m3,111s
+user	0m30,281s
+sys	0m39,630s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    981
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.094    5.710
+
+=== TOTAL=300, WAIT=30, LATENCY=250, EVENTS=500
+
+
+real	5m3,612s
+user	0m33,981s
+sys	0m37,263s
+NOS[0] = 0
+NOS[1] = 11
+NOS[2] = 20
+NOS[3] = 21
+NOS[4] = 22
+NOS[5] = 21
+NOS[6] = 21
+NOS[7] = 20
+NOS[8] = 16
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1741
+NO      0.027
+FWDS    0.000    0.000
+BAKS    0.309    20.573
+
+=== TOTAL=300, WAIT=30, LATENCY=500, EVENTS=1
+
+
+real	5m7,642s
+user	0m31,256s
+sys	0m45,015s
+NOS[0] = 0
+NOS[1] = 153
+NOS[2] = 340
+NOS[3] = 286
+NOS[4] = 280
+NOS[5] = 280
+NOS[6] = 280
+NOS[7] = 280
+NOS[8] = 280
+NOS[9] = 280
+NOS[10] = 280
+NOS[11] = 280
+NOS[12] = 280
+NOS[13] = 280
+NOS[14] = 266
+NOS[15] = 0
+
+TCKS    283521
+EVTS    23
+NO      0.712
+FWDS    0.000    0.002
+BAKS    0.000    0.003
+
+=== TOTAL=300, WAIT=30, LATENCY=500, EVENTS=5
+
+
+real	5m6,506s
+user	0m29,909s
+sys	0m45,848s
+NOS[0] = 0
+NOS[1] = 135
+NOS[2] = 300
+NOS[3] = 300
+NOS[4] = 300
+NOS[5] = 300
+NOS[6] = 300
+NOS[7] = 300
+NOS[8] = 274
+NOS[9] = 260
+NOS[10] = 253
+NOS[11] = 220
+NOS[12] = 220
+NOS[13] = 116
+NOS[14] = 57
+NOS[15] = 0
+
+TCKS    283521
+EVTS    40
+NO      0.618
+FWDS    0.000    0.006
+BAKS    0.001    0.106
+
+=== TOTAL=300, WAIT=30, LATENCY=500, EVENTS=10
+
+
+real	5m5,179s
+user	0m30,792s
+sys	0m44,469s
+NOS[0] = 0
+NOS[1] = 135
+NOS[2] = 281
+NOS[3] = 220
+NOS[4] = 186
+NOS[5] = 160
+NOS[6] = 160
+NOS[7] = 160
+NOS[8] = 160
+NOS[9] = 144
+NOS[10] = 132
+NOS[11] = 120
+NOS[12] = 120
+NOS[13] = 120
+NOS[14] = 114
+NOS[15] = 0
+
+TCKS    283521
+EVTS    63
+NO      0.410
+FWDS    0.000    0.007
+BAKS    0.002    0.252
+
+=== TOTAL=300, WAIT=30, LATENCY=500, EVENTS=25
+
+
+real	5m7,151s
+user	0m30,090s
+sys	0m44,323s
+NOS[0] = 0
+NOS[1] = 99
+NOS[2] = 220
+NOS[3] = 220
+NOS[4] = 220
+NOS[5] = 220
+NOS[6] = 224
+NOS[7] = 220
+NOS[8] = 220
+NOS[9] = 224
+NOS[10] = 220
+NOS[11] = 224
+NOS[12] = 220
+NOS[13] = 220
+NOS[14] = 215
+NOS[15] = 0
+
+TCKS    283521
+EVTS    137
+NO      0.545
+FWDS    0.000    0.001
+BAKS    0.007    0.867
+
+=== TOTAL=300, WAIT=30, LATENCY=500, EVENTS=50
+
+
+real	5m5,230s
+user	0m30,384s
+sys	0m43,585s
+NOS[0] = 0
+NOS[1] = 54
+NOS[2] = 87
+NOS[3] = 63
+NOS[4] = 60
+NOS[5] = 60
+NOS[6] = 60
+NOS[7] = 63
+NOS[8] = 63
+NOS[9] = 60
+NOS[10] = 60
+NOS[11] = 63
+NOS[12] = 60
+NOS[13] = 63
+NOS[14] = 57
+NOS[15] = 0
+
+TCKS    283521
+EVTS    237
+NO      0.160
+FWDS    0.000    0.001
+BAKS    0.017    1.912
+
+=== TOTAL=300, WAIT=30, LATENCY=500, EVENTS=100
+
+
+real	5m5,280s
+user	0m30,710s
+sys	0m43,010s
+NOS[0] = 0
+NOS[1] = 54
+NOS[2] = 120
+NOS[3] = 120
+NOS[4] = 120
+NOS[5] = 120
+NOS[6] = 107
+NOS[7] = 80
+NOS[8] = 80
+NOS[9] = 84
+NOS[10] = 80
+NOS[11] = 80
+NOS[12] = 88
+NOS[13] = 80
+NOS[14] = 76
+NOS[15] = 0
+
+TCKS    283521
+EVTS    455
+NO      0.237
+FWDS    0.000    0.001
+BAKS    0.045    5.076
+
+=== TOTAL=300, WAIT=30, LATENCY=500, EVENTS=250
+
+
+real	5m4,751s
+user	0m33,550s
+sys	0m41,948s
+NOS[0] = 0
+NOS[1] = 18
+NOS[2] = 40
+NOS[3] = 39
+NOS[4] = 20
+NOS[5] = 20
+NOS[6] = 20
+NOS[7] = 20
+NOS[8] = 20
+NOS[9] = 20
+NOS[10] = 21
+NOS[11] = 20
+NOS[12] = 21
+NOS[13] = 21
+NOS[14] = 19
+NOS[15] = 0
+
+TCKS    283521
+EVTS    980
+NO      0.058
+FWDS    0.000    0.000
+BAKS    0.181    20.365
+
+=== TOTAL=300, WAIT=30, LATENCY=500, EVENTS=500
+
+
+real	5m6,367s
+user	0m38,360s
+sys	0m40,549s
+NOS[0] = 0
+NOS[1] = 99
+NOS[2] = 226
+NOS[3] = 201
+NOS[4] = 234
+NOS[5] = 232
+NOS[6] = 219
+NOS[7] = 236
+NOS[8] = 228
+NOS[9] = 210
+NOS[10] = 182
+NOS[11] = 189
+NOS[12] = 198
+NOS[13] = 200
+NOS[14] = 179
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1639
+NO      0.490
+FWDS    0.000    0.001
+BAKS    0.408    53.574
+
+=== TOTAL=300, WAIT=30, LATENCY=1000, EVENTS=1
+
+
+real	5m13,836s
+user	0m31,072s
+sys	0m46,629s
+NOS[0] = 0
+NOS[1] = 171
+NOS[2] = 380
+NOS[3] = 380
+NOS[4] = 380
+NOS[5] = 380
+NOS[6] = 380
+NOS[7] = 380
+NOS[8] = 380
+NOS[9] = 380
+NOS[10] = 380
+NOS[11] = 380
+NOS[12] = 380
+NOS[13] = 380
+NOS[14] = 361
+NOS[15] = 0
+
+TCKS    283521
+EVTS    22
+NO      0.943
+FWDS    0.000    0.001
+BAKS    0.000    0.015
+
+=== TOTAL=300, WAIT=30, LATENCY=1000, EVENTS=5
+
+
+real	5m11,510s
+user	0m31,063s
+sys	0m46,320s
+NOS[0] = 0
+NOS[1] = 144
+NOS[2] = 320
+NOS[3] = 320
+NOS[4] = 320
+NOS[5] = 320
+NOS[6] = 320
+NOS[7] = 320
+NOS[8] = 320
+NOS[9] = 320
+NOS[10] = 320
+NOS[11] = 320
+NOS[12] = 320
+NOS[13] = 320
+NOS[14] = 304
+NOS[15] = 0
+
+TCKS    283521
+EVTS    38
+NO      0.794
+FWDS    0.000    0.001
+BAKS    0.001    0.245
+
+=== TOTAL=300, WAIT=30, LATENCY=1000, EVENTS=10
+
+
+real	5m9,424s
+user	0m31,029s
+sys	0m46,343s
+ERR	3	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	4	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	5	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	6	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	7	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	8	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	9	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	10	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	11	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	12	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	13	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	14	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	15	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	16	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	17	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	18	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	19	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+ERR	20	(-1732,-250,0,1)	(-2522,-1040,-1,0)
+NOS[0] = 0
+NOS[1] = 180
+NOS[2] = 407
+NOS[3] = 398
+NOS[4] = 380
+NOS[5] = 380
+NOS[6] = 380
+NOS[7] = 380
+NOS[8] = 380
+NOS[9] = 380
+NOS[10] = 380
+NOS[11] = 380
+NOS[12] = 380
+NOS[13] = 380
+NOS[14] = 361
+NOS[15] = 0
+
+TCKS    283521
+EVTS    59
+NO      0.952
+FWDS    0.000    0.011
+BAKS    0.002    0.475
+
+=== TOTAL=300, WAIT=30, LATENCY=1000, EVENTS=25
+
+
+real	5m11,805s
+user	0m31,467s
+sys	0m46,035s
+ERR	15	(3236,-1072,0,-1)	(3294,-1014,0,-1)
+ERR	18	(3236,-1072,0,-1)	(2770,-1014,0,-1)
+ERR	19	(3236,-1072,0,-1)	(2770,-1014,0,-1)
+ERR	20	(3236,-1072,0,-1)	(2770,-1014,0,-1)
+NOS[0] = 0
+NOS[1] = 171
+NOS[2] = 373
+NOS[3] = 360
+NOS[4] = 360
+NOS[5] = 360
+NOS[6] = 360
+NOS[7] = 360
+NOS[8] = 373
+NOS[9] = 360
+NOS[10] = 360
+NOS[11] = 360
+NOS[12] = 360
+NOS[13] = 360
+NOS[14] = 342
+NOS[15] = 0
+
+TCKS    283521
+EVTS    141
+NO      0.897
+FWDS    0.000    0.001
+BAKS    0.009    2.431
+
+=== TOTAL=300, WAIT=30, LATENCY=1000, EVENTS=50
+
+
+real	5m9,007s
+user	0m31,476s
+sys	0m45,962s
+ERR	1	(2020,918,0,0)	(2020,-238,0,-1)
+ERR	2	(2020,918,0,0)	(2020,-238,0,-1)
+ERR	3	(2020,918,0,0)	(1016,766,-1,0)
+ERR	4	(2020,918,0,0)	(1016,766,-1,0)
+ERR	5	(2020,918,0,0)	(1016,766,-1,0)
+ERR	6	(2020,918,0,0)	(1016,766,-1,0)
+ERR	7	(2020,918,0,0)	(1016,766,-1,0)
+ERR	8	(2020,918,0,0)	(1016,766,-1,0)
+ERR	9	(2020,918,0,0)	(1016,766,-1,0)
+ERR	10	(2020,918,0,0)	(1016,766,-1,0)
+ERR	11	(2020,918,0,0)	(1016,766,-1,0)
+ERR	12	(2020,918,0,0)	(1016,766,-1,0)
+ERR	13	(2020,918,0,0)	(1016,766,-1,0)
+ERR	14	(2020,918,0,0)	(1016,766,-1,0)
+ERR	15	(2020,918,0,0)	(1016,766,-1,0)
+ERR	16	(2020,918,0,0)	(1016,766,-1,0)
+ERR	17	(2020,918,0,0)	(1016,766,-1,0)
+ERR	18	(2020,918,0,0)	(1016,766,-1,0)
+ERR	19	(2020,918,0,0)	(1016,766,-1,0)
+ERR	20	(2020,918,0,0)	(1016,766,-1,0)
+NOS[0] = 0
+NOS[1] = 138
+NOS[2] = 300
+NOS[3] = 300
+NOS[4] = 300
+NOS[5] = 300
+NOS[6] = 300
+NOS[7] = 300
+NOS[8] = 300
+NOS[9] = 300
+NOS[10] = 300
+NOS[11] = 300
+NOS[12] = 300
+NOS[13] = 309
+NOS[14] = 290
+NOS[15] = 0
+
+TCKS    283521
+EVTS    245
+NO      0.745
+FWDS    0.000    0.002
+BAKS    0.024    5.294
+
+=== TOTAL=300, WAIT=30, LATENCY=1000, EVENTS=100
+
+
+real	5m9,501s
+user	0m33,580s
+sys	0m44,951s
+ERR	2	(1056,354,0,1)	(1056,174,0,1)
+ERR	3	(1056,354,0,1)	(1056,142,0,1)
+ERR	4	(1056,354,0,1)	(1056,142,0,1)
+ERR	5	(1056,354,0,1)	(1056,108,0,1)
+ERR	6	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	7	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	8	(1056,354,0,1)	(1056,108,0,1)
+ERR	9	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	10	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	11	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	12	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	13	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	14	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	15	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	16	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	17	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	18	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	19	(1056,354,0,1)	(1056,-1028,0,-1)
+ERR	20	(1056,354,0,1)	(1056,-1028,0,-1)
+NOS[0] = 0
+NOS[1] = 101
+NOS[2] = 222
+NOS[3] = 220
+NOS[4] = 222
+NOS[5] = 220
+NOS[6] = 229
+NOS[7] = 202
+NOS[8] = 200
+NOS[9] = 209
+NOS[10] = 201
+NOS[11] = 209
+NOS[12] = 201
+NOS[13] = 200
+NOS[14] = 191
+NOS[15] = 0
+
+TCKS    283521
+EVTS    490
+NO      0.517
+FWDS    0.000    0.001
+BAKS    0.083    19.000
+
+=== TOTAL=300, WAIT=30, LATENCY=1000, EVENTS=250
+
+
+real	5m8,762s
+user	0m35,995s
+sys	0m44,585s
+ERR	1	(1630,-976,0,-1)	(1644,-976,0,-1)
+ERR	2	(1630,-976,0,-1)	(1644,-976,0,-1)
+ERR	3	(1630,-976,0,-1)	(1074,-420,-1,0)
+ERR	4	(1630,-976,0,-1)	(1614,120,0,1)
+ERR	5	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	6	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	7	(1630,-976,0,-1)	(1074,-420,-1,0)
+ERR	8	(1630,-976,0,-1)	(1074,-420,-1,0)
+ERR	9	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	10	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	11	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	12	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	13	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	14	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	15	(1630,-976,0,-1)	(1618,222,0,1)
+ERR	16	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	17	(1630,-976,0,-1)	(1614,196,0,1)
+ERR	18	(1630,-976,0,-1)	(1618,222,0,1)
+ERR	19	(1630,-976,0,-1)	(1618,422,0,1)
+ERR	20	(1630,-976,0,-1)	(1528,512,0,1)
+NOS[0] = 0
+NOS[1] = 116
+NOS[2] = 224
+NOS[3] = 228
+NOS[4] = 236
+NOS[5] = 216
+NOS[6] = 208
+NOS[7] = 207
+NOS[8] = 216
+NOS[9] = 209
+NOS[10] = 208
+NOS[11] = 200
+NOS[12] = 218
+NOS[13] = 202
+NOS[14] = 198
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1008
+NO      0.520
+FWDS    0.000    0.002
+BAKS    0.223    48.626
+
+=== TOTAL=300, WAIT=30, LATENCY=1000, EVENTS=500
+
+
+real	5m10,199s
+user	0m40,090s
+sys	0m44,010s
+ERR	1	(-650,-746,0,0)	(-128,-722,1,0)
+ERR	2	(-650,-746,0,0)	(-102,-748,1,0)
+ERR	3	(-650,-746,0,0)	(2,-852,1,0)
+ERR	4	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	5	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	6	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	7	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	8	(-650,-746,0,0)	(2,-852,1,0)
+ERR	9	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	10	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	11	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	12	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	13	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	14	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	15	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	16	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	17	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	18	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	19	(-650,-746,0,0)	(-62,-956,1,0)
+ERR	20	(-650,-746,0,0)	(-62,-956,1,0)
+NOS[0] = 0
+NOS[1] = 148
+NOS[2] = 306
+NOS[3] = 293
+NOS[4] = 283
+NOS[5] = 280
+NOS[6] = 283
+NOS[7] = 260
+NOS[8] = 263
+NOS[9] = 273
+NOS[10] = 270
+NOS[11] = 270
+NOS[12] = 279
+NOS[13] = 230
+NOS[14] = 209
+NOS[15] = 0
+
+TCKS    283521
+EVTS    1536
+NO      0.656
+FWDS    0.000    0.001
+BAKS    0.437    108.030
+
