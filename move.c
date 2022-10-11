@@ -1,6 +1,6 @@
 #if 0
 #!/bin/sh
-gcc -g -Wall `sdl2-config --cflags` -DP2P_LATENCY=5 -DP2P_WAIT=0 p2p.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
+gcc -g -Wall `sdl2-config --cflags` -DP2P_AVG_HOPS=2 -DP2P_DELTA_MULT=3 -DP2P_LATENCY=50 -DP2P_WAIT=0 p2p.c move.c -o xmove `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
 exit
 #endif
 

@@ -10,7 +10,7 @@
 #define UNLOCK()  pthread_mutex_unlock(&G.lock);
 #define PAK(i)    G.paks.buf[i]
 //#define DELTA_TICKS (MAX(2, P2P_LATENCY_N/G.time.mpf))
-#define DELTA_TICKS (P2P_LATENCY_N/G.time.mpf)
+#define DELTA_TICKS (DELTA_MILLIS/G.time.mpf)
 
 typedef struct {
     TCPsocket s;
@@ -453,7 +453,7 @@ printf("[%02d] FWD from=%d to=%d dif=%d/%d\n", G.me, G.time.tick, last, dif/G.ti
                 T.baks_i += 1;
                 T.baks_s += (G.time.tick-next);
             }
-            //printf("[%02d] GOBAK=%d\n", G.me, G.time.tick-next);
+            printf("[%02d] BAK=%d\n", G.me, G.time.tick-next);
 #endif
 #if 0
             for (int j=G.time.tick-1; j>next; j--) {

@@ -9,7 +9,7 @@
 #define P2P_MAX_MEM   1000
 #define P2P_HIS_TICKS 10000  // 500s (50fps)
 //#define P2P_LATENCY   75
-#define P2P_LATENCY_N (P2P_LATENCY*5) //*1.1
+#define DELTA_MILLIS (P2P_LATENCY*P2P_AVG_HOPS*P2P_DELTA_MULT) //*1.1
 
 enum {
     P2P_EVT_SYNC = 0,

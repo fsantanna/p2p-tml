@@ -3,21 +3,27 @@
 local F   = ...
 local LAT = nil
 local EVT = nil
-local T = {}
+local MUL = nil
+local T   = {}
 
 function P ()
     --print(LAT, EVT, T.evts, T.fwds, T.baks)
-    print(string.format("%4d  %3d  %4d  %03.03f  %03.03f  %03.03f  %s", LAT, EVT, T.evts, T.fwds, T.baks1, T.baks2, F))
+    print(string.format("%4d  %3d  %d  %4d  %03.03f  %03.03f  %03.03f  %s", LAT, EVT, MUL, T.evts, T.fwds, T.baks1, T.baks2, F))
 end
 
 for l in io.lines(F) do
-    local lat,evt = string.match(l,'=== TOTAL=300, WAIT=30, LATENCY=(%d+), EVENTS=(%d+)')
+    local lat,evt,mul = string.match(l,'=== TOTAL=300, WAIT=30, LATENCY=(%d+), EVENTS=(%d+)')
+    if not (lat and evt) then
+        lat,evt,mul = string.match(l,'=== LAT=(%d+), EVTS=(%d+), MULT=(%d+)')
+    end
     if lat and evt then
-        if LAT and EVT then
+        mul = mul or 1
+        if LAT and EVT and MUL then
             P()
         end
         LAT = lat
         EVT = evt
+        MUL = mul
     end
 
     local fwds = string.match(l,'FWDS.*(%d+%.%d+)$')
