@@ -8,13 +8,16 @@ local T   = {}
 
 function P ()
     --print(LAT, EVT, T.evts, T.fwds, T.baks)
-    print(string.format("%4d  %3d  %d  %4d  %03.03f  %03.03f  %03.03f  %s", LAT, EVT, MUL, T.evts, T.fwds, T.baks1, T.baks2, F))
+    print(string.format("%4d  %2d  %3d  %4d  %03.01f  %03.01f  %s", LAT, MUL, EVT, T.evts, T.fwds*100, T.baks2*100, F))
 end
 
 for l in io.lines(F) do
     local lat,evt,mul = string.match(l,'=== TOTAL=300, WAIT=30, LATENCY=(%d+), EVENTS=(%d+)')
     if not (lat and evt) then
         lat,evt,mul = string.match(l,'=== LAT=(%d+), EVTS=(%d+), MULT=(%d+)')
+        if not (lat and evt) then
+            lat,mul,evt = string.match(l,'=== LAT=(%d+), MULT=(%d+), EVTS=(%d+)')
+        end
     end
     if lat and evt then
         mul = mul or 1

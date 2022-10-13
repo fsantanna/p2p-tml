@@ -15,14 +15,14 @@ WAIT=30
 
 tc qdisc del dev lo root
 
-for LAT in 5 25 50 100 250 500 1000
+for LAT in 5 25 50 100 250 500
 do
     tc qdisc add dev lo root netem delay ${LAT}ms $(($LAT/5))ms distribution normal
-    for EVTS in 1 5 10 25 50 100 250 500
+    for MULT in 5 2 1
     do
-        for MULT in 1 2 5 10
+        for EVTS in 5 10 25 50 100 200
         do
-            echo "=== LAT=$LAT, EVTS=$EVTS, MULT=$MULT"
+            echo "=== LAT=$LAT, MULT=$MULT, EVTS=$EVTS"
             echo ""
 
             gcc -g -Wall `sdl2-config --cflags` \

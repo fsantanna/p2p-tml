@@ -1,26 +1,5 @@
 === TOTAL=300, WAIT=30, LATENCY=5, EVENTS=1
 
-
-real	5m0,058s
-user	0m32,457s
-sys	0m47,883s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    25
 NO      0.000
@@ -28,27 +7,6 @@ FWDS    0.000    0.000
 BAKS    0.000    0.000
 
 === TOTAL=300, WAIT=30, LATENCY=5, EVENTS=5
-
-
-real	5m0,684s
-user	0m31,236s
-sys	0m46,470s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    33
@@ -58,27 +16,6 @@ BAKS    0.001    0.001
 
 === TOTAL=300, WAIT=30, LATENCY=5, EVENTS=10
 
-
-real	5m0,982s
-user	0m32,815s
-sys	0m48,966s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    57
 NO      0.000
@@ -86,27 +23,6 @@ FWDS    0.000    0.000
 BAKS    0.001    0.003
 
 === TOTAL=300, WAIT=30, LATENCY=5, EVENTS=25
-
-
-real	5m0,023s
-user	0m34,141s
-sys	0m50,889s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    130
@@ -116,27 +32,6 @@ BAKS    0.004    0.010
 
 === TOTAL=300, WAIT=30, LATENCY=5, EVENTS=50
 
-
-real	5m0,281s
-user	0m31,966s
-sys	0m49,040s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    238
 NO      0.000
@@ -145,67 +40,13 @@ BAKS    0.009    0.019
 
 === TOTAL=300, WAIT=30, LATENCY=5, EVENTS=100
 
-
-real	5m0,302s
-user	0m33,081s
-sys	0m51,190s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    440
 NO      0.000
 FWDS    0.000    0.000
 BAKS    0.019    0.037
 
-=== TOTAL=300, WAIT=30, LATENCY=5, EVENTS=250
-
-
-real	5m0,474s
-user	0m31,703s
-sys	0m47,936s
-lua5.3: test-ana.lua:74: assertion failed!
-stack traceback:
-	[C]: in function 'assert'
-	test-ana.lua:74: in main chunk
-	[C]: in ?
-
 === TOTAL=300, WAIT=30, LATENCY=5, EVENTS=500
-
-
-real	4m58,596s
-user	0m31,750s
-sys	0m46,622s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    1437
@@ -214,27 +55,6 @@ FWDS    0.002    0.002
 BAKS    0.056    0.125
 
 === TOTAL=300, WAIT=30, LATENCY=25, EVENTS=1
-
-
-real	5m1,040s
-user	0m31,806s
-sys	0m49,657s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    24
