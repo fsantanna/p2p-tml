@@ -7,7 +7,7 @@ do
         for EVT in 5 10 25 50 100 200
         do
             echo "===  $LAT  $MUL  $EVT"
-            cat sheet.log | grep "all-6[0-9].log" | grep " \+$LAT \+$MUL \+$EVT \+"
+            cat sheet.log | grep "all-[6-7][0-9].log" | grep " \+$LAT \+$MUL \+$EVT \+"
         done
     done
 done

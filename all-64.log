@@ -1,26 +1,5 @@
 === LAT=5, MULT=4, EVTS=5
 
-
-real	5m0,414s
-user	0m35,075s
-sys	0m51,535s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    30
 NO      0.000
@@ -28,27 +7,6 @@ FWDS    0.000    0.000
 BAKS    0.000    0.000
 
 === LAT=5, MULT=4, EVTS=10
-
-
-real	5m0,440s
-user	0m35,769s
-sys	0m52,890s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    56
@@ -58,27 +16,6 @@ BAKS    0.000    0.000
 
 === LAT=5, MULT=4, EVTS=25
 
-
-real	5m0,503s
-user	0m36,228s
-sys	0m52,840s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    130
 NO      0.000
@@ -86,27 +23,6 @@ FWDS    0.000    0.000
 BAKS    0.000    0.000
 
 === LAT=5, MULT=4, EVTS=50
-
-
-real	5m0,267s
-user	0m36,373s
-sys	0m52,432s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    236
@@ -116,27 +32,6 @@ BAKS    0.000    0.000
 
 === LAT=5, MULT=4, EVTS=100
 
-
-real	4m59,551s
-user	0m33,102s
-sys	0m48,300s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    462
 NO      0.000
@@ -144,27 +39,6 @@ FWDS    0.001    0.001
 BAKS    0.001    0.002
 
 === LAT=5, MULT=4, EVTS=200
-
-
-real	4m59,645s
-user	0m34,801s
-sys	0m50,316s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    784
@@ -174,27 +48,6 @@ BAKS    0.002    0.002
 
 === LAT=5, MULT=2, EVTS=5
 
-
-real	5m0,658s
-user	0m34,760s
-sys	0m51,405s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    40
 NO      0.000
@@ -202,27 +55,6 @@ FWDS    0.000    0.000
 BAKS    0.000    0.001
 
 === LAT=5, MULT=2, EVTS=10
-
-
-real	5m1,042s
-user	0m33,571s
-sys	0m50,621s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    63
@@ -232,27 +64,6 @@ BAKS    0.001    0.002
 
 === LAT=5, MULT=2, EVTS=25
 
-
-real	5m0,208s
-user	0m34,013s
-sys	0m50,000s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    132
 NO      0.000
@@ -260,27 +71,6 @@ FWDS    0.000    0.000
 BAKS    0.003    0.005
 
 === LAT=5, MULT=2, EVTS=50
-
-
-real	5m0,558s
-user	0m32,723s
-sys	0m50,248s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    258
@@ -290,27 +80,6 @@ BAKS    0.006    0.011
 
 === LAT=5, MULT=2, EVTS=100
 
-
-real	5m0,231s
-user	0m32,540s
-sys	0m49,316s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    460
 NO      0.000
@@ -318,27 +87,6 @@ FWDS    0.001    0.001
 BAKS    0.012    0.022
 
 === LAT=5, MULT=2, EVTS=200
-
-
-real	5m0,297s
-user	0m31,714s
-sys	0m49,690s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    788
@@ -348,27 +96,6 @@ BAKS    0.018    0.030
 
 === LAT=5, MULT=1, EVTS=5
 
-
-real	5m0,394s
-user	0m33,679s
-sys	0m50,486s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    38
 NO      0.000
@@ -376,27 +103,6 @@ FWDS    0.000    0.000
 BAKS    0.001    0.002
 
 === LAT=5, MULT=1, EVTS=10
-
-
-real	5m0,652s
-user	0m32,914s
-sys	0m52,040s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    66
@@ -406,27 +112,6 @@ BAKS    0.002    0.004
 
 === LAT=5, MULT=1, EVTS=25
 
-
-real	5m0,699s
-user	0m32,777s
-sys	0m49,063s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    132
 NO      0.000
@@ -434,27 +119,6 @@ FWDS    0.000    0.000
 BAKS    0.004    0.010
 
 === LAT=5, MULT=1, EVTS=50
-
-
-real	5m0,104s
-user	0m33,517s
-sys	0m50,006s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    227
@@ -464,27 +128,6 @@ BAKS    0.009    0.018
 
 === LAT=5, MULT=1, EVTS=100
 
-
-real	4m59,389s
-user	0m33,676s
-sys	0m48,441s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    476
 NO      0.000
@@ -492,27 +135,6 @@ FWDS    0.001    0.001
 BAKS    0.018    0.039
 
 === LAT=5, MULT=1, EVTS=200
-
-
-real	5m0,388s
-user	0m32,743s
-sys	0m48,588s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    765
@@ -522,27 +144,6 @@ BAKS    0.031    0.066
 
 === LAT=25, MULT=4, EVTS=5
 
-
-real	5m2,322s
-user	0m32,167s
-sys	0m48,846s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    35
 NO      0.000
@@ -550,27 +151,6 @@ FWDS    0.000    0.001
 BAKS    0.000    0.000
 
 === LAT=25, MULT=4, EVTS=10
-
-
-real	5m0,832s
-user	0m30,649s
-sys	0m45,370s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    58
@@ -580,27 +160,6 @@ BAKS    0.000    0.002
 
 === LAT=25, MULT=4, EVTS=25
 
-
-real	5m1,163s
-user	0m30,448s
-sys	0m43,628s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    135
 NO      0.000
@@ -608,27 +167,6 @@ FWDS    0.000    0.001
 BAKS    0.000    0.001
 
 === LAT=25, MULT=4, EVTS=50
-
-
-real	5m1,018s
-user	0m28,986s
-sys	0m45,821s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    243
@@ -638,27 +176,6 @@ BAKS    0.000    0.000
 
 === LAT=25, MULT=4, EVTS=100
 
-
-real	5m0,708s
-user	0m29,872s
-sys	0m43,963s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    462
 NO      0.000
@@ -666,27 +183,6 @@ FWDS    0.000    0.000
 BAKS    0.002    0.008
 
 === LAT=25, MULT=4, EVTS=200
-
-
-real	5m0,643s
-user	0m27,767s
-sys	0m40,513s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    936
@@ -696,27 +192,6 @@ BAKS    0.000    0.001
 
 === LAT=25, MULT=2, EVTS=5
 
-
-real	5m1,426s
-user	0m31,500s
-sys	0m47,304s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    34
 NO      0.000
@@ -724,27 +199,6 @@ FWDS    0.000    0.001
 BAKS    0.000    0.001
 
 === LAT=25, MULT=2, EVTS=10
-
-
-real	5m1,420s
-user	0m31,513s
-sys	0m47,062s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    66
@@ -754,27 +208,6 @@ BAKS    0.001    0.008
 
 === LAT=25, MULT=2, EVTS=25
 
-
-real	5m1,542s
-user	0m31,740s
-sys	0m48,596s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    138
 NO      0.000
@@ -782,27 +215,6 @@ FWDS    0.000    0.001
 BAKS    0.002    0.013
 
 === LAT=25, MULT=2, EVTS=50
-
-
-real	5m1,219s
-user	0m32,546s
-sys	0m47,699s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    237
@@ -812,27 +224,6 @@ BAKS    0.004    0.024
 
 === LAT=25, MULT=2, EVTS=100
 
-
-real	5m1,218s
-user	0m31,241s
-sys	0m47,943s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    486
 NO      0.000
@@ -840,27 +231,6 @@ FWDS    0.000    0.000
 BAKS    0.009    0.077
 
 === LAT=25, MULT=2, EVTS=200
-
-
-real	5m0,541s
-user	0m28,916s
-sys	0m44,982s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    881
@@ -870,27 +240,6 @@ BAKS    0.018    0.099
 
 === LAT=25, MULT=1, EVTS=5
 
-
-real	5m1,148s
-user	0m32,150s
-sys	0m49,438s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    38
 NO      0.000
@@ -898,27 +247,6 @@ FWDS    0.000    0.000
 BAKS    0.001    0.006
 
 === LAT=25, MULT=1, EVTS=10
-
-
-real	5m0,967s
-user	0m31,978s
-sys	0m48,765s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    58
@@ -928,27 +256,6 @@ BAKS    0.001    0.011
 
 === LAT=25, MULT=1, EVTS=25
 
-
-real	5m1,789s
-user	0m32,934s
-sys	0m49,227s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    132
 NO      0.000
@@ -956,27 +263,6 @@ FWDS    0.000    0.000
 BAKS    0.005    0.032
 
 === LAT=25, MULT=1, EVTS=50
-
-
-real	5m0,633s
-user	0m33,936s
-sys	0m50,178s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    247
@@ -986,27 +272,6 @@ BAKS    0.009    0.064
 
 === LAT=25, MULT=1, EVTS=100
 
-
-real	5m1,347s
-user	0m32,243s
-sys	0m48,695s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    479
 NO      0.000
@@ -1014,27 +279,6 @@ FWDS    0.000    0.000
 BAKS    0.018    0.145
 
 === LAT=25, MULT=1, EVTS=200
-
-
-real	5m0,657s
-user	0m31,169s
-sys	0m46,042s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    884
@@ -1044,27 +288,6 @@ BAKS    0.035    0.302
 
 === LAT=50, MULT=4, EVTS=5
 
-
-real	5m0,984s
-user	0m33,401s
-sys	0m50,677s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    37
 NO      0.000
@@ -1072,27 +295,6 @@ FWDS    0.000    0.003
 BAKS    0.000    0.001
 
 === LAT=50, MULT=4, EVTS=10
-
-
-real	5m1,991s
-user	0m31,464s
-sys	0m46,880s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    56
@@ -1102,27 +304,6 @@ BAKS    0.000    0.003
 
 === LAT=50, MULT=4, EVTS=25
 
-
-real	5m0,863s
-user	0m31,705s
-sys	0m49,912s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    134
 NO      0.000
@@ -1130,27 +311,6 @@ FWDS    0.000    0.000
 BAKS    0.000    0.000
 
 === LAT=50, MULT=4, EVTS=50
-
-
-real	5m1,846s
-user	0m32,612s
-sys	0m48,749s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    239
@@ -1160,27 +320,6 @@ BAKS    0.001    0.007
 
 === LAT=50, MULT=4, EVTS=100
 
-
-real	5m1,958s
-user	0m31,005s
-sys	0m48,080s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    477
 NO      0.000
@@ -1188,27 +327,6 @@ FWDS    0.000    0.000
 BAKS    0.000    0.000
 
 === LAT=50, MULT=4, EVTS=200
-
-
-real	5m1,061s
-user	0m28,354s
-sys	0m44,641s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    886
@@ -1218,27 +336,6 @@ BAKS    0.001    0.002
 
 === LAT=50, MULT=2, EVTS=5
 
-
-real	5m2,461s
-user	0m33,334s
-sys	0m51,210s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    39
 NO      0.000
@@ -1246,27 +343,6 @@ FWDS    0.000    0.002
 BAKS    0.000    0.006
 
 === LAT=50, MULT=2, EVTS=10
-
-
-real	5m1,502s
-user	0m33,602s
-sys	0m50,810s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    60
@@ -1276,27 +352,6 @@ BAKS    0.001    0.014
 
 === LAT=50, MULT=2, EVTS=25
 
-
-real	5m2,853s
-user	0m32,592s
-sys	0m50,882s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    128
 NO      0.000
@@ -1304,27 +359,6 @@ FWDS    0.000    0.001
 BAKS    0.002    0.030
 
 === LAT=50, MULT=2, EVTS=50
-
-
-real	5m1,338s
-user	0m31,653s
-sys	0m46,895s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    232
@@ -1334,27 +368,6 @@ BAKS    0.004    0.054
 
 === LAT=50, MULT=2, EVTS=100
 
-
-real	5m1,315s
-user	0m30,059s
-sys	0m47,063s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    456
 NO      0.000
@@ -1363,44 +376,7 @@ BAKS    0.010    0.149
 
 === LAT=50, MULT=2, EVTS=200
 
-
-real	5m1,055s
-user	0m29,414s
-sys	0m44,689s
 ERR	3	(-648,224,1,0)	(-632,240,1,0)
-ERR	4	(-648,224,1,0)	(-632,240,1,0)
-ERR	5	(-648,224,1,0)	(-632,240,1,0)
-ERR	6	(-648,224,1,0)	(-632,240,1,0)
-ERR	7	(-648,224,1,0)	(-632,240,1,0)
-ERR	8	(-648,224,1,0)	(-632,240,1,0)
-ERR	9	(-648,224,1,0)	(-632,240,1,0)
-ERR	10	(-648,224,1,0)	(-632,240,1,0)
-ERR	11	(-648,224,1,0)	(-632,240,1,0)
-ERR	12	(-648,224,1,0)	(-632,240,1,0)
-ERR	13	(-648,224,1,0)	(-632,240,1,0)
-ERR	14	(-648,224,1,0)	(-632,240,1,0)
-ERR	15	(-648,224,1,0)	(-632,240,1,0)
-ERR	16	(-648,224,1,0)	(-632,240,1,0)
-ERR	17	(-648,224,1,0)	(-632,240,1,0)
-ERR	18	(-648,224,1,0)	(-632,240,1,0)
-ERR	19	(-648,224,1,0)	(-632,240,1,0)
-ERR	20	(-648,224,1,0)	(-632,240,1,0)
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    844
@@ -1410,27 +386,6 @@ BAKS    0.023    0.238
 
 === LAT=50, MULT=1, EVTS=5
 
-
-real	5m1,711s
-user	0m33,682s
-sys	0m50,517s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    36
 NO      0.000
@@ -1438,27 +393,6 @@ FWDS    0.000    0.000
 BAKS    0.000    0.007
 
 === LAT=50, MULT=1, EVTS=10
-
-
-real	5m0,969s
-user	0m32,872s
-sys	0m51,392s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    61
@@ -1468,27 +402,6 @@ BAKS    0.001    0.022
 
 === LAT=50, MULT=1, EVTS=25
 
-
-real	5m1,204s
-user	0m33,431s
-sys	0m50,511s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    139
 NO      0.000
@@ -1496,27 +409,6 @@ FWDS    0.000    0.000
 BAKS    0.005    0.062
 
 === LAT=50, MULT=1, EVTS=50
-
-
-real	5m1,414s
-user	0m31,838s
-sys	0m49,155s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    250
@@ -1526,27 +418,6 @@ BAKS    0.008    0.149
 
 === LAT=50, MULT=1, EVTS=100
 
-
-real	5m1,288s
-user	0m31,891s
-sys	0m47,188s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    450
 NO      0.000
@@ -1554,27 +425,6 @@ FWDS    0.000    0.000
 BAKS    0.020    0.302
 
 === LAT=50, MULT=1, EVTS=200
-
-
-real	5m1,305s
-user	0m29,801s
-sys	0m44,394s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    894
@@ -1584,27 +434,6 @@ BAKS    0.049    0.718
 
 === LAT=100, MULT=4, EVTS=5
 
-
-real	5m2,802s
-user	0m32,183s
-sys	0m50,525s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    39
 NO      0.000
@@ -1613,26 +442,9 @@ BAKS    0.000    0.004
 
 === LAT=100, MULT=4, EVTS=10
 
-
-real	5m3,122s
-user	0m31,830s
-sys	0m50,589s
-NOS[0] = 0
-NOS[1] = 54
 NOS[2] = 120
 NOS[3] = 120
 NOS[4] = 8
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    58
@@ -1642,27 +454,6 @@ BAKS    0.000    0.002
 
 === LAT=100, MULT=4, EVTS=25
 
-
-real	5m3,825s
-user	0m31,395s
-sys	0m50,756s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    130
 NO      0.000
@@ -1670,27 +461,6 @@ FWDS    0.000    0.001
 BAKS    0.000    0.002
 
 === LAT=100, MULT=4, EVTS=50
-
-
-real	5m1,698s
-user	0m30,685s
-sys	0m49,506s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    243
@@ -1700,27 +470,6 @@ BAKS    0.000    0.003
 
 === LAT=100, MULT=4, EVTS=100
 
-
-real	5m2,100s
-user	0m29,790s
-sys	0m46,943s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    472
 NO      0.000
@@ -1728,27 +477,6 @@ FWDS    0.000    0.000
 BAKS    0.004    0.078
 
 === LAT=100, MULT=4, EVTS=200
-
-
-real	5m2,037s
-user	0m27,771s
-sys	0m43,686s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    878
@@ -1758,27 +486,6 @@ BAKS    0.007    0.109
 
 === LAT=100, MULT=2, EVTS=5
 
-
-real	5m1,878s
-user	0m32,030s
-sys	0m51,014s
-NOS[0] = 0
-NOS[1] = 18
-NOS[2] = 30
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    41
 NO      0.009
@@ -1786,27 +493,6 @@ FWDS    0.000    0.003
 BAKS    0.000    0.011
 
 === LAT=100, MULT=2, EVTS=10
-
-
-real	5m1,484s
-user	0m32,413s
-sys	0m50,370s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    59
@@ -1816,27 +502,6 @@ BAKS    0.001    0.018
 
 === LAT=100, MULT=2, EVTS=25
 
-
-real	5m2,104s
-user	0m33,067s
-sys	0m49,618s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    127
 NO      0.000
@@ -1844,27 +509,6 @@ FWDS    0.000    0.001
 BAKS    0.002    0.034
 
 === LAT=100, MULT=2, EVTS=50
-
-
-real	5m1,797s
-user	0m31,188s
-sys	0m49,046s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    222
@@ -1874,27 +518,6 @@ BAKS    0.005    0.150
 
 === LAT=100, MULT=2, EVTS=100
 
-
-real	5m2,426s
-user	0m30,078s
-sys	0m46,598s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    466
 NO      0.000
@@ -1902,27 +525,6 @@ FWDS    0.000    0.000
 BAKS    0.011    0.224
 
 === LAT=100, MULT=2, EVTS=200
-
-
-real	5m2,127s
-user	0m28,134s
-sys	0m43,341s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    934
@@ -1932,27 +534,6 @@ BAKS    0.031    0.623
 
 === LAT=100, MULT=1, EVTS=5
 
-
-real	5m2,685s
-user	0m32,951s
-sys	0m49,515s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    39
 NO      0.000
@@ -1960,27 +541,6 @@ FWDS    0.000    0.001
 BAKS    0.000    0.017
 
 === LAT=100, MULT=1, EVTS=10
-
-
-real	5m2,715s
-user	0m32,782s
-sys	0m50,069s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    58
@@ -1990,27 +550,6 @@ BAKS    0.001    0.043
 
 === LAT=100, MULT=1, EVTS=25
 
-
-real	5m3,259s
-user	0m32,052s
-sys	0m49,363s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    126
 NO      0.000
@@ -2018,27 +557,6 @@ FWDS    0.000    0.001
 BAKS    0.004    0.125
 
 === LAT=100, MULT=1, EVTS=50
-
-
-real	5m2,311s
-user	0m31,291s
-sys	0m48,351s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    244
@@ -2048,27 +566,6 @@ BAKS    0.010    0.364
 
 === LAT=100, MULT=1, EVTS=100
 
-
-real	5m1,639s
-user	0m29,833s
-sys	0m46,300s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    471
 NO      0.000
@@ -2076,27 +573,6 @@ FWDS    0.000    0.000
 BAKS    0.025    0.733
 
 === LAT=100, MULT=1, EVTS=200
-
-
-real	5m1,495s
-user	0m29,569s
-sys	0m42,888s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    926
@@ -2106,26 +582,9 @@ BAKS    0.059    1.708
 
 === LAT=250, MULT=4, EVTS=5
 
-
-real	5m4,336s
-user	0m32,486s
-sys	0m50,321s
-NOS[0] = 0
-NOS[1] = 117
 NOS[2] = 260
-NOS[3] = 260
-NOS[4] = 260
-NOS[5] = 228
 NOS[6] = 200
-NOS[7] = 200
-NOS[8] = 200
 NOS[9] = 127
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    31
@@ -2135,26 +594,9 @@ BAKS    0.000    0.002
 
 === LAT=250, MULT=4, EVTS=10
 
-
-real	5m3,002s
-user	0m31,533s
-sys	0m50,518s
-NOS[0] = 0
-NOS[1] = 108
 NOS[2] = 212
-NOS[3] = 125
 NOS[4] = 94
 NOS[5] = 35
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    67
@@ -2164,26 +606,9 @@ BAKS    0.000    0.002
 
 === LAT=250, MULT=4, EVTS=25
 
-
-real	5m5,146s
-user	0m30,982s
-sys	0m49,992s
-NOS[0] = 0
 NOS[1] = 67
-NOS[2] = 52
 NOS[3] = 20
 NOS[4] = 11
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    148
@@ -2193,26 +618,8 @@ BAKS    0.000    0.007
 
 === LAT=250, MULT=4, EVTS=50
 
-
-real	5m3,647s
-user	0m30,098s
-sys	0m48,323s
-NOS[0] = 0
-NOS[1] = 72
 NOS[2] = 47
-NOS[3] = 21
-NOS[4] = 20
-NOS[5] = 21
 NOS[6] = 8
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    256
@@ -2222,26 +629,9 @@ BAKS    0.001    0.020
 
 === LAT=250, MULT=4, EVTS=100
 
-
-real	5m4,496s
-user	0m29,420s
-sys	0m46,809s
-NOS[0] = 0
-NOS[1] = 70
 NOS[2] = 147
-NOS[3] = 147
-NOS[4] = 140
-NOS[5] = 154
-NOS[6] = 147
-NOS[7] = 140
 NOS[8] = 147
-NOS[9] = 140
-NOS[10] = 140
-NOS[11] = 147
-NOS[12] = 140
-NOS[13] = 140
 NOS[14] = 133
-NOS[15] = 0
 
 TCKS    283521
 EVTS    449
@@ -2251,26 +641,9 @@ BAKS    0.006    0.278
 
 === LAT=250, MULT=4, EVTS=200
 
-
-real	5m4,844s
-user	0m28,428s
-sys	0m43,674s
-NOS[0] = 0
-NOS[1] = 90
 NOS[2] = 220
-NOS[3] = 210
-NOS[4] = 202
-NOS[5] = 189
-NOS[6] = 189
-NOS[7] = 189
 NOS[8] = 180
-NOS[9] = 189
-NOS[10] = 189
-NOS[11] = 207
-NOS[12] = 189
-NOS[13] = 180
 NOS[14] = 171
-NOS[15] = 0
 
 TCKS    283521
 EVTS    793
@@ -2280,26 +653,9 @@ BAKS    0.014    0.678
 
 === LAT=250, MULT=2, EVTS=5
 
-
-real	5m4,250s
-user	0m32,215s
-sys	0m50,729s
-NOS[0] = 0
-NOS[1] = 18
 NOS[2] = 40
-NOS[3] = 29
-NOS[4] = 20
-NOS[5] = 20
-NOS[6] = 20
-NOS[7] = 20
 NOS[8] = 20
-NOS[9] = 20
-NOS[10] = 20
-NOS[11] = 20
-NOS[12] = 20
-NOS[13] = 20
 NOS[14] = 19
-NOS[15] = 0
 
 TCKS    283521
 EVTS    36
@@ -2309,26 +665,9 @@ BAKS    0.000    0.018
 
 === LAT=250, MULT=2, EVTS=10
 
-
-real	5m2,832s
-user	0m32,458s
-sys	0m49,977s
-NOS[0] = 0
-NOS[1] = 120
 NOS[2] = 240
-NOS[3] = 240
-NOS[4] = 212
-NOS[5] = 169
 NOS[6] = 140
-NOS[7] = 140
-NOS[8] = 133
-NOS[9] = 100
-NOS[10] = 100
 NOS[11] = 40
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    63
@@ -2338,27 +677,6 @@ BAKS    0.001    0.079
 
 === LAT=250, MULT=2, EVTS=25
 
-
-real	5m3,099s
-user	0m32,025s
-sys	0m49,403s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    139
 NO      0.000
@@ -2367,26 +685,9 @@ BAKS    0.003    0.121
 
 === LAT=250, MULT=2, EVTS=50
 
-
-real	5m4,231s
-user	0m30,775s
-sys	0m48,579s
-NOS[0] = 0
-NOS[1] = 80
 NOS[2] = 142
-NOS[3] = 147
-NOS[4] = 140
-NOS[5] = 140
-NOS[6] = 140
-NOS[7] = 140
 NOS[8] = 140
-NOS[9] = 140
-NOS[10] = 140
-NOS[11] = 140
-NOS[12] = 140
-NOS[13] = 147
 NOS[14] = 140
-NOS[15] = 0
 
 TCKS    283521
 EVTS    242
@@ -2396,27 +697,6 @@ BAKS    0.007    0.600
 
 === LAT=250, MULT=2, EVTS=100
 
-
-real	5m3,221s
-user	0m29,505s
-sys	0m46,399s
-NOS[0] = 0
-NOS[1] = 0
-NOS[2] = 0
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
-
 TCKS    283521
 EVTS    477
 NO      0.000
@@ -2424,27 +704,6 @@ FWDS    0.000    0.000
 BAKS    0.015    0.564
 
 === LAT=250, MULT=2, EVTS=200
-
-
-real	5m3,389s
-user	0m28,584s
-sys	0m43,034s
-NOS[0] = 0
-NOS[1] = 9
-NOS[2] = 4
-NOS[3] = 0
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    948
@@ -2454,26 +713,9 @@ BAKS    0.055    2.178
 
 === LAT=250, MULT=1, EVTS=5
 
-
-real	5m5,351s
-user	0m31,747s
-sys	0m50,835s
-NOS[0] = 0
-NOS[1] = 90
 NOS[2] = 175
-NOS[3] = 140
-NOS[4] = 140
-NOS[5] = 134
-NOS[6] = 120
-NOS[7] = 120
-NOS[8] = 120
-NOS[9] = 120
 NOS[10] = 120
-NOS[11] = 120
-NOS[12] = 120
-NOS[13] = 120
 NOS[14] = 114
-NOS[15] = 0
 
 TCKS    283521
 EVTS    39
@@ -2483,26 +725,9 @@ BAKS    0.001    0.047
 
 === LAT=250, MULT=1, EVTS=10
 
-
-real	5m3,869s
-user	0m31,710s
-sys	0m50,672s
-NOS[0] = 0
-NOS[1] = 63
 NOS[2] = 140
-NOS[3] = 138
-NOS[4] = 130
-NOS[5] = 100
-NOS[6] = 100
-NOS[7] = 69
 NOS[8] = 40
-NOS[9] = 40
-NOS[10] = 32
-NOS[11] = 20
-NOS[12] = 20
-NOS[13] = 20
 NOS[14] = 19
-NOS[15] = 0
 
 TCKS    283521
 EVTS    62
@@ -2512,26 +737,8 @@ BAKS    0.002    0.128
 
 === LAT=250, MULT=1, EVTS=25
 
-
-real	5m2,612s
-user	0m32,048s
-sys	0m49,111s
-NOS[0] = 0
-NOS[1] = 27
 NOS[2] = 60
 NOS[3] = 4
-NOS[4] = 0
-NOS[5] = 0
-NOS[6] = 0
-NOS[7] = 0
-NOS[8] = 0
-NOS[9] = 0
-NOS[10] = 0
-NOS[11] = 0
-NOS[12] = 0
-NOS[13] = 0
-NOS[14] = 0
-NOS[15] = 0
 
 TCKS    283521
 EVTS    130
@@ -2541,26 +748,9 @@ BAKS    0.005    0.365
 
 === LAT=250, MULT=1, EVTS=50
 
-
-real	5m4,016s
-user	0m31,395s
-sys	0m48,230s
-NOS[0] = 0
-NOS[1] = 72
 NOS[2] = 156
-NOS[3] = 140
-NOS[4] = 145
-NOS[5] = 145
-NOS[6] = 110
-NOS[7] = 100
 NOS[8] = 100
-NOS[9] = 110
-NOS[10] = 100
-NOS[11] = 100
-NOS[12] = 100
-NOS[13] = 100
 NOS[14] = 95
-NOS[15] = 0
 
 TCKS    283521
 EVTS    245
@@ -2570,26 +760,9 @@ BAKS    0.013    1.299
 
 === LAT=250, MULT=1, EVTS=100
 
-
-real	5m4,082s
-user	0m30,102s
-sys	0m45,721s
-NOS[0] = 0
-NOS[1] = 18
 NOS[2] = 40
-NOS[3] = 40
-NOS[4] = 40
-NOS[5] = 42
-NOS[6] = 40
-NOS[7] = 42
 NOS[8] = 40
-NOS[9] = 40
-NOS[10] = 42
-NOS[11] = 40
-NOS[12] = 40
-NOS[13] = 40
 NOS[14] = 38
-NOS[15] = 0
 
 TCKS    283521
 EVTS    480
@@ -2599,26 +772,9 @@ BAKS    0.037    2.974
 
 === LAT=250, MULT=1, EVTS=200
 
-
-real	5m3,471s
-user	0m29,254s
-sys	0m43,818s
-NOS[0] = 0
-NOS[1] = 20
 NOS[2] = 40
-NOS[3] = 44
-NOS[4] = 42
-NOS[5] = 40
-NOS[6] = 29
-NOS[7] = 21
 NOS[8] = 20
-NOS[9] = 20
-NOS[10] = 20
-NOS[11] = 20
-NOS[12] = 20
-NOS[13] = 21
 NOS[14] = 19
-NOS[15] = 0
 
 TCKS    283521
 EVTS    809
@@ -2628,26 +784,9 @@ BAKS    0.088    6.360
 
 === LAT=500, MULT=4, EVTS=5
 
-
-real	5m8,247s
-user	0m31,975s
-sys	0m50,981s
-NOS[0] = 0
-NOS[1] = 171
 NOS[2] = 380
-NOS[3] = 380
-NOS[4] = 380
-NOS[5] = 380
-NOS[6] = 380
-NOS[7] = 380
 NOS[8] = 380
-NOS[9] = 380
-NOS[10] = 380
-NOS[11] = 380
-NOS[12] = 380
-NOS[13] = 380
 NOS[14] = 361
-NOS[15] = 0
 
 TCKS    283521
 EVTS    35
@@ -2657,26 +796,9 @@ BAKS    0.000    0.002
 
 === LAT=500, MULT=4, EVTS=10
 
-
-real	5m5,507s
-user	0m31,916s
-sys	0m50,328s
-NOS[0] = 0
-NOS[1] = 45
 NOS[2] = 100
-NOS[3] = 100
-NOS[4] = 105
-NOS[5] = 100
-NOS[6] = 100
-NOS[7] = 100
 NOS[8] = 100
-NOS[9] = 100
-NOS[10] = 100
-NOS[11] = 61
-NOS[12] = 60
-NOS[13] = 60
 NOS[14] = 57
-NOS[15] = 0
 
 TCKS    283521
 EVTS    66
@@ -2686,26 +808,9 @@ BAKS    0.000    0.000
 
 === LAT=500, MULT=4, EVTS=25
 
-
-real	5m6,204s
-user	0m31,767s
-sys	0m49,072s
-NOS[0] = 0
-NOS[1] = 135
 NOS[2] = 266
-NOS[3] = 220
-NOS[4] = 212
-NOS[5] = 210
-NOS[6] = 200
-NOS[7] = 200
 NOS[8] = 200
-NOS[9] = 200
-NOS[10] = 194
-NOS[11] = 189
-NOS[12] = 180
-NOS[13] = 189
 NOS[14] = 171
-NOS[15] = 0
 
 TCKS    283521
 EVTS    130
@@ -2715,26 +820,9 @@ BAKS    0.000    0.000
 
 === LAT=500, MULT=4, EVTS=50
 
-
-real	5m4,367s
-user	0m30,792s
-sys	0m48,858s
-NOS[0] = 0
-NOS[1] = 126
 NOS[2] = 280
-NOS[3] = 280
-NOS[4] = 280
-NOS[5] = 280
-NOS[6] = 280
-NOS[7] = 294
 NOS[8] = 280
-NOS[9] = 280
-NOS[10] = 280
-NOS[11] = 294
-NOS[12] = 280
-NOS[13] = 280
 NOS[14] = 266
-NOS[15] = 0
 
 TCKS    283521
 EVTS    267
@@ -2744,26 +832,9 @@ BAKS    0.001    0.022
 
 === LAT=500, MULT=4, EVTS=100
 
-
-real	5m5,247s
-user	0m29,863s
-sys	0m48,333s
-NOS[0] = 0
-NOS[1] = 45
 NOS[2] = 100
-NOS[3] = 105
-NOS[4] = 100
-NOS[5] = 100
-NOS[6] = 100
-NOS[7] = 100
 NOS[8] = 100
-NOS[9] = 100
-NOS[10] = 110
-NOS[11] = 110
-NOS[12] = 105
-NOS[13] = 105
 NOS[14] = 95
-NOS[15] = 0
 
 TCKS    283521
 EVTS    454
@@ -2773,26 +844,9 @@ BAKS    0.000    0.000
 
 === LAT=500, MULT=4, EVTS=200
 
-
-real	5m5,357s
-user	0m30,600s
-sys	0m48,036s
-NOS[0] = 0
-NOS[1] = 80
 NOS[2] = 160
-NOS[3] = 160
-NOS[4] = 160
-NOS[5] = 168
-NOS[6] = 176
-NOS[7] = 168
 NOS[8] = 176
-NOS[9] = 153
-NOS[10] = 147
-NOS[11] = 161
-NOS[12] = 154
-NOS[13] = 143
 NOS[14] = 120
-NOS[15] = 0
 
 TCKS    283521
 EVTS    905
@@ -2802,26 +856,9 @@ BAKS    0.001    0.016
 
 === LAT=500, MULT=2, EVTS=5
 
-
-real	5m7,304s
-user	0m32,383s
-sys	0m50,197s
-NOS[0] = 0
-NOS[1] = 126
 NOS[2] = 280
-NOS[3] = 276
-NOS[4] = 197
-NOS[5] = 180
-NOS[6] = 180
-NOS[7] = 180
 NOS[8] = 180
-NOS[9] = 180
-NOS[10] = 180
-NOS[11] = 180
-NOS[12] = 189
-NOS[13] = 180
 NOS[14] = 171
-NOS[15] = 0
 
 TCKS    283521
 EVTS    42
@@ -2831,26 +868,9 @@ BAKS    0.000    0.048
 
 === LAT=500, MULT=2, EVTS=10
 
-
-real	5m5,982s
-user	0m31,813s
-sys	0m50,099s
-NOS[0] = 0
-NOS[1] = 133
 NOS[2] = 240
-NOS[3] = 240
-NOS[4] = 240
-NOS[5] = 160
-NOS[6] = 120
-NOS[7] = 109
 NOS[8] = 100
-NOS[9] = 100
-NOS[10] = 100
-NOS[11] = 100
-NOS[12] = 100
-NOS[13] = 100
 NOS[14] = 95
-NOS[15] = 0
 
 TCKS    283521
 EVTS    60
@@ -2860,26 +880,9 @@ BAKS    0.001    0.072
 
 === LAT=500, MULT=2, EVTS=25
 
-
-real	5m5,800s
-user	0m31,547s
-sys	0m49,761s
-NOS[0] = 0
-NOS[1] = 144
 NOS[2] = 320
-NOS[3] = 320
-NOS[4] = 320
-NOS[5] = 320
-NOS[6] = 308
-NOS[7] = 300
 NOS[8] = 315
-NOS[9] = 300
-NOS[10] = 300
-NOS[11] = 312
-NOS[12] = 300
-NOS[13] = 300
 NOS[14] = 285
-NOS[15] = 0
 
 TCKS    283521
 EVTS    136
@@ -2889,26 +892,9 @@ BAKS    0.003    0.261
 
 === LAT=500, MULT=2, EVTS=50
 
-
-real	5m4,821s
-user	0m31,294s
-sys	0m48,563s
-NOS[0] = 0
-NOS[1] = 90
 NOS[2] = 190
-NOS[3] = 160
-NOS[4] = 168
-NOS[5] = 168
-NOS[6] = 160
-NOS[7] = 160
 NOS[8] = 160
-NOS[9] = 160
-NOS[10] = 160
-NOS[11] = 160
-NOS[12] = 160
-NOS[13] = 160
 NOS[14] = 152
-NOS[15] = 0
 
 TCKS    283521
 EVTS    245
@@ -2918,26 +904,9 @@ BAKS    0.006    0.555
 
 === LAT=500, MULT=2, EVTS=100
 
-
-real	5m5,506s
-user	0m30,583s
-sys	0m48,338s
-NOS[0] = 0
-NOS[1] = 40
 NOS[2] = 60
-NOS[3] = 61
-NOS[4] = 61
-NOS[5] = 60
-NOS[6] = 61
-NOS[7] = 60
 NOS[8] = 60
-NOS[9] = 60
-NOS[10] = 60
-NOS[11] = 60
-NOS[12] = 60
-NOS[13] = 60
 NOS[14] = 57
-NOS[15] = 0
 
 TCKS    283521
 EVTS    457
@@ -2947,26 +916,9 @@ BAKS    0.021    1.642
 
 === LAT=500, MULT=2, EVTS=200
 
-
-real	5m4,929s
-user	0m31,500s
-sys	0m47,182s
-NOS[0] = 0
-NOS[1] = 90
 NOS[2] = 188
-NOS[3] = 188
-NOS[4] = 188
-NOS[5] = 198
-NOS[6] = 190
-NOS[7] = 152
 NOS[8] = 154
-NOS[9] = 140
-NOS[10] = 150
-NOS[11] = 147
-NOS[12] = 135
-NOS[13] = 120
 NOS[14] = 122
-NOS[15] = 0
 
 TCKS    283521
 EVTS    909
@@ -2976,26 +928,9 @@ BAKS    0.063    4.476
 
 === LAT=500, MULT=1, EVTS=5
 
-
-real	5m6,438s
-user	0m32,493s
-sys	0m50,153s
-NOS[0] = 0
-NOS[1] = 144
 NOS[2] = 320
-NOS[3] = 320
-NOS[4] = 320
-NOS[5] = 320
-NOS[6] = 320
-NOS[7] = 320
 NOS[8] = 320
-NOS[9] = 320
-NOS[10] = 320
-NOS[11] = 320
-NOS[12] = 320
-NOS[13] = 320
 NOS[14] = 262
-NOS[15] = 0
 
 TCKS    283521
 EVTS    32
@@ -3005,26 +940,9 @@ BAKS    0.000    0.061
 
 === LAT=500, MULT=1, EVTS=10
 
-
-real	5m7,398s
-user	0m32,976s
-sys	0m49,173s
-NOS[0] = 0
-NOS[1] = 135
 NOS[2] = 300
-NOS[3] = 300
-NOS[4] = 300
-NOS[5] = 300
-NOS[6] = 193
-NOS[7] = 180
 NOS[8] = 180
-NOS[9] = 180
-NOS[10] = 180
-NOS[11] = 180
-NOS[12] = 180
-NOS[13] = 180
 NOS[14] = 171
-NOS[15] = 0
 
 TCKS    283521
 EVTS    61
@@ -3034,26 +952,9 @@ BAKS    0.002    0.227
 
 === LAT=500, MULT=1, EVTS=25
 
-
-real	5m5,560s
-user	0m31,130s
-sys	0m49,772s
-NOS[0] = 0
-NOS[1] = 127
 NOS[2] = 261
-NOS[3] = 220
-NOS[4] = 212
-NOS[5] = 196
-NOS[6] = 180
-NOS[7] = 180
 NOS[8] = 180
-NOS[9] = 192
-NOS[10] = 180
-NOS[11] = 180
-NOS[12] = 180
-NOS[13] = 180
 NOS[14] = 171
-NOS[15] = 0
 
 TCKS    283521
 EVTS    143
@@ -3063,26 +964,9 @@ BAKS    0.007    0.876
 
 === LAT=500, MULT=1, EVTS=50
 
-
-real	5m6,165s
-user	0m30,955s
-sys	0m48,668s
-NOS[0] = 0
-NOS[1] = 153
 NOS[2] = 208
-NOS[3] = 142
-NOS[4] = 140
-NOS[5] = 142
-NOS[6] = 140
-NOS[7] = 144
 NOS[8] = 140
-NOS[9] = 140
-NOS[10] = 140
-NOS[11] = 140
-NOS[12] = 140
-NOS[13] = 140
 NOS[14] = 138
-NOS[15] = 0
 
 TCKS    283521
 EVTS    261
@@ -3092,46 +976,11 @@ BAKS    0.021    2.432
 
 === LAT=500, MULT=1, EVTS=100
 
-
-real	5m6,789s
-user	0m31,342s
-sys	0m47,811s
 ERR	1	(-640,390,-1,0)	(178,390,0,0)
-ERR	2	(-640,390,-1,0)	(178,390,0,0)
-ERR	3	(-640,390,-1,0)	(178,390,0,0)
-ERR	4	(-640,390,-1,0)	(178,390,0,0)
-ERR	5	(-640,390,-1,0)	(178,390,0,0)
-ERR	6	(-640,390,-1,0)	(178,390,0,0)
-ERR	7	(-640,390,-1,0)	(178,390,0,0)
-ERR	8	(-640,390,-1,0)	(178,390,0,0)
-ERR	9	(-640,390,-1,0)	(178,390,0,0)
-ERR	10	(-640,390,-1,0)	(178,390,0,0)
-ERR	11	(-640,390,-1,0)	(178,390,0,0)
-ERR	12	(-640,390,-1,0)	(178,390,0,0)
-ERR	13	(-640,390,-1,0)	(178,390,0,0)
-ERR	14	(-640,390,-1,0)	(178,390,0,0)
-ERR	15	(-640,390,-1,0)	(178,390,0,0)
-ERR	16	(-640,390,-1,0)	(178,390,0,0)
-ERR	17	(-640,390,-1,0)	(178,390,0,0)
-ERR	18	(-640,390,-1,0)	(178,390,0,0)
-ERR	19	(-640,390,-1,0)	(178,390,0,0)
-ERR	20	(-640,390,-1,0)	(178,390,0,0)
-NOS[0] = 0
-NOS[1] = 99
+
 NOS[2] = 231
-NOS[3] = 220
-NOS[4] = 220
-NOS[5] = 224
-NOS[6] = 229
-NOS[7] = 203
 NOS[8] = 200
-NOS[9] = 212
-NOS[10] = 203
-NOS[11] = 200
-NOS[12] = 196
-NOS[13] = 180
 NOS[14] = 171
-NOS[15] = 0
 
 TCKS    283521
 EVTS    471
@@ -3141,28 +990,11 @@ BAKS    0.058    7.256
 
 === LAT=500, MULT=1, EVTS=200
 
-
-real	5m6,243s
-user	0m33,134s
-sys	0m47,008s
 ERR	19	(-972,1886,-1,0)	(-972,1770,-1,0)
-ERR	20	(-972,1886,-1,0)	(-972,1770,-1,0)
-NOS[0] = 0
-NOS[1] = 125
+
 NOS[2] = 275
-NOS[3] = 263
-NOS[4] = 243
-NOS[5] = 216
-NOS[6] = 203
-NOS[7] = 202
 NOS[8] = 150
-NOS[9] = 150
-NOS[10] = 129
-NOS[11] = 129
-NOS[12] = 128
-NOS[13] = 123
 NOS[14] = 114
-NOS[15] = 0
 
 TCKS    283521
 EVTS    860
