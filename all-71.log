@@ -1,0 +1,3176 @@
+Error: Cannot delete qdisc with handle of zero.
+=== LAT=5, MULT=5, EVTS=5
+
+
+real	5m0,731s
+user	0m33,879s
+sys	0m51,218s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    39
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=5, MULT=5, EVTS=10
+
+
+real	5m0,567s
+user	0m35,828s
+sys	0m53,308s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    61
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=5, MULT=5, EVTS=25
+
+
+real	5m0,724s
+user	0m35,886s
+sys	0m53,358s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    139
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=5, MULT=5, EVTS=50
+
+
+real	5m1,308s
+user	0m35,230s
+sys	0m53,334s
+ERR	12	(1388,1992,0,1)	(1534,2138,0,1)
+ERR	13	(1388,1992,0,1)	(1534,2138,0,1)
+ERR	14	(1388,1992,0,1)	(1534,2138,0,1)
+ERR	15	(1388,1992,0,1)	(1534,2138,0,1)
+ERR	16	(1388,1992,0,1)	(1534,2138,0,1)
+ERR	17	(1388,1992,0,1)	(1534,2138,0,1)
+ERR	18	(1388,1992,0,1)	(1534,2138,0,1)
+ERR	19	(1388,1992,0,1)	(1534,2138,0,1)
+ERR	20	(1388,1992,0,1)	(1534,2138,0,1)
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    231
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=5, MULT=5, EVTS=100
+
+
+real	5m0,000s
+user	0m35,017s
+sys	0m52,425s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    424
+NO      0.000
+FWDS    0.001    0.001
+BAKS    0.000    0.000
+
+=== LAT=5, MULT=5, EVTS=200
+
+
+real	4m59,226s
+user	0m33,481s
+sys	0m51,435s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    807
+NO      0.000
+FWDS    0.002    0.002
+BAKS    0.001    0.001
+
+=== LAT=5, MULT=2, EVTS=5
+
+
+real	5m0,523s
+user	0m36,304s
+sys	0m53,474s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    32
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.001
+
+=== LAT=5, MULT=2, EVTS=10
+
+
+real	5m0,405s
+user	0m36,197s
+sys	0m53,478s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    66
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.001    0.002
+
+=== LAT=5, MULT=2, EVTS=25
+
+
+real	5m0,395s
+user	0m36,159s
+sys	0m53,891s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    142
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.003    0.005
+
+=== LAT=5, MULT=2, EVTS=50
+
+
+real	5m0,275s
+user	0m35,785s
+sys	0m52,947s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    218
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.005    0.010
+
+=== LAT=5, MULT=2, EVTS=100
+
+
+real	5m0,058s
+user	0m35,998s
+sys	0m51,283s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    447
+NO      0.000
+FWDS    0.001    0.001
+BAKS    0.011    0.020
+
+=== LAT=5, MULT=2, EVTS=200
+
+
+real	5m1,291s
+user	0m34,660s
+sys	0m51,646s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    857
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.020    0.032
+
+=== LAT=5, MULT=1, EVTS=5
+
+
+real	5m0,996s
+user	0m36,271s
+sys	0m52,934s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    33
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.001
+
+=== LAT=5, MULT=1, EVTS=10
+
+
+real	5m1,530s
+user	0m36,820s
+sys	0m53,252s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    64
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.002    0.004
+
+=== LAT=5, MULT=1, EVTS=25
+
+
+real	5m0,576s
+user	0m35,690s
+sys	0m54,280s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    125
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.005    0.010
+
+=== LAT=5, MULT=1, EVTS=50
+
+
+real	5m0,102s
+user	0m35,494s
+sys	0m53,435s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    231
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.009    0.018
+
+=== LAT=5, MULT=1, EVTS=100
+
+
+real	4m59,849s
+user	0m35,602s
+sys	0m51,741s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    441
+NO      0.000
+FWDS    0.001    0.001
+BAKS    0.017    0.035
+
+=== LAT=5, MULT=1, EVTS=200
+
+
+real	5m1,037s
+user	0m34,401s
+sys	0m51,669s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    845
+NO      0.000
+FWDS    0.001    0.001
+BAKS    0.034    0.066
+
+=== LAT=25, MULT=5, EVTS=5
+
+
+real	5m0,643s
+user	0m34,190s
+sys	0m51,995s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    29
+NO      0.000
+FWDS    0.000    0.002
+BAKS    0.000    0.000
+
+=== LAT=25, MULT=5, EVTS=10
+
+
+real	5m0,912s
+user	0m34,631s
+sys	0m51,307s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    63
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=25, MULT=5, EVTS=25
+
+
+real	5m0,674s
+user	0m33,303s
+sys	0m51,235s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    133
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.001
+
+=== LAT=25, MULT=5, EVTS=50
+
+
+real	5m2,210s
+user	0m33,809s
+sys	0m50,100s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    244
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=25, MULT=5, EVTS=100
+
+
+real	5m0,802s
+user	0m31,657s
+sys	0m49,858s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    482
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=25, MULT=5, EVTS=200
+
+
+real	5m0,629s
+user	0m30,084s
+sys	0m47,207s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    874
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=25, MULT=2, EVTS=5
+
+
+real	5m1,122s
+user	0m34,816s
+sys	0m51,917s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    34
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.000    0.002
+
+=== LAT=25, MULT=2, EVTS=10
+
+
+real	5m1,025s
+user	0m31,895s
+sys	0m47,079s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    62
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.001    0.005
+
+=== LAT=25, MULT=2, EVTS=25
+
+
+real	5m0,570s
+user	0m31,885s
+sys	0m48,419s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    139
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.002    0.015
+
+=== LAT=25, MULT=2, EVTS=50
+
+
+real	5m0,673s
+user	0m33,275s
+sys	0m50,702s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    232
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.004    0.029
+
+=== LAT=25, MULT=2, EVTS=100
+
+
+real	5m0,847s
+user	0m32,161s
+sys	0m49,004s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    456
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.008    0.049
+
+=== LAT=25, MULT=2, EVTS=200
+
+
+real	5m0,929s
+user	0m29,326s
+sys	0m45,630s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    943
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.020    0.098
+
+=== LAT=25, MULT=1, EVTS=5
+
+
+real	5m1,462s
+user	0m33,161s
+sys	0m48,131s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    33
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.004
+
+=== LAT=25, MULT=1, EVTS=10
+
+
+real	5m1,149s
+user	0m32,202s
+sys	0m50,150s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    59
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.001    0.011
+
+=== LAT=25, MULT=1, EVTS=25
+
+
+real	5m0,752s
+user	0m32,280s
+sys	0m50,278s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    124
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.004    0.031
+
+=== LAT=25, MULT=1, EVTS=50
+
+
+real	5m0,938s
+user	0m31,486s
+sys	0m48,176s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    248
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.008    0.078
+
+=== LAT=25, MULT=1, EVTS=100
+
+
+real	5m0,914s
+user	0m30,622s
+sys	0m45,986s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    484
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.018    0.149
+
+=== LAT=25, MULT=1, EVTS=200
+
+
+real	5m0,316s
+user	0m30,314s
+sys	0m47,043s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    853
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.038    0.288
+
+=== LAT=50, MULT=5, EVTS=5
+
+
+real	5m1,850s
+user	0m33,088s
+sys	0m50,361s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    37
+NO      0.000
+FWDS    0.000    0.004
+BAKS    0.000    0.001
+
+=== LAT=50, MULT=5, EVTS=10
+
+
+real	5m0,974s
+user	0m32,864s
+sys	0m50,866s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    60
+NO      0.000
+FWDS    0.000    0.004
+BAKS    0.000    0.000
+
+=== LAT=50, MULT=5, EVTS=25
+
+
+real	5m0,893s
+user	0m32,848s
+sys	0m50,358s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    130
+NO      0.000
+FWDS    0.000    0.002
+BAKS    0.000    0.000
+
+=== LAT=50, MULT=5, EVTS=50
+
+
+real	5m1,420s
+user	0m32,058s
+sys	0m48,198s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    242
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=50, MULT=5, EVTS=100
+
+
+real	5m1,364s
+user	0m30,461s
+sys	0m46,762s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    475
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.001    0.004
+
+=== LAT=50, MULT=5, EVTS=200
+
+
+real	5m1,854s
+user	0m28,979s
+sys	0m44,443s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    837
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.001    0.008
+
+=== LAT=50, MULT=2, EVTS=5
+
+
+real	5m0,953s
+user	0m33,148s
+sys	0m51,214s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    33
+NO      0.000
+FWDS    0.000    0.002
+BAKS    0.000    0.002
+
+=== LAT=50, MULT=2, EVTS=10
+
+
+real	5m0,915s
+user	0m34,452s
+sys	0m49,013s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    54
+NO      0.000
+FWDS    0.000    0.002
+BAKS    0.001    0.007
+
+=== LAT=50, MULT=2, EVTS=25
+
+
+real	5m0,891s
+user	0m32,236s
+sys	0m49,054s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    126
+NO      0.000
+FWDS    0.000    0.002
+BAKS    0.002    0.019
+
+=== LAT=50, MULT=2, EVTS=50
+
+
+real	5m2,187s
+user	0m29,600s
+sys	0m45,885s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    245
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.005    0.086
+
+=== LAT=50, MULT=2, EVTS=100
+
+
+real	5m1,194s
+user	0m31,235s
+sys	0m46,921s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    461
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.010    0.156
+
+=== LAT=50, MULT=2, EVTS=200
+
+
+real	5m0,922s
+user	0m28,572s
+sys	0m44,990s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    928
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.025    0.290
+
+=== LAT=50, MULT=1, EVTS=5
+
+
+real	5m1,064s
+user	0m33,319s
+sys	0m51,043s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    41
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.001    0.014
+
+=== LAT=50, MULT=1, EVTS=10
+
+
+real	5m2,551s
+user	0m32,208s
+sys	0m51,837s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    68
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.001    0.030
+
+=== LAT=50, MULT=1, EVTS=25
+
+
+real	5m1,579s
+user	0m32,843s
+sys	0m50,282s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    132
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.004    0.081
+
+=== LAT=50, MULT=1, EVTS=50
+
+
+real	5m1,126s
+user	0m31,429s
+sys	0m49,507s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    247
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.008    0.155
+
+=== LAT=50, MULT=1, EVTS=100
+
+
+real	5m1,097s
+user	0m30,242s
+sys	0m48,768s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    460
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.019    0.269
+
+=== LAT=50, MULT=1, EVTS=200
+
+
+real	5m0,782s
+user	0m29,525s
+sys	0m45,219s
+ERR	10	(-400,490,0,1)	(-440,556,0,1)
+ERR	11	(-400,490,0,1)	(-440,556,0,1)
+ERR	12	(-400,490,0,1)	(-440,556,0,1)
+ERR	13	(-400,490,0,1)	(-440,556,0,1)
+ERR	14	(-400,490,0,1)	(-440,556,0,1)
+ERR	15	(-400,490,0,1)	(-440,556,0,1)
+ERR	16	(-400,490,0,1)	(-440,556,0,1)
+ERR	17	(-400,490,0,1)	(-440,556,0,1)
+ERR	18	(-400,490,0,1)	(-440,556,0,1)
+ERR	19	(-400,490,0,1)	(-440,556,0,1)
+ERR	20	(-400,490,0,1)	(-440,556,0,1)
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    833
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.045    0.630
+
+=== LAT=100, MULT=5, EVTS=5
+
+
+real	5m1,742s
+user	0m31,370s
+sys	0m48,253s
+NOS[0] = 0
+NOS[1] = 27
+NOS[2] = 60
+NOS[3] = 60
+NOS[4] = 60
+NOS[5] = 44
+NOS[6] = 5
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    42
+NO      0.047
+FWDS    0.000    0.003
+BAKS    0.000    0.000
+
+=== LAT=100, MULT=5, EVTS=10
+
+
+real	5m1,523s
+user	0m31,870s
+sys	0m49,951s
+NOS[0] = 0
+NOS[1] = 135
+NOS[2] = 300
+NOS[3] = 113
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    58
+NO      0.101
+FWDS    0.000    0.006
+BAKS    0.000    0.001
+
+=== LAT=100, MULT=5, EVTS=25
+
+
+real	5m1,876s
+user	0m32,241s
+sys	0m49,299s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    147
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.000    0.000
+
+=== LAT=100, MULT=5, EVTS=50
+
+
+real	5m3,287s
+user	0m30,664s
+sys	0m49,025s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    253
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.001    0.012
+
+=== LAT=100, MULT=5, EVTS=100
+
+
+real	5m1,620s
+user	0m28,942s
+sys	0m47,181s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    500
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=100, MULT=5, EVTS=200
+
+
+real	5m1,392s
+user	0m26,544s
+sys	0m42,056s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    912
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=100, MULT=2, EVTS=5
+
+
+real	5m2,249s
+user	0m32,331s
+sys	0m49,587s
+NOS[0] = 0
+NOS[1] = 9
+NOS[2] = 20
+NOS[3] = 20
+NOS[4] = 20
+NOS[5] = 20
+NOS[6] = 20
+NOS[7] = 20
+NOS[8] = 20
+NOS[9] = 20
+NOS[10] = 20
+NOS[11] = 20
+NOS[12] = 20
+NOS[13] = 20
+NOS[14] = 5
+NOS[15] = 0
+
+TCKS    283521
+EVTS    28
+NO      0.047
+FWDS    0.000    0.003
+BAKS    0.000    0.008
+
+=== LAT=100, MULT=2, EVTS=10
+
+
+real	5m2,185s
+user	0m32,338s
+sys	0m49,807s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    59
+NO      0.000
+FWDS    0.000    0.002
+BAKS    0.001    0.020
+
+=== LAT=100, MULT=2, EVTS=25
+
+
+real	5m2,408s
+user	0m31,481s
+sys	0m50,004s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    126
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.002    0.061
+
+=== LAT=100, MULT=2, EVTS=50
+
+
+real	5m2,703s
+user	0m31,622s
+sys	0m47,851s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    248
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.005    0.168
+
+=== LAT=100, MULT=2, EVTS=100
+
+
+real	5m1,863s
+user	0m29,302s
+sys	0m46,503s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    491
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.013    0.369
+
+=== LAT=100, MULT=2, EVTS=200
+
+
+real	5m2,685s
+user	0m29,035s
+sys	0m42,964s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    899
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.041    1.381
+
+=== LAT=100, MULT=1, EVTS=5
+
+
+real	5m2,260s
+user	0m33,286s
+sys	0m50,235s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    37
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.001    0.014
+
+=== LAT=100, MULT=1, EVTS=10
+
+
+real	5m2,302s
+user	0m33,023s
+sys	0m50,060s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    68
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.002    0.058
+
+=== LAT=100, MULT=1, EVTS=25
+
+
+real	5m2,064s
+user	0m31,698s
+sys	0m48,886s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    148
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.005    0.171
+
+=== LAT=100, MULT=1, EVTS=50
+
+
+real	5m3,410s
+user	0m31,078s
+sys	0m48,729s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    237
+NO      0.000
+FWDS    0.000    0.002
+BAKS    0.010    0.310
+
+=== LAT=100, MULT=1, EVTS=100
+
+
+real	5m2,501s
+user	0m30,018s
+sys	0m45,888s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    466
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.021    1.009
+
+=== LAT=100, MULT=1, EVTS=200
+
+
+real	5m1,718s
+user	0m28,823s
+sys	0m43,307s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    850
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.058    1.886
+
+=== LAT=250, MULT=5, EVTS=5
+
+
+real	5m4,653s
+user	0m31,968s
+sys	0m50,127s
+NOS[0] = 0
+NOS[1] = 45
+NOS[2] = 95
+NOS[3] = 77
+NOS[4] = 60
+NOS[5] = 60
+NOS[6] = 60
+NOS[7] = 60
+NOS[8] = 60
+NOS[9] = 31
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    33
+NO      0.101
+FWDS    0.000    0.002
+BAKS    0.000    0.000
+
+=== LAT=250, MULT=5, EVTS=10
+
+
+real	5m3,892s
+user	0m31,478s
+sys	0m50,500s
+NOS[0] = 0
+NOS[1] = 63
+NOS[2] = 147
+NOS[3] = 133
+NOS[4] = 120
+NOS[5] = 120
+NOS[6] = 120
+NOS[7] = 120
+NOS[8] = 120
+NOS[9] = 72
+NOS[10] = 40
+NOS[11] = 40
+NOS[12] = 19
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    66
+NO      0.206
+FWDS    0.000    0.002
+BAKS    0.000    0.004
+
+=== LAT=250, MULT=5, EVTS=25
+
+
+real	5m4,058s
+user	0m30,637s
+sys	0m50,289s
+NOS[0] = 0
+NOS[1] = 50
+NOS[2] = 94
+NOS[3] = 60
+NOS[4] = 60
+NOS[5] = 60
+NOS[6] = 63
+NOS[7] = 60
+NOS[8] = 60
+NOS[9] = 63
+NOS[10] = 60
+NOS[11] = 60
+NOS[12] = 60
+NOS[13] = 60
+NOS[14] = 60
+NOS[15] = 0
+
+TCKS    283521
+EVTS    132
+NO      0.159
+FWDS    0.000    0.001
+BAKS    0.000    0.005
+
+=== LAT=250, MULT=5, EVTS=50
+
+
+real	5m3,671s
+user	0m31,373s
+sys	0m47,818s
+NOS[0] = 0
+NOS[1] = 27
+NOS[2] = 11
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    245
+NO      0.007
+FWDS    0.000    0.001
+BAKS    0.000    0.000
+
+=== LAT=250, MULT=5, EVTS=100
+
+
+real	5m4,013s
+user	0m29,292s
+sys	0m46,179s
+NOS[0] = 0
+NOS[1] = 70
+NOS[2] = 147
+NOS[3] = 141
+NOS[4] = 120
+NOS[5] = 126
+NOS[6] = 120
+NOS[7] = 132
+NOS[8] = 120
+NOS[9] = 132
+NOS[10] = 120
+NOS[11] = 126
+NOS[12] = 126
+NOS[13] = 120
+NOS[14] = 120
+NOS[15] = 0
+
+TCKS    283521
+EVTS    453
+NO      0.303
+FWDS    0.000    0.000
+BAKS    0.001    0.021
+
+=== LAT=250, MULT=5, EVTS=200
+
+
+real	5m2,704s
+user	0m26,790s
+sys	0m43,845s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    940
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=250, MULT=2, EVTS=5
+
+
+real	5m4,620s
+user	0m32,237s
+sys	0m50,086s
+NOS[0] = 0
+NOS[1] = 90
+NOS[2] = 192
+NOS[3] = 160
+NOS[4] = 160
+NOS[5] = 141
+NOS[6] = 139
+NOS[7] = 140
+NOS[8] = 140
+NOS[9] = 120
+NOS[10] = 120
+NOS[11] = 120
+NOS[12] = 120
+NOS[13] = 120
+NOS[14] = 114
+NOS[15] = 0
+
+TCKS    283521
+EVTS    33
+NO      0.347
+FWDS    0.000    0.001
+BAKS    0.000    0.011
+
+=== LAT=250, MULT=2, EVTS=10
+
+
+real	5m3,907s
+user	0m30,995s
+sys	0m50,643s
+NOS[0] = 0
+NOS[1] = 162
+NOS[2] = 316
+NOS[3] = 100
+NOS[4] = 100
+NOS[5] = 100
+NOS[6] = 36
+NOS[7] = 20
+NOS[8] = 20
+NOS[9] = 20
+NOS[10] = 20
+NOS[11] = 20
+NOS[12] = 20
+NOS[13] = 20
+NOS[14] = 19
+NOS[15] = 0
+
+TCKS    283521
+EVTS    69
+NO      0.180
+FWDS    0.000    0.006
+BAKS    0.001    0.064
+
+=== LAT=250, MULT=2, EVTS=25
+
+
+real	5m4,577s
+user	0m32,215s
+sys	0m48,952s
+NOS[0] = 0
+NOS[1] = 143
+NOS[2] = 241
+NOS[3] = 224
+NOS[4] = 220
+NOS[5] = 163
+NOS[6] = 160
+NOS[7] = 160
+NOS[8] = 168
+NOS[9] = 160
+NOS[10] = 168
+NOS[11] = 160
+NOS[12] = 160
+NOS[13] = 160
+NOS[14] = 160
+NOS[15] = 0
+
+TCKS    283521
+EVTS    146
+NO      0.450
+FWDS    0.000    0.005
+BAKS    0.003    0.298
+
+=== LAT=250, MULT=2, EVTS=50
+
+
+real	5m3,670s
+user	0m30,401s
+sys	0m48,812s
+NOS[0] = 0
+NOS[1] = 108
+NOS[2] = 140
+NOS[3] = 40
+NOS[4] = 40
+NOS[5] = 33
+NOS[6] = 22
+NOS[7] = 21
+NOS[8] = 22
+NOS[9] = 20
+NOS[10] = 20
+NOS[11] = 20
+NOS[12] = 20
+NOS[13] = 20
+NOS[14] = 19
+NOS[15] = 0
+
+TCKS    283521
+EVTS    234
+NO      0.099
+FWDS    0.000    0.003
+BAKS    0.007    0.389
+
+=== LAT=250, MULT=2, EVTS=100
+
+
+real	5m4,202s
+user	0m29,001s
+sys	0m46,120s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    488
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.014    0.642
+
+=== LAT=250, MULT=2, EVTS=200
+
+
+real	5m3,403s
+user	0m28,418s
+sys	0m43,324s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    854
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.039    1.656
+
+=== LAT=250, MULT=1, EVTS=5
+
+
+real	5m6,277s
+user	0m32,338s
+sys	0m50,673s
+NOS[0] = 0
+NOS[1] = 54
+NOS[2] = 120
+NOS[3] = 120
+NOS[4] = 81
+NOS[5] = 60
+NOS[6] = 60
+NOS[7] = 1
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    39
+NO      0.092
+FWDS    0.000    0.002
+BAKS    0.001    0.056
+
+=== LAT=250, MULT=1, EVTS=10
+
+
+real	5m3,438s
+user	0m32,010s
+sys	0m49,633s
+NOS[0] = 0
+NOS[1] = 81
+NOS[2] = 180
+NOS[3] = 180
+NOS[4] = 177
+NOS[5] = 120
+NOS[6] = 103
+NOS[7] = 80
+NOS[8] = 74
+NOS[9] = 27
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    62
+NO      0.189
+FWDS    0.000    0.003
+BAKS    0.002    0.163
+
+=== LAT=250, MULT=1, EVTS=25
+
+
+real	5m3,827s
+user	0m31,437s
+sys	0m50,066s
+NOS[0] = 0
+NOS[1] = 63
+NOS[2] = 153
+NOS[3] = 152
+NOS[4] = 76
+NOS[5] = 40
+NOS[6] = 40
+NOS[7] = 40
+NOS[8] = 42
+NOS[9] = 40
+NOS[10] = 40
+NOS[11] = 40
+NOS[12] = 40
+NOS[13] = 40
+NOS[14] = 40
+NOS[15] = 0
+
+TCKS    283521
+EVTS    140
+NO      0.156
+FWDS    0.000    0.001
+BAKS    0.006    0.472
+
+=== LAT=250, MULT=1, EVTS=50
+
+
+real	5m3,439s
+user	0m31,113s
+sys	0m47,690s
+NOS[0] = 0
+NOS[1] = 0
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    249
+NO      0.000
+FWDS    0.000    0.001
+BAKS    0.013    0.897
+
+=== LAT=250, MULT=1, EVTS=100
+
+
+real	5m4,484s
+user	0m30,918s
+sys	0m44,801s
+NOS[0] = 0
+NOS[1] = 9
+NOS[2] = 22
+NOS[3] = 11
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    463
+NO      0.008
+FWDS    0.000    0.000
+BAKS    0.034    2.063
+
+=== LAT=250, MULT=1, EVTS=200
+
+
+real	5m3,613s
+user	0m30,572s
+sys	0m41,546s
+NOS[0] = 0
+NOS[1] = 2
+NOS[2] = 0
+NOS[3] = 0
+NOS[4] = 0
+NOS[5] = 0
+NOS[6] = 0
+NOS[7] = 0
+NOS[8] = 0
+NOS[9] = 0
+NOS[10] = 0
+NOS[11] = 0
+NOS[12] = 0
+NOS[13] = 0
+NOS[14] = 0
+NOS[15] = 0
+
+TCKS    283521
+EVTS    899
+NO      0.000
+FWDS    0.000    0.000
+BAKS    0.115    7.298
+
+=== LAT=500, MULT=5, EVTS=5
+
+
+real	5m7,452s
+user	0m32,065s
+sys	0m50,924s
+NOS[0] = 0
+NOS[1] = 144
+NOS[2] = 320
+NOS[3] = 320
+NOS[4] = 320
+NOS[5] = 320
+NOS[6] = 320
+NOS[7] = 320
+NOS[8] = 320
+NOS[9] = 320
+NOS[10] = 320
+NOS[11] = 320
+NOS[12] = 320
+NOS[13] = 336
+NOS[14] = 304
+NOS[15] = 0
+
+TCKS    283521
+EVTS    32
+NO      0.794
+FWDS    0.000    0.002
+BAKS    0.000    0.000
+
+=== LAT=500, MULT=5, EVTS=10
+
+
+real	5m5,802s
+user	0m31,798s
+sys	0m50,104s
+NOS[0] = 0
+NOS[1] = 108
+NOS[2] = 240
+NOS[3] = 252
+NOS[4] = 240
+NOS[5] = 240
+NOS[6] = 240
+NOS[7] = 240
+NOS[8] = 240
+NOS[9] = 240
+NOS[10] = 240
+NOS[11] = 221
+NOS[12] = 77
+NOS[13] = 40
+NOS[14] = 38
+NOS[15] = 0
+
+TCKS    283521
+EVTS    58
+NO      0.488
+FWDS    0.000    0.004
+BAKS    0.000    0.000
+
+=== LAT=500, MULT=5, EVTS=25
+
+
+real	5m6,813s
+user	0m31,538s
+sys	0m48,503s
+NOS[0] = 0
+NOS[1] = 153
+NOS[2] = 210
+NOS[3] = 200
+NOS[4] = 200
+NOS[5] = 200
+NOS[6] = 200
+NOS[7] = 200
+NOS[8] = 200
+NOS[9] = 200
+NOS[10] = 200
+NOS[11] = 200
+NOS[12] = 210
+NOS[13] = 200
+NOS[14] = 200
+NOS[15] = 0
+
+TCKS    283521
+EVTS    138
+NO      0.510
+FWDS    0.000    0.005
+BAKS    0.000    0.000
+
+=== LAT=500, MULT=5, EVTS=50
+
+
+real	5m5,267s
+user	0m31,161s
+sys	0m47,831s
+NOS[0] = 0
+NOS[1] = 62
+NOS[2] = 40
+NOS[3] = 40
+NOS[4] = 40
+NOS[5] = 40
+NOS[6] = 40
+NOS[7] = 40
+NOS[8] = 40
+NOS[9] = 40
+NOS[10] = 44
+NOS[11] = 40
+NOS[12] = 40
+NOS[13] = 44
+NOS[14] = 42
+NOS[15] = 0
+
+TCKS    283521
+EVTS    247
+NO      0.107
+FWDS    0.000    0.004
+BAKS    0.000    0.000
+
+=== LAT=500, MULT=5, EVTS=100
+
+
+real	5m5,103s
+user	0m30,340s
+sys	0m47,682s
+NOS[0] = 0
+NOS[1] = 27
+NOS[2] = 60
+NOS[3] = 63
+NOS[4] = 60
+NOS[5] = 66
+NOS[6] = 63
+NOS[7] = 69
+NOS[8] = 66
+NOS[9] = 60
+NOS[10] = 63
+NOS[11] = 60
+NOS[12] = 66
+NOS[13] = 60
+NOS[14] = 57
+NOS[15] = 0
+
+TCKS    283521
+EVTS    483
+NO      0.149
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=500, MULT=5, EVTS=200
+
+
+real	5m5,106s
+user	0m30,476s
+sys	0m47,706s
+NOS[0] = 0
+NOS[1] = 110
+NOS[2] = 231
+NOS[3] = 242
+NOS[4] = 220
+NOS[5] = 223
+NOS[6] = 198
+NOS[7] = 207
+NOS[8] = 198
+NOS[9] = 189
+NOS[10] = 189
+NOS[11] = 189
+NOS[12] = 198
+NOS[13] = 189
+NOS[14] = 180
+NOS[15] = 0
+
+TCKS    283521
+EVTS    885
+NO      0.475
+FWDS    0.000    0.000
+BAKS    0.000    0.000
+
+=== LAT=500, MULT=2, EVTS=5
+
+
+real	5m5,476s
+user	0m31,806s
+sys	0m50,593s
+NOS[0] = 0
+NOS[1] = 99
+NOS[2] = 220
+NOS[3] = 220
+NOS[4] = 220
+NOS[5] = 220
+NOS[6] = 187
+NOS[7] = 160
+NOS[8] = 160
+NOS[9] = 160
+NOS[10] = 160
+NOS[11] = 160
+NOS[12] = 160
+NOS[13] = 140
+NOS[14] = 133
+NOS[15] = 0
+
+TCKS    283521
+EVTS    37
+NO      0.444
+FWDS    0.000    0.002
+BAKS    0.000    0.019
+
+=== LAT=500, MULT=2, EVTS=10
+
+
+real	5m5,507s
+user	0m31,960s
+sys	0m49,258s
+NOS[0] = 0
+NOS[1] = 171
+NOS[2] = 380
+NOS[3] = 380
+NOS[4] = 380
+NOS[5] = 380
+NOS[6] = 380
+NOS[7] = 380
+NOS[8] = 380
+NOS[9] = 373
+NOS[10] = 220
+NOS[11] = 220
+NOS[12] = 201
+NOS[13] = 200
+NOS[14] = 190
+NOS[15] = 0
+
+TCKS    283521
+EVTS    68
+NO      0.784
+FWDS    0.000    0.008
+BAKS    0.001    0.083
+
+=== LAT=500, MULT=2, EVTS=25
+
+
+real	5m7,331s
+user	0m31,336s
+sys	0m49,302s
+NOS[0] = 0
+NOS[1] = 72
+NOS[2] = 160
+NOS[3] = 145
+NOS[4] = 100
+NOS[5] = 100
+NOS[6] = 91
+NOS[7] = 80
+NOS[8] = 80
+NOS[9] = 80
+NOS[10] = 84
+NOS[11] = 80
+NOS[12] = 80
+NOS[13] = 80
+NOS[14] = 76
+NOS[15] = 0
+
+TCKS    283521
+EVTS    141
+NO      0.240
+FWDS    0.000    0.001
+BAKS    0.002    0.217
+
+=== LAT=500, MULT=2, EVTS=50
+
+
+real	5m5,174s
+user	0m31,716s
+sys	0m47,300s
+NOS[0] = 0
+NOS[1] = 126
+NOS[2] = 273
+NOS[3] = 260
+NOS[4] = 260
+NOS[5] = 260
+NOS[6] = 273
+NOS[7] = 260
+NOS[8] = 260
+NOS[9] = 260
+NOS[10] = 273
+NOS[11] = 260
+NOS[12] = 273
+NOS[13] = 260
+NOS[14] = 247
+NOS[15] = 0
+
+TCKS    283521
+EVTS    252
+NO      0.649
+FWDS    0.000    0.001
+BAKS    0.006    0.541
+
+=== LAT=500, MULT=2, EVTS=100
+
+
+real	5m8,103s
+user	0m30,943s
+sys	0m47,850s
+NOS[0] = 0
+NOS[1] = 90
+NOS[2] = 212
+NOS[3] = 200
+NOS[4] = 200
+NOS[5] = 200
+NOS[6] = 192
+NOS[7] = 185
+NOS[8] = 198
+NOS[9] = 180
+NOS[10] = 180
+NOS[11] = 180
+NOS[12] = 180
+NOS[13] = 198
+NOS[14] = 180
+NOS[15] = 0
+
+TCKS    283521
+EVTS    484
+NO      0.465
+FWDS    0.000    0.001
+BAKS    0.025    2.195
+
+=== LAT=500, MULT=2, EVTS=200
+
+
+real	5m5,800s
+user	0m31,073s
+sys	0m47,307s
+NOS[0] = 0
+NOS[1] = 45
+NOS[2] = 115
+NOS[3] = 100
+NOS[4] = 96
+NOS[5] = 88
+NOS[6] = 80
+NOS[7] = 84
+NOS[8] = 84
+NOS[9] = 88
+NOS[10] = 80
+NOS[11] = 84
+NOS[12] = 84
+NOS[13] = 80
+NOS[14] = 76
+NOS[15] = 0
+
+TCKS    283521
+EVTS    874
+NO      0.214
+FWDS    0.000    0.000
+BAKS    0.042    3.465
+
+=== LAT=500, MULT=1, EVTS=5
+
+
+real	5m4,989s
+user	0m32,850s
+sys	0m49,772s
+NOS[0] = 0
+NOS[1] = 135
+NOS[2] = 300
+NOS[3] = 300
+NOS[4] = 300
+NOS[5] = 300
+NOS[6] = 300
+NOS[7] = 300
+NOS[8] = 283
+NOS[9] = 280
+NOS[10] = 280
+NOS[11] = 280
+NOS[12] = 288
+NOS[13] = 280
+NOS[14] = 234
+NOS[15] = 0
+
+TCKS    283521
+EVTS    34
+NO      0.714
+FWDS    0.000    0.003
+BAKS    0.001    0.076
+
+=== LAT=500, MULT=1, EVTS=10
+
+
+real	5m6,722s
+user	0m31,359s
+sys	0m50,239s
+NOS[0] = 0
+NOS[1] = 162
+NOS[2] = 360
+NOS[3] = 360
+NOS[4] = 360
+NOS[5] = 275
+NOS[6] = 234
+NOS[7] = 220
+NOS[8] = 220
+NOS[9] = 219
+NOS[10] = 201
+NOS[11] = 200
+NOS[12] = 200
+NOS[13] = 201
+NOS[14] = 190
+NOS[15] = 0
+
+TCKS    283521
+EVTS    60
+NO      0.628
+FWDS    0.000    0.004
+BAKS    0.002    0.230
+
+=== LAT=500, MULT=1, EVTS=25
+
+
+real	5m5,981s
+user	0m31,076s
+sys	0m49,613s
+NOS[0] = 0
+NOS[1] = 171
+NOS[2] = 269
+NOS[3] = 240
+NOS[4] = 240
+NOS[5] = 240
+NOS[6] = 240
+NOS[7] = 240
+NOS[8] = 240
+NOS[9] = 240
+NOS[10] = 248
+NOS[11] = 240
+NOS[12] = 240
+NOS[13] = 246
+NOS[14] = 228
+NOS[15] = 0
+
+TCKS    283521
+EVTS    132
+NO      0.611
+FWDS    0.000    0.004
+BAKS    0.006    0.838
+
+=== LAT=500, MULT=1, EVTS=50
+
+
+real	5m7,352s
+user	0m30,926s
+sys	0m48,414s
+ERR	18	(-1556,-3254,0,-1)	(-1582,-2422,0,0)
+ERR	19	(-1556,-3254,0,-1)	(-1582,-2422,0,0)
+ERR	20	(-1556,-3254,0,-1)	(-1582,-2422,0,0)
+NOS[0] = 0
+NOS[1] = 153
+NOS[2] = 340
+NOS[3] = 340
+NOS[4] = 347
+NOS[5] = 335
+NOS[6] = 285
+NOS[7] = 265
+NOS[8] = 257
+NOS[9] = 250
+NOS[10] = 240
+NOS[11] = 250
+NOS[12] = 250
+NOS[13] = 240
+NOS[14] = 239
+NOS[15] = 0
+
+TCKS    283521
+EVTS    238
+NO      0.692
+FWDS    0.000    0.002
+BAKS    0.015    2.985
+
+=== LAT=500, MULT=1, EVTS=100
+
+
+real	5m4,521s
+user	0m31,332s
+sys	0m47,433s
+ERR	1	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	2	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	3	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	4	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	5	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	6	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	7	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	8	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	9	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	10	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	11	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	12	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	13	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	14	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	15	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	16	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	17	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	18	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	19	(-1608,1478,0,1)	(-1608,682,0,0)
+ERR	20	(-1608,1478,0,1)	(-1608,682,0,0)
+NOS[0] = 0
+NOS[1] = 152
+NOS[2] = 339
+NOS[3] = 332
+NOS[4] = 300
+NOS[5] = 309
+NOS[6] = 313
+NOS[7] = 324
+NOS[8] = 300
+NOS[9] = 300
+NOS[10] = 300
+NOS[11] = 307
+NOS[12] = 316
+NOS[13] = 328
+NOS[14] = 285
+NOS[15] = 0
+
+TCKS    283521
+EVTS    472
+NO      0.757
+FWDS    0.000    0.000
+BAKS    0.044    5.309
+
+=== LAT=500, MULT=1, EVTS=200
+
+
+real	5m5,133s
+user	0m34,039s
+sys	0m45,923s
+NOS[0] = 0
+NOS[1] = 73
+NOS[2] = 168
+NOS[3] = 160
+NOS[4] = 174
+NOS[5] = 148
+NOS[6] = 135
+NOS[7] = 120
+NOS[8] = 126
+NOS[9] = 132
+NOS[10] = 142
+NOS[11] = 127
+NOS[12] = 138
+NOS[13] = 124
+NOS[14] = 114
+NOS[15] = 0
+
+TCKS    283521
+EVTS    934
+NO      0.334
+FWDS    0.000    0.001
+BAKS    0.147    17.704
+

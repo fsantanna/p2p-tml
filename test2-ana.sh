@@ -1,48 +1,33 @@
-#!/bin/bash
+#!/bin/sh
 
-# ./test2-ana.sh
+# time ./test2-ana.sh 2>&1 | tee out2.log
 
-TOTAL=300
-WAIT=30
-#LATENCY=50
-#EVENTS=100
+tc qdisc del dev lo root
 
-# 21 peers
-#  5 hops
-# 50 fps
-# 10 random seconds initial delay
-# no delay in time travel
-
-for LATENCY in 5 25 50 100 250 500 1000
+for LAT in 5 25 50 100 250 500
 do
-    for EVENTS in 1 5 10 25 50 100 250 500
+    tc qdisc add dev lo root netem delay ${LAT}ms $(($LAT/5))ms distribution normal
+    for MULT in 5 2 1
     do
-        if [ "$LATENCY" == "100" ] && [ "$EVENTS" == "1000" ]
-        then
-            break
-        fi
-        if [ "$LATENCY" == "250" ] && [ "$EVENTS" == "250" ]
-        then
-            break
-        fi
-        if [ "$LATENCY" == "500" ] && [ "$EVENTS" == "250" ]
-        then
-            break
-        fi
-        if [ "$LATENCY" == "1000" ] && [ "$EVENTS" == "100" ]
-        then
-            break
-        fi
+        for EVTS in 5 10 25 50 100 200
+        do
+            echo "=== LAT=$LAT, MULT=$MULT, EVTS=$EVTS"
+            echo ""
 
-        echo "=== TOTAL=$TOTAL, WAIT=$WAIT, LATENCY=$LATENCY, EVENTS=$EVENTS" | tee -a all.log
-        echo "" | tee -a all2.log
+            gcc -g -Wall `sdl2-config --cflags` \
+                -DP2P_TOTAL=120 -DP2P_WAIT=30 -DP2P_EVENTS=$EVTS \
+                -DP2P_LATENCY=$LAT -DP2P_AVG_HOPS=5 -DP2P_DELTA_MULT=$MULT \
+                p2p.c test.c -o xtest2 \
+                `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
 
-        gcc -g -Wall `sdl2-config --cflags` -DP2P_LATENCY=$LATENCY -DP2P_TOTAL=$TOTAL -DP2P_WAIT=$WAIT -DP2P_EVENTS=$EVENTS p2p.c test2.c -o xtest2 `sdl2-config --libs` -lpthread -lSDL2_net -lSDL2_image
-
-        pkill -9 -f xtest2
-        time ./test2.sh | tee out2.log
-
-        lua5.3 test2-ana.lua $TOTAL $WAIT $LATENCY | tee -a all2.log
-        echo "" | tee -a all2.log
+            pkill -9 -f xtest2
+            time ./test2.sh 2>&1 > out2.log
+            lua5.3 test2-ana.lua 120 $LAT
+        done
     done
 done
+tc qdisc del dev lo root
+
+now=`date "+%s"`
+echo "FINISH [$now]"
+

@@ -4,6 +4,8 @@ gcc -g -Wall `sdl2-config --cflags` p2p.c test.c -o xtest `sdl2-config --libs` -
 exit
 #endif
 
+#define TEST_OFFLINE
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -116,7 +118,7 @@ void cb_ini (int ini) {
                 p2p_link("localhost", 5100+v, v);
             }
         }
-#if 1
+#ifndef TEST_OFFLINE
         int XXX = rand() % 10000;
         SDL_Delay(XXX);
         printf("[%02d] rand %d\n", ME, XXX);
@@ -177,19 +179,19 @@ int cb_rec (SDL_Event* sdl, p2p_evt* evt) {
         fflush(stdout);
         p2p_dump();
 END = 1;
-#if 1
-        p2p_travel(15000);
-#else
+#ifdef TEST_OFFLINE
         p2p_travel(6000);
+#else
+        p2p_travel(15000);
 #endif
         p2p_dump();
         printf("[%02d] TICK %d pos=(%d,%d,%d,%d)\n", ME,TICK, G.x,G.y,G.dx,G.dy);
         fflush(stdout);
         return P2P_RET_QUIT;
-#if 1
-    } else if (TICK > TST_SIM_TOT-(10*FPS)) {   // -10s
+#ifdef TEST_OFFLINE
+    } else if (TICK > TST_SIM_TOT-(30*FPS)) {   // -30s
 #else
-    } else if (TICK > TST_SIM_TOT-(30*FPS)) {   // -10s
+    } else if (TICK > TST_SIM_TOT-(10*FPS)) {   // -10s
 #endif
         return P2P_RET_NONE;
     }

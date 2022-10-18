@@ -1,4 +1,4 @@
--- lua5.3 test-ana-2.lua 120 50
+-- lua5.3 test2-ana.lua 120 50
 
 local total,_LATENCY_ = ...
 
