@@ -356,6 +356,7 @@ if (s == NULL) {
     cb_ini(1);
     G.time.nxt = SDL_GetTicks()+mpf;
 
+    uint32_t old = SDL_GetTicks();
     while (1) {
         while (1) {
             TCPsocket s = SDLNet_TCP_Accept(G.net[G.me].s);
@@ -480,11 +481,14 @@ printf("[%02d] FWD from=%d to=%d dif=%d/%d\n", G.me, G.time.tick, last, dif/G.ti
 }
 
 int p2p_loop_sdl (void) {
+    static uint32_t old = 0;
     uint32_t now = SDL_GetTicks();
     //assert(now <= G.time.nxt);
     if (now < G.time.nxt) {
+        printf(">>> %d\n", now-old);
         SDL_WaitEventTimeout(NULL, G.time.nxt-now);
         now = SDL_GetTicks();
+        old = now;
     }
 
     // TICK
